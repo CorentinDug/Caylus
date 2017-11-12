@@ -70,6 +70,7 @@ public class View extends JFrame {
                 decalLigne =50;
                 j=4;
             }
+
             x+=decalColonne;
             j++;
 
