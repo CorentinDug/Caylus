@@ -24,7 +24,7 @@ public class View extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.pack();
-        this.setSize(1100, 700);
+        this.setSize(700, 1000);
         this.setLocationRelativeTo(null);
         this.initImage();
         this.createView();
@@ -35,22 +35,37 @@ public class View extends JFrame {
     }
 
     public void createView() {
-        jpPlateau = new PanelPrinc(1100, 700);
+        jpPlateau = new PanelPrinc(700, 1000);
         jpPlateau.setLayout(null);
 
-        caseP=new JLabel[2];
-        for(int i=0;i<2;i++) {
+        int x = 30;
+        int y = 850;
+        int decalColonne =90;
+
+        caseP=new JLabel[34];
+        for(int i=0;i<34;i++) {
             caseP[i] = new JLabel();
             caseP[i].setIcon(imageCase[i]);
             jpPlateau.add(caseP[i]);
-            caseP[i].setBounds(1050, 650, 80, 30);
+            if(i%6==0 && i!=0){
+                y-=70;
+            }
+            caseP[i].setBounds(x, y, 70, 70);
+            if(i%6==0 && i!=0){
+                decalColonne=-decalColonne;
+                y-=70;
+            }
+            x+=decalColonne;
+
         }
         setContentPane(jpPlateau);
     }
     public void initImage(){
-        imageCase=new ImageIcon[2];
-        imageCase[0]= new ImageIcon("./res/img//Batiment/1.png");
-        imageCase[1]= new ImageIcon("./res/img//Batiment/2.png");
+        imageCase=new ImageIcon[34];
+        for(int i=0;i<34;i++)
+            imageCase[i]= new ImageIcon("./res/img//Batiment/Vide.png");
+        imageCase[13]= new ImageIcon("./res/img//Batiment/mine.png");
+
     }
 
 
