@@ -1,3 +1,5 @@
+import java.awt.*;
+
 /**
  * Created by Schnoeby on 11/11/2017.
  */
@@ -12,11 +14,17 @@ public class Joueur {
     private int ouvrier;
     private int maison;
     private int prestige;
+    private Color couleur;
 
     public Joueur(String nom) {
         this.nom = nom;
+        ouvrier=6;
+        maison=20;
         prestige = 0;
     }
+
+    public void setCouleur(Color couleur) {this.couleur = couleur;}
+    public Color getCouleur() {return couleur;}
 
     public String getNom() {
         return nom;
@@ -46,7 +54,7 @@ public class Joueur {
         return or;
     }
 
-    public int getOuvier() {
+    public int getOuvrier() {
         return ouvrier;
     }
 
@@ -79,7 +87,7 @@ public class Joueur {
                 or-=quantité;
                 break;
             case "ouvrier":
-                ouvrier-=quantité;
+                ouvrier -= quantité;
                 break;
             case "maison":
                 maison -=quantité;
