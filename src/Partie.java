@@ -31,6 +31,7 @@ public class Partie {
 
     public void ouvrierPosé(Joueur joueur){
         joueur.donne("ouvrier",1);
+
     }
 
 }
