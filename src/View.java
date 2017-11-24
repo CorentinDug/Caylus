@@ -90,15 +90,15 @@ public class View extends JFrame {
     public void initImage(){
         imageCase=new ImageIcon[34];
         for(int i=0;i<34;i++)
-            imageCase[i]= new ImageIcon("./res/img//Batiment/Vide.png");
-        imageCase[20]= new ImageIcon("./res/img//Batiment/Charpentier.png");
-        imageCase[21]= new ImageIcon("./res/img//Batiment/marché.png");
-        imageCase[28]= new ImageIcon("./res/img//Batiment/taverne2.png");
-        imageCase[29]= new ImageIcon("./res/img//Batiment/ecurie.png");
-        imageCase[30]= new ImageIcon("./res/img//Batiment/joute.png");
-        imageCase[31]= new ImageIcon("./res/img//Batiment/taverne.png");
-        imageCase[32]= new ImageIcon("./res/img//Batiment/banque.png");
-        imageCase[33]= new ImageIcon("./res/img//Batiment/porte.png");
+            imageCase[i]= new ImageIcon("./res/img/Batiment/Vide.png");
+        imageCase[20]= new ImageIcon("./res/img/Batiment/Charpentier.png");
+        imageCase[21]= new ImageIcon("./res/img/Batiment/marché.png");
+        imageCase[28]= new ImageIcon("./res/img/Batiment/taverne2.png");
+        imageCase[29]= new ImageIcon("./res/img/Batiment/ecurie.png");
+        imageCase[30]= new ImageIcon("./res/img/Batiment/joute.png");
+        imageCase[31]= new ImageIcon("./res/img/Batiment/taverne.png");
+        imageCase[32]= new ImageIcon("./res/img/Batiment/banque.png");
+        imageCase[33]= new ImageIcon("./res/img/Batiment/porte.png");
     }
 
     public void display() {

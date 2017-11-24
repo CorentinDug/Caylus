@@ -11,6 +11,4 @@ public class Batiment {
     public Batiment(String nom){
         this.nom=nom;
     }
-
-
-}
+    }

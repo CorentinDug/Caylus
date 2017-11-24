@@ -1,3 +1,5 @@
+import Batiment.Batiment;
+
 /**
  * Created by Schnoeby on 11/11/2017.
  */
@@ -8,6 +10,7 @@ public class Banque {
     private int bois;
     private int pierre;
     private int or;
+
 
     public Banque(){
         denier=80;
