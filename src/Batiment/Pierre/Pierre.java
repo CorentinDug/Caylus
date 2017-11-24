@@ -1,8 +1,9 @@
 package Batiment.Pierre;
 import Batiment.Batiment;
 
-abstract class Pierre extends Batiment {
-    public Pierre(String nom){
-        super(nom);
-    }
+abstract class Pierre implements Batiment {
+    public Pierre(){}
+    public abstract void recompenseOuvrier();
+    public abstract void recompenseProprietaire();
+    public abstract void recompensePrestige();
 }
