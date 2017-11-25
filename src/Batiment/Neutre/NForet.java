@@ -1,12 +1,12 @@
 package Batiment.Neutre;
 
-public class Foret extends Neutre {
+public class NForet extends Neutre {
     private static String nom = "Forêt";
 
     /**
      * Constructeur initialisant le nom
      */
-    public Foret(){}
+    public NForet(){}
 
     /**
      *  Donne la récompense ouvrière dû au joueur

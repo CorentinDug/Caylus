@@ -1,12 +1,12 @@
 package Batiment.Neutre;
 
-public class Marche extends Neutre {
+public class NMarche extends Neutre {
     private static String nom = "Marché";
 
     /**
      * Constructeur initialisant le nom
      */
-    public Marche(){}
+    public NMarche(){}
 
     /**
      *  Donne la récompense ouvrière dû au joueur

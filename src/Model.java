@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * Created by Schnoeby on 19/11/2017.
  */
 public class Model {
-    private Case[] cases;
+    protected Case[] cases;
     final int size = 34;
     private View view;
     private Partie partie;
@@ -17,10 +17,22 @@ public class Model {
     }
 
     public void initCases(){
-        cases=new Case[34];
-        for(int i = 0; i < this.size; i++){
+        cases=new Case[size];
+        for(int i = 0; i < size; i++){
                 cases[i] = new Case();
         }
+        int n=0;
+        for(int i = size-1; i > 27; i--) {
+            cases[i].setBatiment(partie.batSpéciaux.get(n++));
+        }
+        n=0;
+        for(int i = 27; i > 21; i--) {
+            cases[i].setBatiment(partie.batNeutre.get(n++));
+        }
+    }
+
+    public String getBatimentSpecial(int i){
+        return partie.batSpéciaux.get(i);
     }
 
     public void initJoueur(int nbrJoueurs ){
@@ -28,8 +40,9 @@ public class Model {
             String nom = view.créerJoueur(i+1);
             Joueur joueur = new Joueur(nom);
             joueur.setCouleur(partie.couleur[i]);
-            partie.joueur.add(joueur);
+            partie.listeJoueur.add(joueur);
         }
+        partie.initPartie();
     }
 
     public void poseOuvrier(int coordonnees, Joueur joueur){
@@ -41,6 +54,8 @@ public class Model {
         this.view = vue;
         view.setPrévot(partie.prévot.coordonnée);
         view.setBaillis(partie.baillis.coordonnée);
+        view.initListeImage();
+        view.initImageCase();
         initJoueur(partie.nbrJoueurs);
     }
 

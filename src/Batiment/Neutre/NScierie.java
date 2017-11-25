@@ -1,12 +1,12 @@
 package Batiment.Neutre;
 
-public class Carriere extends Neutre {
-    private static String nom = "Carrière";
+public class NScierie extends Neutre {
+    private static String nom = "NScierie";
 
     /**
      * Constructeur initialisant le nom
      */
-    public Carriere(){}
+    public NScierie(){}
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -29,4 +29,3 @@ public class Carriere extends Neutre {
 
     }
 }
-

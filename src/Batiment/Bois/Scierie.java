@@ -1,7 +1,7 @@
 package Batiment.Bois;
 
 public class Scierie extends Bois {
-    private static String nom = "Scierie";
+    private static String nom = "NScierie";
 
     /**
      * Constructeur initialisant le nom

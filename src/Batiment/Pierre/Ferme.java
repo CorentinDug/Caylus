@@ -1,7 +1,7 @@
 package Batiment.Pierre;
 
 public class Ferme extends Pierre {
-    private static String nom = "Ferme";
+    private static String nom = "NFerme";
 
     /**
      * Constructeur initialisant le nom

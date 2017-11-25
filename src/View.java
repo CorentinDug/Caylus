@@ -1,9 +1,12 @@
 import com.apple.eawt.Application;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +20,8 @@ public class View extends JFrame {
     private Application app;
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
-    private ImageIcon[] imageCase;
+
+    private ImageIcon[] imageCases;
 
     private Image icone;
     private ImageIcon iconeDUT;
@@ -33,7 +37,6 @@ public class View extends JFrame {
         pack();
         setSize(1000, 1000);
         setLocationRelativeTo(null);
-        initImage();
         initInfo();
         initPLateau();
 
@@ -65,6 +68,8 @@ public class View extends JFrame {
 
     public void initInfo() {
         panelInfo=new Info(350,700);
+
+
     }
 
 
@@ -84,7 +89,6 @@ public class View extends JFrame {
         for(int i=0;i<34;i++) {
             cases[i] = new JLabel();
             casesOuvrier[i] = new JLabel();
-            cases[i].setIcon(imageCase[i]);
             jpPlateau.add(casesOuvrier[i]);
             jpPlateau.add(cases[i]);
             if(j%6==0 && j!=0){
@@ -110,18 +114,28 @@ public class View extends JFrame {
         panelInfo.setBounds(650,370,350,700);
         setContentPane(jpPlateau);
     }
-    public void initImage(){
-        imageCase=new ImageIcon[34];
-        for(int i=0;i<34;i++)
-            imageCase[i]= new ImageIcon("./res/img/Batiment/Vide.png");
-        imageCase[20]= new ImageIcon("./res/img/Batiment/Charpentier.png");
-        imageCase[21]= new ImageIcon("./res/img/Batiment/marché.png");
-        imageCase[28]= new ImageIcon("./res/img/Batiment/taverne2.png");
-        imageCase[29]= new ImageIcon("./res/img/Batiment/ecurie.png");
-        imageCase[30]= new ImageIcon("./res/img/Batiment/joute.png");
-        imageCase[31]= new ImageIcon("./res/img/Batiment/taverne.png");
-        imageCase[32]= new ImageIcon("./res/img/Batiment/banque.png");
-        imageCase[33]= new ImageIcon("./res/img/Batiment/porte.png");
+
+    public void initImageCase() {
+        for (int i = 0; i < 34; i++) {
+            cases[i].setIcon(imageCases[i]);
+        }
+    }
+
+    public void initListeImage(){
+        imageCases = new ImageIcon[34];
+        for (int i = 0; i < 34; i++) {
+            BufferedImage imageCase = null;
+            try {
+                System.out.println("./res/img/Batiment/Spécial/"+model.cases[i].getBatiment()+".png");
+                imageCase = ImageIO.read(new File("./res/img/Batiment/"+model.cases[i].getBatiment()+".png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ImageIcon iconCase = new ImageIcon(imageCase);
+            imageCases[i]= iconCase;
+        }
+
+
     }
 
     public void display() {

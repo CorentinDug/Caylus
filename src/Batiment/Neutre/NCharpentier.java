@@ -1,12 +1,12 @@
 package Batiment.Neutre;
 
-public class Scierie extends Neutre {
-    private static String nom = "Scierie";
+public class NCharpentier extends Neutre {
+    private static String nom = "NCharpentier";
 
     /**
      * Constructeur initialisant le nom
      */
-    public Scierie(){}
+    public NCharpentier(){}
 
     /**
      *  Donne la récompense ouvrière dû au joueur

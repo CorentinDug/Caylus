@@ -10,9 +10,10 @@ public class ControlGroup {
 
     public ControlGroup(Model model) {
         this.model = model;
-        this.view = new View(this.model);
-        this.model.setView(this.view);
+        view = new View(this.model);
+        model.setView(this.view);
 
-        this.controlMouse = new ControlMouse(this.view, this.model);
-        this.view.display();    }
+
+        controlMouse = new ControlMouse(this.view, this.model);
+        view.display();    }
 }
