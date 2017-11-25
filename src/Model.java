@@ -23,7 +23,6 @@ public class Model {
         }
     }
 
-
     public void initJoueur(int nbrJoueurs ){
         for(int i=0; i<nbrJoueurs;i++){
             String nom = view.créerJoueur(i+1);
