@@ -66,6 +66,28 @@ public class Joueur {
         return prestige;
     }
 
+    public boolean poseOuvrier(){
+        if(ouvrier==0)
+          return false;
+        ouvrier--;
+        return true;
+    }
+
+    public boolean poseMaison(){
+        if(maison==0)
+            return false;
+        maison--;
+        return true;
+    }
+
+    public void reprendOuvrier(){
+        ouvrier++;
+    }
+
+    public void reprendMaison(){
+        maison++;
+    }
+
     public void donne(String ressource, int quantité) {
         switch (ressource) {
             case "denier":
@@ -85,12 +107,6 @@ public class Joueur {
                 break;
             case "or":
                 or-=quantité;
-                break;
-            case "ouvrier":
-                ouvrier -= quantité;
-                break;
-            case "maison":
-                maison -=quantité;
                 break;
             case "prestige":
                 prestige-=quantité;
@@ -117,12 +133,6 @@ public class Joueur {
                 break;
             case "or":
                 or+=quantité;
-                break;
-            case "ouvrier":
-                ouvrier +=quantité;
-                break;
-            case "maison":
-                maison +=quantité;
                 break;
             case "prestige":
                 maison +=quantité;

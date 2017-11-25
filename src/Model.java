@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.util.ArrayList;
+
 /**
  * Created by Schnoeby on 19/11/2017.
  */
@@ -7,29 +10,39 @@ public class Model {
     private View view;
     private Partie partie;
 
-    public Model(){
-        this.partie= new Partie();
+    public Model(int nbrJoueurs){
+        partie= new Partie(nbrJoueurs);
         initCases();
+
     }
 
     public void initCases(){
         cases=new Case[34];
         for(int i = 0; i < this.size; i++){
-                this.cases[i] = new Case();
+                cases[i] = new Case();
         }
     }
 
-    public Joueur tourJoueur(){
-      return partie.getJoueur();
+
+    public void initJoueur(int nbrJoueurs ){
+        for(int i=0; i<nbrJoueurs;i++){
+            String nom = view.créerJoueur(i+1);
+            Joueur joueur = new Joueur(nom);
+            joueur.setCouleur(partie.couleur[i]);
+            partie.joueur.add(joueur);
+        }
     }
 
-    public void poserOuvrier(int coordonnees, Joueur joueur){
-        partie.ouvrierPosé(joueur);
+    public void poseOuvrier(int coordonnees, Joueur joueur){
+        partie.poseOuvrier(joueur);
         view.poserOuvrier(coordonnees, joueur);
     }
 
-    public void setView(View view) {
-        this.view = view;
+    public void setView(View vue) {
+        this.view = vue;
+        view.setPrévot(partie.prévot.coordonnée);
+        view.setBaillis(partie.baillis.coordonnée);
+        initJoueur(partie.nbrJoueurs);
     }
 
 }

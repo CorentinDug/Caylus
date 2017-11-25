@@ -5,8 +5,8 @@ public class Caylus {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                Model model = new Model();
-                ControlGroup controlGroup = new ControlGroup(model);
+                ViewMenu viewMenu = new ViewMenu();
+                ControlButtonMenu controlButtonMenu = new ControlButtonMenu(viewMenu);
             }
         });
     }

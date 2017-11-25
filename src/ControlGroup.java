@@ -14,6 +14,5 @@ public class ControlGroup {
         this.model.setView(this.view);
 
         this.controlMouse = new ControlMouse(this.view, this.model);
-        this.view.display();
-    }
+        this.view.display();    }
 }

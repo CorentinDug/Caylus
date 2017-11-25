@@ -19,10 +19,13 @@ public class ControlMouse extends MouseAdapter {
     }
 
     public void mouseClicked(MouseEvent e) {
-        Point point = e.getPoint();
+       /*
+         Point point = e.getPoint();
         int coordonnees = detectionCase(point);
         if(coordonnees!=-1)
-            model.poserOuvrier(coordonnees, model.tourJoueur());
+            model.poseOuvrier(coordonnees, model.tourJoueur());
+        */
+
     }
 
     public int detectionCase(Point point){

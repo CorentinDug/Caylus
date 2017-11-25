@@ -1,37 +1,43 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by Schnoeby on 19/11/2017.
  */
 public class Partie {
-    private Joueur joueur1;
-    private Joueur joueur2;
+    protected ArrayList<Joueur> joueur;
+    protected Color[] couleur;
+    protected int nbrJoueurs;
+    protected Prévot prévot;
+    protected Baillis baillis;
 
-    public Partie(){
-        joueur1 = new Joueur("Jean");
-        joueur2 = new Joueur("Paul");
+    public Partie(int joueurs){
+        nbrJoueurs=joueurs;
+        prévot = new Prévot();
+        baillis = new Baillis();
+        joueur = new ArrayList<Joueur>();
         initCouleur();
     }
 
-    public Joueur getJoueur() {
-        if(joueur2.getOuvrier()==0) {
-            joueur1.recoit("ouvrier",6);
-            joueur2.recoit("ouvrier",6);
-        }
-        if(joueur1.getOuvrier()==0) {
-            return joueur2;
-        }
-        return joueur1;
+    public int getNbrJoueurs() {
+        return nbrJoueurs;
     }
 
     public void initCouleur( ){
-        joueur1.setCouleur(Color.blue);
-        joueur2.setCouleur(Color.yellow);
+        couleur = new Color[5];
+        couleur[0]= Color.blue;
+        couleur[1]= Color.red;
+        couleur[2]= Color.green;
+        couleur[3]= Color.orange;
+        couleur[4]= Color.black;
     }
 
-    public void ouvrierPosé(Joueur joueur){
-        joueur.donne("ouvrier",1);
+
+
+    public void poseOuvrier(Joueur joueur){
+        joueur.poseOuvrier();
 
     }
+
 
 }

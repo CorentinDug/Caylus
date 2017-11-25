@@ -1,16 +1,15 @@
 import com.apple.eawt.Application;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
-
-import static java.awt.Color.BLACK;
-import static java.awt.Color.CYAN;
-import static java.awt.Color.GRAY;
+import javax.swing.JOptionPane;
 
 /**
  * Created by Schnoeby on 11/11/2017.
  */
+
 public class View extends JFrame {
     private Model model;
     private Plateau jpPlateau;
@@ -20,18 +19,42 @@ public class View extends JFrame {
     protected JLabel[] casesOuvrier;
     private ImageIcon[] imageCase;
 
+    private Image icone;
+    private ImageIcon iconeDUT;
+    private ImageIcon iconeApp;
+    private Image img;
+
+
     public View(Model model) {
         this.model = model;
-        this.setTitle("Caylus");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.pack();
-        this.setSize(1000, 1000);
-        this.setLocationRelativeTo(null);
-        this.initImage();
-        this.initInfo();
-        this.initPLateau();
-        this.app = Application.getApplication();
+        setTitle("Caylus");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        pack();
+        setSize(1000, 1000);
+        setLocationRelativeTo(null);
+        initImage();
+        initInfo();
+        initPLateau();
+
+        icone = Toolkit.getDefaultToolkit().getImage("res/img/icone.png");
+        iconeDUT = new ImageIcon("res/img/dut.png");
+        ImageIcon imageIcon = new ImageIcon("res/img/icone.png");
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+        iconeApp = new ImageIcon(newimg);  // transform it back
+        imageIcon = new ImageIcon("res/img/dut.png"); //unscaled image
+        image = imageIcon.getImage();
+        newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
+        iconeDUT = new ImageIcon(newimg);
+        img = new ImageIcon("res/img/icone.png").getImage();
+        app = Application.getApplication();
+        try {
+            app.setDockIconImage(img);
+        } catch(NullPointerException e) {
+            //e.printStackTrace();
+        }
+        this.setIconImage(icone);
 
     }
 
@@ -110,6 +133,20 @@ public class View extends JFrame {
         casesOuvrier[coordonnees].setOpaque(true);
     }
 
+    public void setBaillis(int coordonnees){
+        cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white,3));
+        cases[coordonnees].setOpaque(true);
+    }
+
+    public void setPrévot(int coordonnees){
+        cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white,1));
+        cases[coordonnees].setOpaque(true);
+    }
+
+    public String créerJoueur(int i) {
+        String nom = JOptionPane.showInputDialog(null, "Entrez un nom pour le Joueur "+i) ;
+        return nom;
+    }
 
 
 
