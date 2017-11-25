@@ -25,10 +25,12 @@ public class Model {
         for(int i = size-1; i > 27; i--) {
             cases[i].setBatiment(partie.batSpéciaux.get(n++));
         }
+        /*
         n=0;
         for(int i = 27; i > 21; i--) {
             cases[i].setBatiment(partie.batNeutre.get(n++));
         }
+        */
     }
 
     public String getBatimentSpecial(int i){
