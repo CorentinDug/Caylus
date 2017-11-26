@@ -85,43 +85,41 @@ public class ViewMenu extends JFrame {
 
     }
     public void createView(){
-        PanelAccueil jpp = new PanelAccueil(800,400);
+        PanelPrinc jpp = new PanelPrinc(800,400);
+
         jpp.setLayout(new GridLayout(1,1));
         JPanel jPanelGlobal = new JPanel(new GridBagLayout());
-        JPanel jPanelNiveau = new JPanel(new GridBagLayout());
+        JPanel jPanelJoueur = new JPanel(new GridBagLayout());
         JPanel jPanelTitle = new JPanel();
-        JPanel jPanelOptions = new JPanel(new GridBagLayout());
+        JPanel jPanelQuitter = new JPanel(new GridBagLayout());
 
-        //jPanelOptions.setLayout(new BoxLayout(jPanelOptions, BoxLayout.Y_AXIS));
 
         jPanelGlobal.setOpaque(false);
         jPanelTitle.setOpaque(false);
-        jPanelNiveau.setOpaque(false);
-        jPanelOptions.setOpaque(false);
+        jPanelJoueur.setOpaque(false);
+        jPanelQuitter.setOpaque(false);
 
         jPanelTitle.add(title,new GridBagConstraints());
-
         GridBagConstraints gbc2 = new GridBagConstraints();
-        gbc2.gridx = gbc2.gridy = 0; // la grille commence en (0, 0)
+        gbc2.gridx = gbc2.gridy = 0;
 
-        gbc2.gridheight = 1; // valeur par défaut - peut s'étendre sur une seule ligne.
+        gbc2.gridheight = 1;
         gbc2.insets = new Insets(5, 20, 0, 20);
-        jPanelNiveau.add(deuxJoueurs,gbc2);
+        jPanelJoueur.add(deuxJoueurs,gbc2);
         gbc2.gridx = 1;
         gbc2.gridy = 0;
-        jPanelNiveau.add(troisJoueurs,gbc2);
+        jPanelJoueur.add(troisJoueurs,gbc2);
         gbc2.gridx = 2;
         gbc2.gridy = 0;
-        jPanelNiveau.add(quatreJoueurs,gbc2);
+        jPanelJoueur.add(quatreJoueurs,gbc2);
         gbc2.gridx = 3;
         gbc2.gridy = 0;
-        jPanelNiveau.add(cinqJoueurs,gbc2);
+        jPanelJoueur.add(cinqJoueurs,gbc2);
 
         gbc2.insets = new Insets(0, 10, 0, 10);
         gbc2.gridx = 0;
         gbc2.gridy = 0;
-        jPanelOptions.add(quitter, gbc2);
-
+        jPanelQuitter.add(quitter, gbc2);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = gbc.gridy = 0;
@@ -136,10 +134,10 @@ public class ViewMenu extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.insets = new Insets(20, 0, 0, 0);
-        jPanelGlobal.add(jPanelNiveau, gbc);
+        jPanelGlobal.add(jPanelJoueur, gbc);
         gbc.gridx = 0;
         gbc.gridy = 2;
-        jPanelGlobal.add(jPanelOptions, gbc);
+        jPanelGlobal.add(jPanelQuitter, gbc);
         jpp.add(jPanelGlobal);
 
         setContentPane(jpp);

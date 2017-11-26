@@ -15,8 +15,12 @@ import javax.swing.JOptionPane;
 
 public class View extends JFrame {
     private Model model;
-    private Plateau jpPlateau;
-    private JPanel panelInfo;
+    private  PanelPrinc panelPlateau;
+    private JPanel panelPrinc, panelInfo, panelJoueur;
+
+    JLabel joueur1,joueur2,joueur3,joueur4,joueur5;
+
+
     private Application app;
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
@@ -35,10 +39,14 @@ public class View extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         pack();
-        setSize(1000, 1000);
+        setSize(1300, 1000);
         setLocationRelativeTo(null);
-        initInfo();
         initPLateau();
+        initPInfo();
+        initPJoueur();
+        createView();
+        setPrévot(model.prévot.coordonnée);
+        setBaillis(model.baillis.coordonnée);
 
         icone = Toolkit.getDefaultToolkit().getImage("res/img/icone.png");
         iconeDUT = new ImageIcon("res/img/dut.png");
@@ -62,21 +70,88 @@ public class View extends JFrame {
     }
 
     public void setMouseListener(MouseAdapter listener) {
-        jpPlateau.addMouseMotionListener(listener);
-        jpPlateau.addMouseListener(listener);
+        panelPlateau.addMouseMotionListener(listener);
+        panelPlateau.addMouseListener(listener);
     }
 
-    public void initInfo() {
-        panelInfo=new Info(350,700);
+    public void initPInfo() {
+        panelInfo=new JPanel();
+        panelInfo.setPreferredSize(new Dimension(300,300));
+        JLabel fond = new JLabel();
+        fond.setIcon(new ImageIcon("res/img/infos.png"));
+        panelInfo.setLayout(new GridBagLayout());
+
+        panelInfo.add(fond);
+        fond.setBounds(0,0,300,300);
+
+    }
+
+    public void editJoueur(){
+        joueur1.setText(model.getNom(1));
+        joueur2.setText(model.getNom(2));
+        if(model.nbrJoueurs>=3){
+            joueur3.setText(model.getNom(3));
+        }
+        if(model.nbrJoueurs>=4){
+            joueur4.setText(model.getNom(4));
+        }
+        if(model.nbrJoueurs>=5){
+            joueur5.setText(model.getNom(5));
+        }
+
+
 
 
     }
 
+    public void initPJoueur() {
+        panelJoueur = new JPanel();
+        panelJoueur.setPreferredSize(new Dimension(300, 1000));
+        panelJoueur.setLayout(null);
+
+        JLabel fond = new JLabel();
+        fond.setIcon(new ImageIcon("res/img/joueur.png"));
+
+        Font font = new Font("Arial",Font.BOLD,30);
+
+        joueur1 = new JLabel(model.getNom(1));
+        joueur1.setBounds(100,50,200,50);
+        joueur1.setFont(font);
+        panelJoueur.add(joueur1);
+
+
+        joueur2 = new JLabel(model.getNom(2));
+        joueur2.setBounds(100,150,200,50);
+        joueur2.setFont(font);
+        panelJoueur.add(joueur2);
+
+
+        if(model.nbrJoueurs>=3){
+            joueur3 = new JLabel(model.getNom(3));
+            joueur3.setBounds(100,250,200,50);
+            joueur3.setFont(font);
+            panelJoueur.add(joueur3);
+        }
+        if(model.nbrJoueurs>=4){
+            joueur4 = new JLabel(model.getNom(4));
+            joueur4.setBounds(100,350,200,50);
+            joueur4.setFont(font);
+            panelJoueur.add(joueur4);
+        }
+        if(model.nbrJoueurs>=5){
+            joueur5 = new JLabel(model.getNom(5));
+            joueur5.setBounds(100,450,200,50);
+            joueur5.setFont(font);
+            panelJoueur.add(joueur5);
+        }
+
+        panelJoueur.add(fond);
+        fond.setBounds(0,0,300,1000);
+    }
 
     public void initPLateau() {
-
-        jpPlateau = new Plateau(1000, 1000);
-        jpPlateau.setLayout(null);
+        panelPlateau = new PanelPrinc(1000,1000);
+        panelPlateau.setLayout(null);
 
         int x = 30;
         int y = 850;
@@ -89,8 +164,8 @@ public class View extends JFrame {
         for(int i=0;i<34;i++) {
             cases[i] = new JLabel();
             casesOuvrier[i] = new JLabel();
-            jpPlateau.add(casesOuvrier[i]);
-            jpPlateau.add(cases[i]);
+            panelPlateau.add(casesOuvrier[i]);
+            panelPlateau.add(cases[i]);
             if(j%6==0 && j!=0){
                 y-=decalLigne;
             }
@@ -110,9 +185,29 @@ public class View extends JFrame {
             j++;
 
         }
-        jpPlateau.add(panelInfo);
-        panelInfo.setBounds(650,370,350,700);
-        setContentPane(jpPlateau);
+    }
+
+    public void createView() {
+        panelPrinc = new JPanel();
+        panelPrinc.setLayout(null);
+
+        panelPlateau.setOpaque(false);
+        panelJoueur.setOpaque(false);
+        panelInfo.setOpaque(false);
+
+        panelPrinc.add(panelJoueur);
+        panelJoueur.setBounds(0,0,300,1000);
+
+        panelPrinc.add(panelInfo);
+        panelInfo.setBounds(1000,700,300,300);
+
+
+        panelPrinc.add(panelPlateau);
+        panelPlateau.setBounds(300,0,1000,1000);
+
+
+
+        setContentPane(panelPrinc);
     }
 
     public void initImageCase() {
@@ -126,7 +221,6 @@ public class View extends JFrame {
         for (int i = 0; i < 34; i++) {
             BufferedImage imageCase = null;
             try {
-                System.out.println("./res/img/Batiment/Spécial/"+model.cases[i].getBatiment()+".png");
                 imageCase = ImageIO.read(new File("./res/img/Batiment/"+model.cases[i].getBatiment()+".png"));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -158,7 +252,9 @@ public class View extends JFrame {
     }
 
     public String créerJoueur(int i) {
-        String nom = JOptionPane.showInputDialog(null, "Entrez un nom pour le Joueur "+i) ;
+        String nom="";
+        while(nom.equals(""))
+            nom = JOptionPane.showInputDialog(null, "Entrez un nom pour le Joueur "+i) ;
         return nom;
     }
 
