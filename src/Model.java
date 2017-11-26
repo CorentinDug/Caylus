@@ -82,7 +82,6 @@ public class Model {
         Collections.shuffle(batNeutre);
     }
 
-
     public void initCases(){
         cases=new Case[34];
         for(int i = 0; i < 34; i++){
