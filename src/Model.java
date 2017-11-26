@@ -79,6 +79,7 @@ public class Model {
         batPierre = new ArrayList<String>();
         batPrestiqe = new ArrayList<String>();
         batResidentiel = new ArrayList<String>();
+        Collections.shuffle(batNeutre);
     }
 
 
@@ -91,12 +92,10 @@ public class Model {
         for(int i = 33; i > 27; i--) {
             cases[i].setBatiment(batSpéciaux.get(n++));
         }
-        /*
         n=0;
         for(int i = 27; i > 21; i--) {
-            cases[i].setBatiment(partie.batNeutre.get(n++));
+            cases[i].setBatiment(batNeutre.get(n++));
         }
-        */
     }
 
     public void initJoueur(){
