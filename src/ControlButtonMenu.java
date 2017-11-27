@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
  */
 public class ControlButtonMenu implements ActionListener {
     private ViewMenu viewMenu;
+    private BackgroundMusic backgroundMusic;
 
 
-    public ControlButtonMenu(ViewMenu viewMenu) {
+    public ControlButtonMenu(ViewMenu viewMenu, BackgroundMusic backgroundMusic) {
         this.viewMenu = viewMenu;
+        this.backgroundMusic = backgroundMusic;
         viewMenu.setButtonControler(this);
     }
 
