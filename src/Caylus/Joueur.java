@@ -1,6 +1,9 @@
 package Caylus;
 
+import Caylus.Batiment.Batiment;
+
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by Schnoeby on 11/11/2017.
@@ -17,12 +20,15 @@ public class Joueur {
     private int maison;
     private int prestige;
     private Color couleur;
+    protected ArrayList<Batiment> propriété;
+
 
     public Joueur(String nom) {
         this.nom = nom;
         ouvrier=6;
         maison=20;
         prestige = 0;
+        propriété = new ArrayList<>();
     }
 
     public void setCouleur(Color couleur) {this.couleur = couleur;}

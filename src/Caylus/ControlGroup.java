@@ -17,5 +17,7 @@ public class ControlGroup {
         controlMouse = new ControlMouse(this.view, this.model);
         view.display();
         model.initJoueur();
+        model.initRessource();
+        model.phase1();
     }
 }

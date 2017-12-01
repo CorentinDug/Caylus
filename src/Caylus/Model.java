@@ -168,6 +168,7 @@ public class Model {
     }
 
     public void initRessource() {
+        //changer label info
         int compteurJoueur=0;
         for (Joueur joueur : listeJoueur) {
             joueur.recoit("nourriture", 2);
@@ -180,6 +181,23 @@ public class Model {
                 joueur.recoit("denier", 7);
             compteurJoueur++;
 
+        }
+    }
+
+    public void phase1(){
+        //changer label info
+        int revenue;
+        for (Joueur joueur : listeJoueur) {
+            revenue=2;
+            for (Batiment propriété : joueur.propriété) {
+                if(propriété.getNom().equals("Residence"))
+                    revenue++;
+                if(propriété.getNom().equals("Bibliothèque"))
+                    revenue++;
+                if(propriété.getNom().equals("Hotel"))
+                    revenue+=2;
+            }
+            joueur.recoit("denier", revenue);
         }
     }
 }

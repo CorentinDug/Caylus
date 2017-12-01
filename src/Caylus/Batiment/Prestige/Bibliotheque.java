@@ -8,7 +8,7 @@ public class Bibliotheque extends Batiment {
      * Constructeur initialisant le nom
      */
     public Bibliotheque(){
-        super("Bibliothèque");
+        super("Bibliotheque");
 
     }
 

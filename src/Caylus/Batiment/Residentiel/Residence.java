@@ -3,7 +3,7 @@ package Caylus.Batiment.Residentiel;
 import Caylus.Batiment.Batiment;
 
 public class Residence extends Batiment {
-        private static String nom = "Résidence";
+        private static String nom = "Residence";
 
     /**
      * Constructeur initialisant le nom

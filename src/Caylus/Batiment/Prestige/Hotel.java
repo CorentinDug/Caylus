@@ -8,7 +8,7 @@ public class Hotel extends Batiment {
      * Constructeur initialisant le nom
      */
     public Hotel(){
-        super("Hôtel");
+        super("Hotel");
 
     }
 
