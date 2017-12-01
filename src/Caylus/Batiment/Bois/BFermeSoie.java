@@ -1,12 +1,15 @@
 package Caylus.Batiment.Bois;
+import Caylus.Batiment.Batiment;
 
-public class Notaire extends Bois {
-    private static String nom = "Notaire";
+public class BFermeSoie extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Notaire(){}
+    public BFermeSoie(){
+        super("BFermeSoie");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

@@ -7,7 +7,7 @@ public class Prévot {
     protected int coordonnée;
 
     public Prévot() {
-        this.coordonnée = 22;
+        this.coordonnée = 11;
     }
 
     public int getCoordonnée() {

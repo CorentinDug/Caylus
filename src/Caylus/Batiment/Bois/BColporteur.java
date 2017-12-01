@@ -1,13 +1,15 @@
 package Caylus.Batiment.Bois;
+import Caylus.Batiment.Batiment;
 import Caylus.Joueur;
 
-public class Colporteur extends Bois {
-    private static String nom = "Colporteur";
+public class BColporteur extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Colporteur(){}
+    public BColporteur(){
+        super("BColporteur");
+    }
 
 
     /**

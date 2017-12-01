@@ -1,12 +1,16 @@
 package Caylus.Batiment.Prestige;
 
-public class Hotel extends Prestige {
-    private static String nom = "Hôtel";
+import Caylus.Batiment.Batiment;
+
+public class Hotel extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Hotel(){}
+    public Hotel(){
+        super("Hôtel");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

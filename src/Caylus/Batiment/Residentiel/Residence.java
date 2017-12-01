@@ -1,12 +1,16 @@
 package Caylus.Batiment.Residentiel;
 
-public class Residence extends Residentiel{
+import Caylus.Batiment.Batiment;
+
+public class Residence extends Batiment {
         private static String nom = "Résidence";
 
     /**
      * Constructeur initialisant le nom
      */
-    public Residence(){}
+    public Residence(){
+        super("Résidence");
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

@@ -1,12 +1,16 @@
 package Caylus.Batiment.Prestige;
 
-public class Tisserand extends Prestige {
-    private static String nom = "Tisserand";
+import Caylus.Batiment.Batiment;
+
+public class Tisserand extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Tisserand(){}
+    public Tisserand(){
+        super("Tisserand");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

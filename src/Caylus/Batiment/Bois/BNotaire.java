@@ -1,15 +1,14 @@
-package Caylus.Batiment.Neutre;
-
+package Caylus.Batiment.Bois;
 
 import Caylus.Batiment.Batiment;
 
-public class NFerme extends Batiment {
+public class BNotaire extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public NFerme(){
-        super("NFerme");
+    public BNotaire(){
+        super("BNotaire");
 
     }
 

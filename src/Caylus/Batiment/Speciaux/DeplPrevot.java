@@ -1,12 +1,19 @@
-package Caylus.Batiment.Pierre;
+package Caylus.Batiment.Speciaux;
 
-public class Architecte extends Pierre {
-    private static String nom = "Architecte";
+import Caylus.Batiment.Batiment;
+
+/**
+ * Created by Schnoeby on 01/12/2017.
+ */
+public class DeplPrevot extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Architecte(){}
+    public DeplPrevot(){
+        super("DeplPrevot");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -29,3 +36,4 @@ public class Architecte extends Pierre {
 
     }
 }
+

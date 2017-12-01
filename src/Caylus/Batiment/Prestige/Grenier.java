@@ -1,12 +1,16 @@
 package Caylus.Batiment.Prestige;
 
-public class Grenier extends Prestige {
-    private static String nom = "Grenier";
+import Caylus.Batiment.Batiment;
+
+public class Grenier extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Grenier(){}
+    public Grenier(){
+        super("Grenier");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

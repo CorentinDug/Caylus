@@ -1,12 +1,15 @@
-package Caylus.Batiment.Pierre;
+package Caylus.Batiment.Bois;
+import Caylus.Batiment.Batiment;
 
-public class Banque extends Pierre {
-    private static String nom = "Caylus.Banque";
+public class BMacon extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Banque(){}
+    public BMacon(){
+        super("BMaçon");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

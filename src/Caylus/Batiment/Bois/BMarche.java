@@ -1,12 +1,16 @@
-package Caylus.Batiment.Pierre;
+package Caylus.Batiment.Bois;
 
-public class Tailleur extends Pierre {
-    private static String nom = "Tailleur";
+import Caylus.Batiment.Batiment;
+
+public class BMarche extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Tailleur(){}
+    public BMarche(){
+        super("BMarché");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -28,4 +32,5 @@ public class Tailleur extends Pierre {
     public void recompensePrestige() {
 
     }
+
 }

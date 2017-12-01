@@ -1,6 +1,12 @@
 package Caylus;
 
 import Caylus.Batiment.Batiment;
+import Caylus.Batiment.Bois.*;
+import Caylus.Batiment.Neutre.*;
+import Caylus.Batiment.Pierre.*;
+import Caylus.Batiment.Prestige.*;
+import Caylus.Batiment.Residentiel.Residence;
+import Caylus.Batiment.Speciaux.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,27 +21,27 @@ public class Model {
     protected int nbrJoueurs;
     protected Prévot prévot;
     protected Baillis baillis;
-    protected  Joueur[] listeJoueur;
+    protected Joueur[] listeJoueur;
     private ArrayList<Joueur> finDePose;
     private ArrayList<Joueur> ordreDeTour;
 
-    private ArrayList<Batiment> batSpeciaux;
-    private ArrayList<Batiment> batNeutre;
-    private ArrayList<Batiment> batBois;
-    private ArrayList<Batiment> batPierre;
-    private ArrayList<Batiment> batPrestiqe;
-    private ArrayList<Batiment> batResidentiel;
+    protected ArrayList<Batiment> batSpeciaux;
+    protected ArrayList<Batiment> batNeutre;
+    protected ArrayList<Batiment> batBois;
+    protected ArrayList<Batiment> batPierre;
+    protected ArrayList<Batiment> batPrestiqe;
+    protected ArrayList<Batiment> batResidentiel;
 
     private Color[] couleur;
 
     protected Case[] cases;
 
 
-    public Model(int nbrJoueur){
-        nbrJoueurs=nbrJoueur;
+    public Model(int nbrJoueur) {
+        nbrJoueurs = nbrJoueur;
         prévot = new Prévot();
         baillis = new Baillis();
-        listeJoueur = new Joueur[5];
+        listeJoueur = new Joueur[nbrJoueur];
         finDePose = new ArrayList<Joueur>();
         ordreDeTour = new ArrayList<Joueur>();
         initBatiment();
@@ -43,73 +49,105 @@ public class Model {
         initCases();
     }
 
-    public String getNom(int i){
-        int n=i-1;
-        if(listeJoueur[n]!=null)
+    public String getNom(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
             return listeJoueur[n].getNom();
-        return "Caylus.Joueur"+i;
+        return "Joueur" + i;
 
     }
 
-    public void initCouleur( ){
+    public void initCouleur() {
         couleur = new Color[5];
-        couleur[0]= Color.blue;
-        couleur[1]= Color.red;
-        couleur[2]= Color.green;
-        couleur[3]= Color.orange;
-        couleur[4]= Color.black;
+        couleur[0] = Color.blue;
+        couleur[1] = Color.red;
+        couleur[2] = Color.green;
+        couleur[3] = Color.orange;
+        couleur[4] = Color.black;
     }
 
-    public void initBatiment(){
-        /*batNeutre = new ArrayList<>();
-        batNeutre.add("NCarriere");
-        batNeutre.add("NForet");
-        batNeutre.add("NCharpentier");
-        batNeutre.add("NMarche");
-        batNeutre.add("NFerme");
-        batNeutre.add("NScierie");*/
+    public void initBatiment() {
+        batNeutre = new ArrayList<>();
+        batNeutre.add(new NCarriere());
+        batNeutre.add(new NCharpentier());
+        batNeutre.add(new NFerme());
+        batNeutre.add(new NForet());
+        batNeutre.add(new NMarche());
+        batNeutre.add(new NScierie());
 
-       /* batSpéciaux = new ArrayList<>();
-        batSpéciaux.add("porte");
-        batSpéciaux.add("banque");
-        batSpéciaux.add("taverne2");
-        batSpéciaux.add("joute");
-        batSpéciaux.add("ecurie");
-        batSpéciaux.add("taverne");*/
+        batSpeciaux = new ArrayList<>();
+        batSpeciaux.add(new Porte());
+        batSpeciaux.add(new Comptoir());
+        batSpeciaux.add(new DeplPrevot());
+        batSpeciaux.add(new Joute());
+        batSpeciaux.add(new Ecurie());
+        batSpeciaux.add(new Auberge());
 
 
-       /* batBois = new ArrayList<String>();
-        batPierre = new ArrayList<String>();
-        batPrestiqe = new ArrayList<String>();
-        batResidentiel = new ArrayList<String>();
-        Collections.shuffle(batNeutre);*/
+        batBois = new ArrayList<>();
+        batBois.add(new BCarriere());
+        batBois.add(new BColporteur());
+        batBois.add(new BFermeNourriture());
+        batBois.add(new BFermeSoie());
+        batBois.add(new BMacon());
+        batBois.add(new BMarche());
+        batBois.add(new BNotaire());
+        batBois.add(new BScierie());
+
+        batPierre = new ArrayList<>();
+        batPierre.add(new PAlchimiste());
+        batPierre.add(new PArchitecte());
+        batPierre.add(new PArchitecte());
+        batPierre.add(new PAtelier());
+        batPierre.add(new PBanque());
+        batPierre.add(new PEglise());
+        batPierre.add(new PFerme());
+        batPierre.add(new PParc());
+        batPierre.add(new PTailleur());
+
+        batPrestiqe = new ArrayList<>();
+        batPrestiqe.add(new Bibliotheque());
+        batPrestiqe.add(new Cathedrale());
+        batPrestiqe.add(new Grenier());
+        batPrestiqe.add(new Hotel());
+        batPrestiqe.add(new Monument());
+        batPrestiqe.add(new Statue());
+        batPrestiqe.add(new Theatre());
+        batPrestiqe.add(new Tisserand());
+        batPrestiqe.add(new Universite());
+
+        batResidentiel = new ArrayList<>();
+        for (int i = 0; i < 8; i++)
+            batResidentiel.add(new Residence());
+
+        Collections.shuffle(batNeutre);
     }
 
-    public void initCases(){
-        cases=new Case[34];
-        for(int i = 0; i < 34; i++){
-                cases[i] = new Case();
+    public void initCases() {
+        cases = new Case[34];
+        for (int i = 0; i < 34; i++) {
+            cases[i] = new Case();
         }
-        int n=0;
-        for(int i = 33; i > 27; i--) {
+        int n = 0;
+        for (int i = 0; i < 6; i++) {
             cases[i].setBatiment(batSpeciaux.get(n++));
         }
-        n=0;
-        for(int i = 27; i > 21; i--) {
+        n = 0;
+        for (int i = 6; i < 12; i++) {
             cases[i].setBatiment(batNeutre.get(n++));
         }
     }
 
-    public void initJoueur(){
-        for(int i=0; i<nbrJoueurs;i++){
-            String nom = view.créerJoueur(i+1);
+    public void initJoueur() {
+        for (int i = 0; i < nbrJoueurs; i++) {
+            String nom = view.créerJoueur(i + 1);
             Joueur joueur = new Joueur(nom);
             joueur.setCouleur(couleur[i]);
-            listeJoueur[i]=joueur;
+            listeJoueur[i] = joueur;
             view.editJoueur();
         }
 
-        for(Joueur joueur: listeJoueur){
+        for (Joueur joueur : listeJoueur) {
             ordreDeTour.add(joueur);
         }
         Collections.shuffle(ordreDeTour);
@@ -117,7 +155,7 @@ public class Model {
 
     }
 
-    public void poseOuvrier(int coordonnees, Joueur joueur){
+    public void poseOuvrier(int coordonnees, Joueur joueur) {
         view.poserOuvrier(coordonnees, joueur);
     }
 
@@ -125,9 +163,23 @@ public class Model {
         this.view = vue;
         view.setPrévot(prévot.coordonnée);
         view.setBaillis(baillis.coordonnée);
-        view.initListeImage();
         view.initImageCase();
 
     }
 
+    public void initRessource() {
+        int compteurJoueur=0;
+        for (Joueur joueur : listeJoueur) {
+            joueur.recoit("nourriture", 2);
+            joueur.recoit("bois", 1);
+            if(compteurJoueur==0)
+                joueur.recoit("denier", 5);
+            else if(compteurJoueur==1 || compteurJoueur==2)
+                joueur.recoit("denier", 6);
+            else
+                joueur.recoit("denier", 7);
+            compteurJoueur++;
+
+        }
+    }
 }

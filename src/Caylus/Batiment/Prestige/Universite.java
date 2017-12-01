@@ -1,12 +1,16 @@
 package Caylus.Batiment.Prestige;
 
-public class Universite extends Prestige {
-    private static String nom = "Université";
+import Caylus.Batiment.Batiment;
+
+public class Universite extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Universite(){}
+    public Universite(){
+        super("Université");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

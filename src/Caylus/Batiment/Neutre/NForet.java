@@ -1,12 +1,16 @@
 package Caylus.Batiment.Neutre;
 
-public class NForet extends Neutre {
-    private static String nom = "Forêt";
+import Caylus.Batiment.Batiment;
+
+public class NForet extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public NForet(){}
+    public NForet(){
+        super("NForet");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

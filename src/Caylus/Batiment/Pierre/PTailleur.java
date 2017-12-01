@@ -1,12 +1,16 @@
 package Caylus.Batiment.Pierre;
 
-public class Alchimiste extends Pierre {
-    private static String nom = "Alchimiste";
+import Caylus.Batiment.Batiment;
+
+public class PTailleur extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Alchimiste(){}
+    public PTailleur(){
+        super("PTailleur");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

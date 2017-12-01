@@ -1,22 +1,24 @@
 package Caylus;
 
+import Caylus.Batiment.*;
+
 /**
  * Created by Schnoeby on 19/11/2017.
  */
 public class Case {
     private boolean ouvrier;
-    private String batiment;
+    private Batiment batiment;
 
     public Case(){
         ouvrier = false;
-        batiment = "vide";
+        batiment = null;
     }
 
     public String getBatiment() {
-        return batiment;
+        return batiment.getNom();
     }
 
-    public void setBatiment(String batiment) {
+    public void setBatiment(Batiment batiment) {
         this.batiment = batiment;
     }
 }

@@ -1,12 +1,16 @@
 package Caylus.Batiment.Pierre;
 
-public class Parc extends Pierre {
-    private static String nom = "Parc";
+import Caylus.Batiment.Batiment;
+
+public class PEglise extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Parc(){}
+    public PEglise(){
+        super("PEglise");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

@@ -21,13 +21,12 @@ public class View extends JFrame {
     private JPanel panelPrinc, panelInfo, panelJoueur;
 
     JLabel joueur1,joueur2,joueur3,joueur4,joueur5;
+    JPanel ress;
 
 
-    private Application app;
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
 
-    private ImageIcon[] imageCases;
 
     private Image icone;
     private ImageIcon iconeDUT;
@@ -61,14 +60,6 @@ public class View extends JFrame {
         newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         iconeDUT = new ImageIcon(newimg);
         img = new ImageIcon("res/img/icone.png").getImage();
-        app = Application.getApplication();
-        try {
-            app.setDockIconImage(img);
-        } catch(NullPointerException e) {
-            //e.printStackTrace();
-        }
-        this.setIconImage(icone);
-
     }
 
     public void setMouseListener(MouseAdapter listener) {
@@ -100,10 +91,6 @@ public class View extends JFrame {
         if(model.nbrJoueurs>=5){
             joueur5.setText(model.getNom(5));
         }
-
-
-
-
     }
 
     public void initPJoueur() {
@@ -118,6 +105,10 @@ public class View extends JFrame {
 
         joueur1 = new JLabel(model.getNom(1));
         joueur1.setBounds(100,50,200,50);
+        ress = new JPanel();
+        ress.setBackground(Color.cyan);
+        panelJoueur.add(ress);
+        ress.setBounds(100,70,200,50);
         joueur1.setFont(font);
         panelJoueur.add(joueur1);
 
@@ -155,11 +146,11 @@ public class View extends JFrame {
         panelPlateau = new PanelPrinc(1000,1000);
         panelPlateau.setLayout(null);
 
-        int x = 30;
-        int y = 850;
+        int x = 400;
+        int y = 200;
         int decalColonne =90;
-        int decalLigne =70;
-        int j=0;
+        int decalLigne =80;
+        int j=3;
 
         cases=new JLabel[34];
         casesOuvrier=new JLabel[34];
@@ -169,15 +160,15 @@ public class View extends JFrame {
             panelPlateau.add(casesOuvrier[i]);
             panelPlateau.add(cases[i]);
             if(j%6==0 && j!=0){
-                y-=decalLigne;
+                y+=decalLigne;
             }
             cases[i].setBounds(x, y, 70, 70);
             casesOuvrier[i].setBounds(x+50, y+50, 20, 20);
             if(j%6==0 && j!=0){
                 decalColonne=-decalColonne;
-                y-=decalLigne;
+                y+=decalLigne;
             }
-            if(j==27){
+            if(i==5){
                 x+=3*decalColonne;
                 decalLigne =50;
                 j=4;
@@ -213,26 +204,19 @@ public class View extends JFrame {
     }
 
     public void initImageCase() {
-        for (int i = 0; i < 34; i++) {
-            cases[i].setIcon(imageCases[i]);
+        for (int i = 0; i < 6; i++)
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batSpeciaux.get(i).getNom() + ".png"));
+
+        int n=0;
+        for (int i = 6; i < 12; i++){
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batNeutre.get(n).getNom() + ".png"));
+            n++;
+        }
+        for (int i = 12; i < 34; i++){
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/Vide.png"));
         }
     }
 
-    public void initListeImage(){
-        imageCases = new ImageIcon[34];
-        for (int i = 0; i < 34; i++) {
-            BufferedImage imageCase = null;
-            try {
-                imageCase = ImageIO.read(new File("./res/img/Caylus.Caylus.Batiment/"+model.cases[i].getBatiment()+".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            ImageIcon iconCase = new ImageIcon(imageCase);
-            imageCases[i]= iconCase;
-        }
-
-
-    }
 
     public void display() {
         this.setVisible(true);
@@ -256,7 +240,7 @@ public class View extends JFrame {
     public String créerJoueur(int i) {
         String nom="";
         while(nom.equals(""))
-            nom = JOptionPane.showInputDialog(null, "Entrez un nom pour le Caylus.Joueur "+i) ;
+            nom = JOptionPane.showInputDialog(null, "Entrez un nom pour le Joueur "+i) ;
         return nom;
     }
 

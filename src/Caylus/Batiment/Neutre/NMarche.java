@@ -1,12 +1,16 @@
 package Caylus.Batiment.Neutre;
 
-public class NMarche extends Neutre {
-    private static String nom = "Marché";
+import Caylus.Batiment.Batiment;
+
+public class NMarche extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public NMarche(){}
+    public NMarche(){
+        super("NMarche");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

@@ -1,12 +1,16 @@
 package Caylus.Batiment.Neutre;
 
-public class NCharpentier extends Neutre {
-    private static String nom = "NCharpentier";
+import Caylus.Batiment.Batiment;
+
+public class NCharpentier extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public NCharpentier(){}
+    public NCharpentier(){
+        super("Charpentier");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

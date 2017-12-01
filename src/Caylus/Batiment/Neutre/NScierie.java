@@ -1,12 +1,16 @@
 package Caylus.Batiment.Neutre;
 
-public class NScierie extends Neutre {
-    private static String nom = "NScierie";
+import Caylus.Batiment.Batiment;
+
+public class NScierie extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public NScierie(){}
+    public NScierie(){
+        super("NScierie");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

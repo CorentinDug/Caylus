@@ -1,12 +1,19 @@
-package Caylus.Batiment.Bois;
+package Caylus.Batiment.Speciaux;
 
-public class Carriere extends Bois {
-    private static String nom = "Carrière";
+import Caylus.Batiment.Batiment;
+
+/**
+ * Created by Schnoeby on 01/12/2017.
+ */
+public class Comptoir extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Carriere(){}
+    public Comptoir(){
+        super("Comptoir");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -29,3 +36,4 @@ public class Carriere extends Bois {
 
     }
 }
+

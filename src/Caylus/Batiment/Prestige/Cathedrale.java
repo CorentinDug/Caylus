@@ -1,12 +1,16 @@
 package Caylus.Batiment.Prestige;
 
-public class Cathedrale extends Prestige {
-    private static String nom = "Cathédrale";
+import Caylus.Batiment.Batiment;
+
+public class Cathedrale extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Cathedrale(){}
+    public Cathedrale(){
+        super("Cathédrale");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

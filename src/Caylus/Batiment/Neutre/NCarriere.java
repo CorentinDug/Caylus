@@ -1,12 +1,16 @@
 package Caylus.Batiment.Neutre;
 
-public class NCarriere extends Neutre {
-    private static String nom = "Carrière";
+import Caylus.Batiment.Batiment;
+
+public class NCarriere extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public NCarriere(){}
+    public NCarriere(){
+        super("NCarriere");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

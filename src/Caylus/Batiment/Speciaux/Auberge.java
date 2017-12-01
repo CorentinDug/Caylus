@@ -1,12 +1,18 @@
-package Caylus.Batiment.Pierre;
+package Caylus.Batiment.Speciaux;
 
-public class Eglise extends Pierre {
-    private static String nom = "Église";
+import Caylus.Batiment.Batiment;
 
+/**
+ * Created by Schnoeby on 01/12/2017.
+ */
+public class Auberge extends Batiment {
     /**
      * Constructeur initialisant le nom
      */
-    public Eglise(){}
+    public Auberge(){
+        super("Auberge");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -29,3 +35,4 @@ public class Eglise extends Pierre {
 
     }
 }
+

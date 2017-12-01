@@ -1,12 +1,16 @@
-package Caylus.Batiment.Bois;
+package Caylus.Batiment.Pierre;
 
-public class Macon extends Bois {
-    private static String nom = "Maçon";
+import Caylus.Batiment.Batiment;
+
+public class PFerme extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Macon(){}
+    public PFerme(){
+        super("PFerme");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

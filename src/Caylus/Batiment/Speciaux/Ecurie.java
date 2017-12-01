@@ -1,12 +1,18 @@
-package Caylus.Batiment.Bois;
+package Caylus.Batiment.Speciaux;
 
-public class Scierie extends Bois {
-    private static String nom = "NScierie";
+import Caylus.Batiment.Batiment;
+
+/**
+ * Created by Schnoeby on 01/12/2017.
+ */
+public class Ecurie extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Scierie(){}
+    public Ecurie(){
+        super("Ecurie");
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -29,3 +35,4 @@ public class Scierie extends Bois {
 
     }
 }
+

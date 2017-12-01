@@ -1,12 +1,16 @@
-package Caylus.Batiment.Pierre;
+package Caylus.Batiment.Bois;
 
-public class Atelier extends Pierre {
-    private static String nom = "Atelier";
+import Caylus.Batiment.Batiment;
+
+public class BFermeNourriture extends Batiment {
 
     /**
      * Constructeur initialisant le nom
      */
-    public Atelier(){}
+    public BFermeNourriture(){
+        super("BFermeNourriture");
+
+    }
 
     /**
      *  Donne la récompense ouvrière dû au joueur

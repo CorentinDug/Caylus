@@ -7,7 +7,7 @@ public class Baillis {
     protected int coordonnée;
 
     public Baillis() {
-        this.coordonnée = 22;
+        this.coordonnée = 11;
     }
 
     public int getCoordonnée() {
