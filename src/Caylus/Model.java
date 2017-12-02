@@ -54,8 +54,53 @@ public class Model {
         if (listeJoueur[n] != null)
             return listeJoueur[n].getNom();
         return "Joueur" + i;
-
     }
+
+    public int getDenier(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getDenier();
+        return  0;
+    }
+
+    public int getOr(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getOr();
+        return  0;
+    }
+
+    public int getNourriture(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getNourriture();
+        return  0;
+    }
+
+    public int getPierre(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getPierre();
+        return  0;
+    }
+
+    public int getBois(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getBois();
+        return  0;
+    }
+
+    public int getTissu(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getTissu();
+        return  0;
+    }
+
+
+
+
 
     public void initCouleur() {
         couleur = new Color[5];
@@ -182,6 +227,7 @@ public class Model {
             compteurJoueur++;
 
         }
+        view.editJoueur();
     }
 
     public void phase1(){
@@ -199,5 +245,6 @@ public class Model {
             }
             joueur.recoit("denier", revenue);
         }
+        view.editJoueur();
     }
 }

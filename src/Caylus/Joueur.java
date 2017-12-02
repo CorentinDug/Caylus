@@ -25,6 +25,12 @@ public class Joueur {
 
     public Joueur(String nom) {
         this.nom = nom;
+        denier=0;
+        nourriture=0;
+        tissu=0;
+        bois=0;
+        pierre=0;
+        or=0;
         ouvrier=6;
         maison=20;
         prestige = 0;
