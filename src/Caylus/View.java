@@ -34,6 +34,11 @@ public class View extends JFrame {
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
 
+    protected JLabel[] ordreContruction;
+    protected JLabel[] donjon;
+    protected JLabel[] muraille;
+    protected JLabel[] tour;
+
     protected JLabel passer, phase, infoPhase, tourJoueur;
 
     private Image icone;
@@ -71,11 +76,12 @@ public class View extends JFrame {
     }
 
     public void setMouseListener(MouseAdapter listener) {
-        panelPlateau.addMouseMotionListener(listener);
-        panelPlateau.addMouseListener(listener);
-        panelInfo.addMouseMotionListener(listener);
+        panelPrinc.addMouseMotionListener(listener);
+        panelPrinc.addMouseListener(listener);
+      /*  panelInfo.addMouseMotionListener(listener);
         panelInfo.addMouseListener(listener);
-    }
+
+    */}
 
 
     public void editPInfo() {
@@ -398,7 +404,43 @@ public class View extends JFrame {
 
             x+=decalColonne;
             j++;
+        }
+        ordreContruction = new JLabel[model.nbrJoueurs];
+        for(int i=0;i<model.nbrJoueurs;i++) {
+            ordreContruction[i]= new JLabel();
+            panelPlateau.add(ordreContruction[i]);
+            ordreContruction[i].setBounds(20,50+i*30,25,25);
+        }
 
+        donjon = new JLabel[6];
+        for(int i=0;i<6;i++) {
+            donjon[i]= new JLabel();
+            panelPlateau.add(donjon[i]);
+            donjon[i].setBounds(50+i*30,230,25,25);
+        }
+        muraille = new JLabel[10];
+        tour = new JLabel[6];
+    }
+
+    public void initImageCase() {
+        for (int i = 0; i < 6; i++)
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batSpeciaux.get(i).getNom() + ".png"));
+
+        int n=0;
+        for (int i = 6; i < 12; i++){
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batNeutre.get(n).getNom() + ".png"));
+            n++;
+        }
+        for (int i = 12; i < 34; i++){
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/Vide.png"));
+        }
+        for (JLabel label : ordreContruction){
+            label.setBackground(Color.GRAY);
+            label.setOpaque(true);
+        }
+        for (JLabel label : donjon ){
+            label.setBackground(Color.GRAY);
+            label.setOpaque(true);
         }
     }
 
@@ -425,19 +467,7 @@ public class View extends JFrame {
         setContentPane(panelPrinc);
     }
 
-    public void initImageCase() {
-        for (int i = 0; i < 6; i++)
-            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batSpeciaux.get(i).getNom() + ".png"));
 
-        int n=0;
-        for (int i = 6; i < 12; i++){
-            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batNeutre.get(n).getNom() + ".png"));
-            n++;
-        }
-        for (int i = 12; i < 34; i++){
-            cases[i].setIcon(new ImageIcon("./res/img/Batiment/Vide.png"));
-        }
-    }
 
 
     public void display() {
@@ -448,6 +478,12 @@ public class View extends JFrame {
         casesOuvrier[coordonnees].setBackground(joueur.getCouleur());
         casesOuvrier[coordonnees].setOpaque(true);
     }
+
+    public void constChateau(int coordonnees, Joueur joueur){
+        ordreContruction[coordonnees].setBackground(joueur.getCouleur());
+    }
+
+
 
     public void setBaillis(int coordonnees){
         cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white,3));
@@ -477,6 +513,10 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Pas assez d'argent "+joueur);
     }
 
+    public void problèmeChateau(String joueur, int index){
+        if(index==1)
+            JOptionPane.showMessageDialog(null, "Vous avez déjà un ouvrier qui travaille "+joueur);
+    }
 
 
 

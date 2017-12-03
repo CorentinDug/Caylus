@@ -35,6 +35,10 @@ public class ControlMouse extends MouseAdapter {
             model.joueurPasse();
             coordonnees=-1;
         }
+        if(model.noPhase==2 && coordonnees==-200){
+            model.constChateau();
+            coordonnees=-1;
+        }
         if(model.noPhase==2 && coordonnees>-1 && coordonnees<34){
             model.phase2(coordonnees);
             coordonnees=-1;
@@ -43,11 +47,14 @@ public class ControlMouse extends MouseAdapter {
 
     public int detectionCase(Point point){
         int coordonnees = -1;
-        if( (point.getX() > view.passer.getX()) && (point.getX() < (view.passer.getX()+50)) && (point.getY() > view.passer.getY()) && (point.getY() < (view.passer.getY()+50)))
+        if( (point.getX() > 1125) && (point.getX() < 1173) && (point.getY() > 900) && (point.getY() < 948))
             coordonnees=-100;
         for(int i = 0; i<34; i++)
-                if( (point.getX() > view.cases[i].getX()) && (point.getX() < (view.cases[i].getX()+70)) && (point.getY() > view.cases[i].getY()) && (point.getY() < (view.cases[i].getY()+70)))
+                if( (point.getX() > view.cases[i].getX()+300 )&& (point.getX() < (view.cases[i].getX()+300+70)) && (point.getY() > view.cases[i].getY()) && (point.getY() < (view.cases[i].getY()+70)))
                     coordonnees = i;
+        for(int i = 0; i<model.nbrJoueurs; i++)
+            if( (point.getX() > 350 && (point.getX() < 550)) && (point.getY() > 15 && (point.getY() < 215)))
+                coordonnees = -200;
         return coordonnees;
     }
 

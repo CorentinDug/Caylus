@@ -89,6 +89,11 @@ public class Joueur {
         return true;
     }
 
+    public boolean poseOuvrier(){
+        ouvrier--;
+        return true;
+    }
+
     public void reprendOuvrier(){
         ouvrier++;
     }
