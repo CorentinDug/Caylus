@@ -48,8 +48,6 @@ public class ControlMouse extends MouseAdapter {
         for(int i = 0; i<34; i++)
                 if( (point.getX() > view.cases[i].getX()) && (point.getX() < (view.cases[i].getX()+70)) && (point.getY() > view.cases[i].getY()) && (point.getY() < (view.cases[i].getY()+70)))
                     coordonnees = i;
-        System.out.println(model.noPhase);
-
         return coordonnees;
     }
 

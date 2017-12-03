@@ -21,4 +21,5 @@ public class Batiment {
         ouvrier=joueur;
         return true;
     }
+
 }
