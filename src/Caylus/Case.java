@@ -14,8 +14,8 @@ public class Case {
         batiment = null;
     }
 
-    public String getBatiment() {
-        return batiment.getNom();
+    public Batiment getBatiment() {
+        return batiment;
     }
 
     public void setBatiment(Batiment batiment) {

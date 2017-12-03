@@ -80,12 +80,7 @@ public class Joueur {
         return prestige;
     }
 
-    public boolean poseOuvrier(){
-        if(ouvrier==0)
-          return false;
-        ouvrier--;
-        return true;
-    }
+
 
     public boolean poseMaison(){
         if(maison==0)
@@ -106,6 +101,7 @@ public class Joueur {
         switch (ressource) {
             case "denier":
                 denier -=quantité;
+
                 break;
             case "nourriture":
                 nourriture -=quantité;

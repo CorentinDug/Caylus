@@ -5,6 +5,7 @@ import com.apple.eawt.Application;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -33,6 +34,7 @@ public class View extends JFrame {
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
 
+    protected JLabel passer, phase, infoPhase, tourJoueur;
 
     private Image icone;
     private ImageIcon iconeDUT;
@@ -71,17 +73,44 @@ public class View extends JFrame {
     public void setMouseListener(MouseAdapter listener) {
         panelPlateau.addMouseMotionListener(listener);
         panelPlateau.addMouseListener(listener);
+        panelInfo.addMouseMotionListener(listener);
+        panelInfo.addMouseListener(listener);
+    }
+
+
+    public void editPInfo() {
+        phase.setText(model.getPhase());
+        infoPhase.setText(model.getInfoPhase());
+        tourJoueur.setText(model.getTourJoueur());
+
     }
 
     public void initPInfo() {
-        panelInfo=new JPanel();
+        panelInfo=new JPanel(null);
         panelInfo.setPreferredSize(new Dimension(300,300));
-        JLabel fond = new JLabel();
-        fond.setIcon(new ImageIcon("res/img/infos.png"));
-        panelInfo.setLayout(new GridBagLayout());
 
-        panelInfo.add(fond);
-        fond.setBounds(0,0,300,300);
+        Font font = new Font("Arial",Font.BOLD,20);
+
+        phase= new JLabel(model.getPhase());
+            panelInfo.add(phase,0);
+            initLabel(phase,10,10,300,50,font,Color.white);
+
+        infoPhase= new JLabel(model.getInfoPhase());
+            panelInfo.add(infoPhase,0);
+            initLabel(infoPhase,50,50,300,50,font,Color.white);
+
+        tourJoueur= new JLabel(model.getTourJoueur());
+            panelInfo.add(tourJoueur,0);
+            initLabel(tourJoueur,120,100,300,50,font,Color.white);
+
+        passer= new JLabel( new ImageIcon("res/img/Passer.png"));
+            panelInfo.add(passer,0);
+            initLabel(passer,125,200,50,50,font,Color.white);
+
+        JLabel fond = new JLabel(new ImageIcon("res/img/infos.png"));
+            panelInfo.add(fond);
+            initLabel(fond,0,0,300,300,font,Color.white);
+
 
     }
 
@@ -99,139 +128,50 @@ public class View extends JFrame {
         jPanel.setOpaque(false);
     }
 
-
-
-    public void editJoueur(){
+    public void editPJoueur(){
 
         joueur1.setText(model.getNom(1));
             denierJ1.setText(""+model.getDenier(1));
-            ressJ1.add(denierJ1,0);
-            initLabel(denierJ1,29,4,25,25,null,Color.BLACK);
-
             orJ1.setText(""+model.getOr(1));
-            ressJ1.add(orJ1,0);
-            initLabel(orJ1,76,4,25,25,null,Color.BLACK);
-
             nourritureJ1.setText(""+model.getNourriture(1));
-            ressJ1.add(nourritureJ1,0);
-            initLabel(nourritureJ1,120,4,25,25,null,Color.BLACK);
-
             pierreJ1.setText(""+model.getPierre(1));
-            ressJ1.add(pierreJ1,0);
-            initLabel(pierreJ1,170,4,25,25,null,Color.BLACK);
-
             boisJ1.setText(""+model.getBois(1));
-            ressJ1.add(boisJ1,0);
-            initLabel(boisJ1,221,4,25,25,null,Color.BLACK);
-
             tissuJ1.setText(""+model.getTissu(1));
-            ressJ1.add(tissuJ1,0);
-            initLabel(tissuJ1,265,4,25,25,null,Color.BLACK);
 
         joueur2.setText(model.getNom(2));
             denierJ2.setText(""+model.getDenier(2));
-            ressJ2.add(denierJ2,0);
-            initLabel(denierJ2,29,4,25,25,null,Color.BLACK);
-
             orJ2.setText(""+model.getOr(2));
-            ressJ2.add(orJ2,0);
-            initLabel(orJ2,76,4,25,25,null,Color.BLACK);
-
             nourritureJ2.setText(""+model.getNourriture(2));
-            ressJ2.add(nourritureJ2,0);
-            initLabel(nourritureJ2,120,4,25,25,null,Color.BLACK);
-
             pierreJ2.setText(""+model.getPierre(2));
-            ressJ2.add(pierreJ2,0);
-            initLabel(pierreJ2,170,4,25,25,null,Color.BLACK);
-
             boisJ2.setText(""+model.getBois(2));
-            ressJ2.add(boisJ2,0);
-            initLabel(boisJ2,221,4,25,25,null,Color.BLACK);
-
             tissuJ2.setText(""+model.getTissu(2));
-            ressJ2.add(tissuJ2,0);
-            initLabel(tissuJ2,265,4,25,25,null,Color.BLACK);
-
 
         if(model.nbrJoueurs>=3){
             joueur3.setText(model.getNom(3));
-            denierJ3.setText(""+model.getDenier(3));
-            ressJ3.add(denierJ3,0);
-            initLabel(denierJ3,29,4,25,25,null,Color.BLACK);
-
-            orJ3.setText(""+model.getOr(3));
-            ressJ3.add(orJ3,0);
-            initLabel(orJ3,76,4,25,25,null,Color.BLACK);
-
-            nourritureJ3.setText(""+model.getNourriture(3));
-            ressJ3.add(nourritureJ3,0);
-            initLabel(nourritureJ3,120,4,25,25,null,Color.BLACK);
-
-            pierreJ3.setText(""+model.getPierre(3));
-            ressJ3.add(pierreJ3,0);
-            initLabel(pierreJ3,170,4,25,25,null,Color.BLACK);
-
-            boisJ3.setText(""+model.getBois(3));
-            ressJ3.add(boisJ3,0);
-            initLabel(boisJ3,221,4,25,25,null,Color.BLACK);
-
-            tissuJ3.setText(""+model.getTissu(3));
-            ressJ3.add(tissuJ3,0);
-            initLabel(tissuJ3,265,4,25,25,null,Color.BLACK);
-
+                denierJ3.setText(""+model.getDenier(3));
+                orJ3.setText(""+model.getOr(3));
+                nourritureJ3.setText(""+model.getNourriture(3));
+                pierreJ3.setText(""+model.getPierre(3));
+                boisJ3.setText(""+model.getBois(3));
+                tissuJ3.setText(""+model.getTissu(3));
         }
         if(model.nbrJoueurs>=4){
             joueur4.setText(model.getNom(4));
-            denierJ4.setText(""+model.getDenier(4));
-            ressJ4.add(denierJ4,0);
-            initLabel(denierJ4,29,4,25,25,null,Color.BLACK);
-
-            orJ4.setText(""+model.getOr(4));
-            ressJ4.add(orJ4,0);
-            initLabel(orJ4,76,4,25,25,null,Color.BLACK);
-
-            nourritureJ4.setText(""+model.getNourriture(4));
-            ressJ4.add(nourritureJ4,0);
-            initLabel(nourritureJ4,120,4,25,25,null,Color.BLACK);
-
-            pierreJ4.setText(""+model.getPierre(4));
-            ressJ4.add(pierreJ4,0);
-            initLabel(pierreJ4,170,4,25,25,null,Color.BLACK);
-
-            boisJ4.setText(""+model.getBois(4));
-            ressJ4.add(boisJ4,0);
-            initLabel(boisJ4,221,4,25,25,null,Color.BLACK);
-
-            tissuJ4.setText(""+model.getTissu(4));
-            ressJ4.add(tissuJ4,0);
-            initLabel(tissuJ4,265,4,25,25,null,Color.BLACK);
+                denierJ4.setText(""+model.getDenier(4));
+                orJ4.setText(""+model.getOr(4));
+                nourritureJ4.setText(""+model.getNourriture(4));
+                pierreJ4.setText(""+model.getPierre(4));
+                boisJ4.setText(""+model.getBois(4));
+                tissuJ4.setText(""+model.getTissu(4));
         }
         if(model.nbrJoueurs>=5){
             joueur5.setText(model.getNom(5));
-            denierJ5.setText(""+model.getDenier(5));
-            ressJ5.add(denierJ5,0);
-            initLabel(denierJ5,29,4,25,25,null,Color.BLACK);
-
-            orJ5.setText(""+model.getOr(5));
-            ressJ5.add(orJ5,0);
-            initLabel(orJ5,76,4,25,25,null,Color.BLACK);
-
-            nourritureJ5.setText(""+model.getNourriture(5));
-            ressJ5.add(nourritureJ5,0);
-            initLabel(nourritureJ5,120,4,25,25,null,Color.BLACK);
-
-            pierreJ5.setText(""+model.getPierre(5));
-            ressJ5.add(pierreJ5,0);
-            initLabel(pierreJ5,170,4,25,25,null,Color.BLACK);
-
-            boisJ5.setText(""+model.getBois(5));
-            ressJ5.add(boisJ5,0);
-            initLabel(boisJ5,221,4,25,25,null,Color.BLACK);
-
-            tissuJ5.setText(""+model.getTissu(5));
-            ressJ5.add(tissuJ5,0);
-            initLabel(tissuJ5,265,4,25,25,null,Color.BLACK);
+                denierJ5.setText(""+model.getDenier(5));
+                orJ5.setText(""+model.getOr(5));
+                nourritureJ5.setText(""+model.getNourriture(5));
+                pierreJ5.setText(""+model.getPierre(5));
+                boisJ5.setText(""+model.getBois(5));
+                tissuJ5.setText(""+model.getTissu(5));
         }
     }
 
@@ -253,17 +193,32 @@ public class View extends JFrame {
                 initLabel(joueur1,100,50,200,50,null,null);
                 panelJoueur.add(joueur1);
 
-                ressJ1 = new JPanel(null);
-                    denierJ1 = new JLabel();
-                    orJ1 = new JLabel();
-                    nourritureJ1 = new JLabel();
-                    pierreJ1 = new JLabel();
-                    boisJ1 = new JLabel();
-                    tissuJ1 = new JLabel();
-
                 ress1 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
                 initLabel(ress1,0,0,300,30,null,null);
-                ressJ1.add(ress1,0);
+
+
+                ressJ1 = new JPanel(null);
+                    ressJ1.add(ress1);
+
+                    denierJ1 = new JLabel(""+model.getDenier(1));
+                        ressJ1.add(denierJ1,0);
+                        initLabel(denierJ1,29,4,25,25,null,Color.BLACK);
+                    orJ1 = new JLabel(""+model.getOr(1));
+                        ressJ1.add(orJ1,0);
+                        initLabel(orJ1,76,4,25,25,null,Color.BLACK);
+                    nourritureJ1 = new JLabel(""+model.getNourriture(1));
+                        ressJ1.add(nourritureJ1,0);
+                        initLabel(nourritureJ1,120,4,25,25,null,Color.BLACK);
+                    pierreJ1 = new JLabel(""+model.getPierre(1));
+                        ressJ1.add(pierreJ1,0);
+                        initLabel(pierreJ1,170,4,25,25,null,Color.BLACK);
+                    boisJ1 = new JLabel(""+model.getBois(1));
+                        ressJ1.add(boisJ1,0);
+                        initLabel(boisJ1,221,4,25,25,null,Color.BLACK);
+                    tissuJ1 = new JLabel(""+model.getTissu(1));
+                        ressJ1.add(tissuJ1,0);
+                        initLabel(tissuJ1,265,4,25,25,null,Color.BLACK);
+
 
                 initPanel(ressJ1,0,100,300,50,fontRess,Color.BLACK);
                 panelJoueur.add(ressJ1,0);
@@ -273,17 +228,30 @@ public class View extends JFrame {
                 initLabel(joueur2,100,200,200,50,null,null);
                 panelJoueur.add(joueur2);
 
-                ressJ2 = new JPanel(null);
-                    denierJ2 = new JLabel();
-                    orJ2 = new JLabel();
-                    nourritureJ2 = new JLabel();
-                    pierreJ2 = new JLabel();
-                    boisJ2 = new JLabel();
-                    tissuJ2 = new JLabel();
-
                 ress2 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
                 initLabel(ress2,0,0,300,30,null,null);
-                ressJ2.add(ress2,0);
+
+                ressJ2 = new JPanel(null);
+                    ressJ2.add(ress2);
+
+                    denierJ2 = new JLabel(""+model.getDenier(2));
+                        ressJ2.add(denierJ2,0);
+                        initLabel(denierJ2,29,4,25,25,null,Color.BLACK);
+                    orJ2 = new JLabel(""+model.getOr(2));
+                        ressJ2.add(orJ2,0);
+                        initLabel(orJ2,76,4,25,25,null,Color.BLACK);
+                    nourritureJ2 = new JLabel(""+model.getNourriture(2));
+                        ressJ2.add(nourritureJ2,0);
+                        initLabel(nourritureJ2,120,4,25,25,null,Color.BLACK);
+                    pierreJ2 = new JLabel(""+model.getPierre(2));
+                        ressJ2.add(pierreJ2,0);
+                        initLabel(pierreJ2,170,4,25,25,null,Color.BLACK);
+                    boisJ2 = new JLabel(""+model.getBois(2));
+                        ressJ2.add(boisJ2,0);
+                        initLabel(boisJ2,221,4,25,25,null,Color.BLACK);
+                    tissuJ2 = new JLabel(""+model.getTissu(2));
+                        ressJ2.add(tissuJ2,0);
+                        initLabel(tissuJ2,265,4,25,25,null,Color.BLACK);
 
                 initPanel(ressJ2,0,250,300,50,fontRess,Color.BLACK);
                 panelJoueur.add(ressJ2,0);
@@ -291,60 +259,102 @@ public class View extends JFrame {
 
         if(model.nbrJoueurs>=3){
             joueur3 = new JLabel(model.getNom(3));
-            initLabel(joueur3,110,350,200,50,null,null);
-            panelJoueur.add(joueur3);
+                initLabel(joueur3,110,350,200,50,null,null);
+                panelJoueur.add(joueur3);
 
-            ressJ3 = new JPanel(null);
-            denierJ3 = new JLabel();
-            orJ3 = new JLabel();
-            nourritureJ3 = new JLabel();
-            pierreJ3 = new JLabel();
-            boisJ3 = new JLabel();
-            tissuJ3 = new JLabel();
+                ress3 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
+                initLabel(ress3,0,0,300,30,null,null);
 
-            ress3 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-            initLabel(ress3,0,0,300,30,null,null);
-            ressJ3.add(ress3,0);
 
-            initPanel(ressJ3,0,400,300,50,fontRess,Color.BLACK);
-            panelJoueur.add(ressJ3,0);
+                ressJ3 = new JPanel(null);
+                    ressJ3.add(ress3);
+
+                    denierJ3 = new JLabel(""+model.getDenier(3));
+                        ressJ3.add(denierJ3,0);
+                        initLabel(denierJ3,29,4,25,25,null,Color.BLACK);
+                    orJ3 = new JLabel(""+model.getOr(3));
+                        ressJ3.add(orJ3,0);
+                        initLabel(orJ3,76,4,25,25,null,Color.BLACK);
+                    nourritureJ3 = new JLabel(""+model.getNourriture(3));
+                        ressJ3.add(nourritureJ3,0);
+                        initLabel(nourritureJ3,120,4,25,25,null,Color.BLACK);
+                    pierreJ3 = new JLabel(""+model.getPierre(3));
+                        ressJ3.add(pierreJ3,0);
+                        initLabel(pierreJ3,170,4,25,25,null,Color.BLACK);
+                    boisJ3 = new JLabel(""+model.getBois(3));
+                        ressJ3.add(boisJ3,0);
+                        initLabel(boisJ3,221,4,25,25,null,Color.BLACK);
+                    tissuJ3 = new JLabel(""+model.getTissu(3));
+                        ressJ3.add(tissuJ3,0);
+                        initLabel(tissuJ3,265,4,25,25,null,Color.BLACK);
+
+                initPanel(ressJ3,0,400,300,50,fontRess,Color.BLACK);
+                panelJoueur.add(ressJ3,0);
         }
         if(model.nbrJoueurs>=4){
             joueur4 = new JLabel(model.getNom(4));
-            initLabel(joueur4,110,500,200,50,null,null);
-            panelJoueur.add(joueur4);
+                initLabel(joueur4,110,500,200,50,null,null);
+                panelJoueur.add(joueur4);
 
-            ressJ4 = new JPanel(null);
-            denierJ4 = new JLabel();
-            orJ4 = new JLabel();
-            nourritureJ4 = new JLabel();
-            pierreJ4 = new JLabel();
-            boisJ4 = new JLabel();
-            tissuJ4 = new JLabel();
+                ress4 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
+                initLabel(ress4,0,0,300,30,null,null);
 
-            ress4 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-            initLabel(ress4,0,0,300,30,null,null);
-            ressJ4.add(ress4,0);
 
-            initPanel(ressJ4,0,550,300,50,fontRess,Color.BLACK);
-            panelJoueur.add(ressJ4,0);
+                ressJ4 = new JPanel(null);
+                     ressJ4.add(ress4);
+                    denierJ4 = new JLabel(""+model.getDenier(4));
+                        ressJ4.add(denierJ4,0);
+                        initLabel(denierJ4,29,4,25,25,null,Color.BLACK);
+                    orJ4 = new JLabel(""+model.getOr(4));
+                        ressJ4.add(orJ4,0);
+                        initLabel(orJ4,76,4,25,25,null,Color.BLACK);
+                    nourritureJ4 = new JLabel(""+model.getNourriture(4));
+                        ressJ4.add(nourritureJ4,0);
+                        initLabel(nourritureJ4,120,4,25,25,null,Color.BLACK);
+                    pierreJ4 = new JLabel(""+model.getPierre(4));
+                        ressJ4.add(pierreJ4,0);
+                        initLabel(pierreJ4,170,4,25,25,null,Color.BLACK);
+                    boisJ4 = new JLabel(""+model.getBois(4));
+                        ressJ4.add(boisJ4,0);
+                        initLabel(boisJ4,221,4,25,25,null,Color.BLACK);
+                    tissuJ4 = new JLabel(""+model.getTissu(4));
+                        ressJ4.add(tissuJ4,0);
+                        initLabel(tissuJ4,265,4,25,25,null,Color.BLACK);
+
+                initPanel(ressJ4,0,550,300,50,fontRess,Color.BLACK);
+                panelJoueur.add(ressJ4,0);
         }
         if(model.nbrJoueurs>=5){
             joueur5 = new JLabel(model.getNom(5));
             initLabel(joueur5,110,650,200,50,null,null);
             panelJoueur.add(joueur5);
 
-            ressJ5 = new JPanel(null);
-            denierJ5 = new JLabel();
-            orJ5 = new JLabel();
-            nourritureJ5 = new JLabel();
-            pierreJ5 = new JLabel();
-            boisJ5 = new JLabel();
-            tissuJ5 = new JLabel();
 
             ress5 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
             initLabel(ress5,0,0,300,30,null,null);
-            ressJ5.add(ress5,0);
+
+
+            ressJ5 = new JPanel(null);
+                ressJ5.add(ress5);
+
+                denierJ5 = new JLabel(""+model.getDenier(5));
+                    ressJ5.add(denierJ5,0);
+                    initLabel(denierJ5,29,4,25,25,null,Color.BLACK);
+                orJ5 = new JLabel(""+model.getOr(5));
+                    ressJ5.add(orJ5,0);
+                    initLabel(orJ5,76,4,25,25,null,Color.BLACK);
+                nourritureJ5 = new JLabel(""+model.getNourriture(5));
+                    ressJ5.add(nourritureJ5,0);
+                    initLabel(nourritureJ5,120,4,25,25,null,Color.BLACK);
+                pierreJ5 = new JLabel(""+model.getPierre(5));
+                    ressJ5.add(pierreJ5,0);
+                    initLabel(pierreJ5,170,4,25,25,null,Color.BLACK);
+                boisJ5 = new JLabel(""+model.getBois(5));
+                    ressJ5.add(boisJ5,0);
+                    initLabel(boisJ5,221,4,25,25,null,Color.BLACK);
+                tissuJ5 = new JLabel(""+model.getTissu(5));
+                    ressJ5.add(tissuJ5,0);
+                    initLabel(tissuJ5,265,4,25,25,null,Color.BLACK);
 
             initPanel(ressJ5,0,700,300,50,fontRess,Color.BLACK);
             panelJoueur.add(ressJ5,0);
@@ -454,6 +464,17 @@ public class View extends JFrame {
         while(nom.equals(""))
             nom = JOptionPane.showInputDialog(null, "Entrez un nom pour le Joueur "+i) ;
         return nom;
+    }
+
+    public void problèmeOuvrier(String joueur, int index){
+        if(index==1)
+            JOptionPane.showMessageDialog(null, "Il n'y a pas de poste ici "+joueur);
+        if(index==2)
+                JOptionPane.showMessageDialog(null, "Vous n'avez plus d'ouvrier "+joueur);
+        if(index==3)
+            JOptionPane.showMessageDialog(null, "Le poste est d'jà prit "+joueur);
+        if(index==4)
+            JOptionPane.showMessageDialog(null, "Pas assez d'argent "+joueur);
     }
 
 

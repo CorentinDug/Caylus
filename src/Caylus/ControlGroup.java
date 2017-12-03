@@ -9,7 +9,6 @@ public class ControlGroup {
     private ControlMouse controlMouse;
 
 
-
     public ControlGroup(Model model) {
         this.model = model;
         view = new View(this.model);
@@ -18,6 +17,5 @@ public class ControlGroup {
         view.display();
         model.initJoueur();
         model.initRessource();
-        model.phase1();
     }
 }

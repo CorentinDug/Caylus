@@ -35,5 +35,6 @@ public class ControlButtonMenu implements ActionListener {
             Model model = new Model(nbrJoueurs);
             ControlGroup controlGroup = new ControlGroup(model);
         }
+
     }
 }

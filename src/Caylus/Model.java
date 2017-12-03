@@ -19,6 +19,9 @@ public class Model {
     private View view;
 
     protected int nbrJoueurs;
+    protected int noPhase;
+    protected int coutDePose;
+
     protected Prévot prévot;
     protected Baillis baillis;
     protected Joueur[] listeJoueur;
@@ -38,6 +41,7 @@ public class Model {
 
 
     public Model(int nbrJoueur) {
+        noPhase=0;
         nbrJoueurs = nbrJoueur;
         prévot = new Prévot();
         baillis = new Baillis();
@@ -97,9 +101,6 @@ public class Model {
             return listeJoueur[n].getTissu();
         return  0;
     }
-
-
-
 
 
     public void initCouleur() {
@@ -189,7 +190,7 @@ public class Model {
             Joueur joueur = new Joueur(nom);
             joueur.setCouleur(couleur[i]);
             listeJoueur[i] = joueur;
-            view.editJoueur();
+            view.editPJoueur();
         }
 
         for (Joueur joueur : listeJoueur) {
@@ -200,10 +201,75 @@ public class Model {
 
     }
 
-    public void poseOuvrier(int coordonnees, Joueur joueur) {
-        view.poserOuvrier(coordonnees, joueur);
+    public String getPhase(){
+        if(noPhase==1)
+            return "Perception des revenues";
+        if(noPhase==2)
+            return "Placement des ouvriers";
+        if(noPhase==3)
+            return "L’activation des bâtiment spéciaux";
+        if(noPhase==4)
+            return "Déplacement du prévôt";
+        if(noPhase==5)
+            return "L’activation des bâtiments";
+        if(noPhase==6)
+            return "Construction du château";
+        if(noPhase==7)
+            return "Fin de tour";
+        return "Initialisation des ressources";
     }
 
+    public String getInfoPhase(){
+        if(noPhase==1)
+            return "";
+        if(noPhase==2)
+            return "Le cout est de "+coutDePose+" deniers";
+        if(noPhase==3)
+            return "";
+        if(noPhase==4)
+            return "Déplacement du prévôt";
+        if(noPhase==5)
+            return "L’activation des bâtiments";
+        if(noPhase==6)
+            return "Construction du château";
+        if(noPhase==7)
+            return "Fin de tour";
+        return "";
+    }
+
+    public String getTourJoueur(){
+        if(noPhase==1 || noPhase==0 ||  noPhase==3)
+            return "";
+        return ordreDeTour.get(0).getNom();
+    }
+
+
+    public Batiment getBatiment(int coordonnee){
+       return cases[coordonnee].getBatiment();
+    }
+
+    public void poseOuvrier(int coordonnee) {
+        Joueur joueur = ordreDeTour.get(0);
+        if ( joueur.getDenier() >= coutDePose) {
+            if (getBatiment(coordonnee) != null) {
+                if (joueur.getOuvrier() != 0) {
+                    if ( getBatiment(coordonnee).engager(joueur)) {
+                        joueur.donne("denier",coutDePose);
+                        view.poserOuvrier(coordonnee, joueur);
+                        view.editPJoueur();
+                    } else {
+                        view.problèmeOuvrier(joueur.getNom(), 3);
+                    }
+                }else{
+                    view.problèmeOuvrier(joueur.getNom(), 2);
+                }
+            }else{
+                view.problèmeOuvrier(joueur.getNom(), 1);
+            }
+        }else{
+            view.problèmeOuvrier(joueur.getNom(), 4);
+        }
+    }
     public void setView(View vue) {
         this.view = vue;
         view.setPrévot(prévot.coordonnée);
@@ -211,6 +277,8 @@ public class Model {
         view.initImageCase();
 
     }
+
+
 
     public void initRessource() {
         //changer label info
@@ -227,11 +295,12 @@ public class Model {
             compteurJoueur++;
 
         }
-        view.editJoueur();
+        noPhase++;
+        view.editPJoueur();
     }
 
     public void phase1(){
-        //changer label info
+        view.editPInfo();
         int revenue;
         for (Joueur joueur : listeJoueur) {
             revenue=2;
@@ -245,6 +314,28 @@ public class Model {
             }
             joueur.recoit("denier", revenue);
         }
-        view.editJoueur();
+        view.editPJoueur();
+        coutDePose=1;
     }
+
+    public void phase2(int i){
+
+        poseOuvrier(i);
+    }
+
+
+    public void joueurPasse(){
+        if(finDePose.isEmpty())
+            ordreDeTour.get(0).recoit("denier",1);
+        finDePose.add( ordreDeTour.get(0));
+        ordreDeTour.remove(0);
+        coutDePose++;
+        if(ordreDeTour.isEmpty())
+            noPhase++;
+        view.editPJoueur();
+        view.editPInfo();
+    }
+
+
+
 }
