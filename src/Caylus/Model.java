@@ -105,6 +105,14 @@ public class Model {
         return  0;
     }
 
+    public Color getColor(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getCouleur();
+        return  null;
+    }
+
+
 
     public void initCouleur() {
         couleur = new Color[5];
