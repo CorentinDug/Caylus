@@ -28,6 +28,7 @@ public class ControlMouse extends MouseAdapter {
         }
         if(model.noPhase==1 && coordonnees==-100 && model.coutDePose==1){
             model.noPhase++;
+            model.phase2();
             view.editPInfo();
             coordonnees=-1;
         }
@@ -40,7 +41,7 @@ public class ControlMouse extends MouseAdapter {
             coordonnees=-1;
         }
         if(model.noPhase==2 && coordonnees>-1 && coordonnees<34){
-            model.phase2(coordonnees);
+            model.poseOuvrier(coordonnees);
             coordonnees=-1;
         }
     }

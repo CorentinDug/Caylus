@@ -29,6 +29,7 @@ public class Model {
     protected Joueur[] listeJoueur;
     private ArrayList<Joueur> finDePose;
     private ArrayList<Joueur> ordreDeTour;
+    private ArrayList<Joueur> ordreDePhase2;
 
     protected ArrayList<Batiment> batSpeciaux;
     protected ArrayList<Batiment> batNeutre;
@@ -51,6 +52,7 @@ public class Model {
         listeJoueur = new Joueur[nbrJoueur];
         finDePose = new ArrayList<Joueur>();
         ordreDeTour = new ArrayList<Joueur>();
+        ordreDePhase2 = new ArrayList<Joueur>();
         initBatiment();
         initCouleur();
         initCases();
@@ -251,7 +253,7 @@ public class Model {
     public String getTourJoueur(){
         if(noPhase==1 || noPhase==0 ||  noPhase==3)
             return "";
-        return ordreDeTour.get(0).getNom();
+        return ordreDePhase2.get(0).getNom();
     }
 
 
@@ -308,20 +310,21 @@ public class Model {
         coutDePose=1;
     }
 
-    public void phase2(int i){
-        poseOuvrier(i);
+    public void phase2(){
+        if(ordreDePhase2.isEmpty())
+            ordreDePhase2.addAll(ordreDeTour);
     }
 
     public void constChateau(){
-        Joueur joueur = ordreDeTour.get(0);
+        Joueur joueur = ordreDePhase2.get(0);
         int coordonnée = chateau.ajouterConstructeur(joueur);
         if(coordonnée!=-1)
             if ( joueur.getDenier() >= coutDePose) {
                 if(joueur.getOuvrier() != 0){
                     joueur.donne("denier",coutDePose);
                     joueur.poseOuvrier();
+                    ordreDePhase2.remove(0);
                     view.constChateau(coordonnée, joueur);
-                    view.editPJoueur();
                 }else{
                     view.problèmeOuvrier(joueur.getNom(), 2);
                 }
@@ -331,18 +334,21 @@ public class Model {
         else{
             view.problèmeChateau(joueur.getNom(),1);
         }
+        phase2();
+        view.editPInfo();
+        view.editPJoueur();
     }
 
     public void poseOuvrier(int coordonnee) {
-        Joueur joueur = ordreDeTour.get(0);
+        Joueur joueur = ordreDePhase2.get(0);
         if ( joueur.getDenier() >= coutDePose) {
             if (getBatiment(coordonnee) != null) {
                 if (joueur.getOuvrier() != 0) {
                     if ( getBatiment(coordonnee).engager(joueur)) {
                         joueur.donne("denier",coutDePose);
                         joueur.poseOuvrier();
+                        ordreDePhase2.remove(0);
                         view.poserOuvrier(coordonnee, joueur);
-                        view.editPJoueur();
                     } else {
                         view.problèmeOuvrier(joueur.getNom(), 3);
                     }
@@ -355,16 +361,21 @@ public class Model {
         }else{
             view.problèmeOuvrier(joueur.getNom(), 4);
         }
+        phase2();
+        view.editPInfo();
+        view.editPJoueur();
     }
 
     public void joueurPasse(){
         if(finDePose.isEmpty())
-            ordreDeTour.get(0).recoit("denier",1);
-        finDePose.add( ordreDeTour.get(0));
-        ordreDeTour.remove(0);
+            ordreDePhase2.get(0).recoit("denier",1);
+        finDePose.add( ordreDePhase2.get(0));
+        ordreDeTour.remove(ordreDePhase2.get(0));
+        ordreDePhase2.remove(0);
         coutDePose++;
         if(ordreDeTour.isEmpty())
             noPhase++;
+        phase2();
         view.editPJoueur();
         view.editPInfo();
     }
