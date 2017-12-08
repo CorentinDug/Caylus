@@ -9,7 +9,10 @@ public class NScierie extends Batiment {
      */
     public NScierie(){
         super("NScierie");
+    }
 
+    public void active(){
+        recompenseOuvrier();
     }
 
     /**

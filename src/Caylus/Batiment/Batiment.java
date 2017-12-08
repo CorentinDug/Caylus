@@ -3,11 +3,14 @@ package Caylus.Batiment;
 
 import Caylus.Joueur;
 import Caylus.Model;
+import Caylus.View;
 
 public class Batiment {
+    protected View view;
     protected  String nom;
-    protected Joueur joueur;
+    protected Joueur proprietaire;
     protected Joueur ouvrier;
+    protected String mess = "Choix de récompense!";
 
     public Batiment(String nom){
         this.nom=nom;

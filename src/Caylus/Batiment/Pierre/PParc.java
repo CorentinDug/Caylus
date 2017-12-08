@@ -9,15 +9,19 @@ public class PParc extends Batiment {
      */
     public PParc(){
         super("PParc");
-
     }
+
+    public void active(){
+        recompenseOuvrier();
+    }
+
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier() {
         ouvrier.recoit("bois", 2);
-        ouvrier.recoit("nourriture", 2);
+        ouvrier.recoit("nourriture", 1);
     }
 
     /**

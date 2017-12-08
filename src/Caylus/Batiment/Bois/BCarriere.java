@@ -18,19 +18,16 @@ public class BCarriere extends Batiment {
         super("BCarriere");
     }
 
+    public void active(){
+        recompenseOuvrier();
+    }
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier() {
         ouvrier.recoit("pierre", 2);
     }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    private void recompenseProprietaire() {
-    }
-
     /**
      * Donne la récompense de prestige dû au joueur
      */

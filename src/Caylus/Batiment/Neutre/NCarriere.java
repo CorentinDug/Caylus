@@ -9,8 +9,11 @@ public class NCarriere extends Batiment {
      */
     public NCarriere(){
         super("NCarriere");
-
     }
+    public void active(){
+        recompenseOuvrier();
+    }
+
 
     /**
      *  Donne la récompense ouvrière dû au joueur

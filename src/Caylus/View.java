@@ -523,6 +523,17 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Vous avez déjà un ouvrier qui travaille "+joueur);
     }
 
+    public String panneauRecompense(String[] tabRec,String mess){
+        JOptionPane jop = new JOptionPane();
+        String recompense = (String)jop.showInputDialog(null,
 
+                "Faites un choix!",
+
+                mess,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                tabRec, "Choisir");
+        return recompense;
+    }
 
 }

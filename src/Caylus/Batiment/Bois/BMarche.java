@@ -3,7 +3,9 @@ package Caylus.Batiment.Bois;
 import Caylus.Batiment.Batiment;
 
 public class BMarche extends Batiment {
-
+    private String[] choix = new String[]{"nourriture","tissu","bois","pierre","or"};
+    private String recOuvrier;
+    private String mess1 = "Choississez quoi donnez";
     /**
      * Constructeur initialisant le nom
      */
@@ -12,6 +14,10 @@ public class BMarche extends Batiment {
 
     }
 
+    public void active(){
+        recOuvrier = view.panneauRecompense(choix,mess1);
+        recompenseOuvrier(recOuvrier);
+    }
     /**
      *  Donne la récompense ouvrière dû au joueur
      */

@@ -9,7 +9,10 @@ public class BScierie extends Batiment {
      */
     public BScierie(){
         super("BScierie");
+    }
 
+    public void active(){
+        recompenseOuvrier();
     }
 
     /**
@@ -17,7 +20,6 @@ public class BScierie extends Batiment {
      */
     public void recompenseOuvrier() {
         ouvrier.recoit("bois", 2);
-
     }
 
     /**

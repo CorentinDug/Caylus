@@ -12,6 +12,10 @@ public class PAtelier extends Batiment {
 
     }
 
+    public void active(){
+        recompenseOuvrier();
+    }
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */

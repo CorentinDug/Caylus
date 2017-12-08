@@ -3,7 +3,8 @@ package Caylus.Batiment.Bois;
 import Caylus.Batiment.Batiment;
 
 public class BNotaire extends Batiment {
-
+    private String[] choix = new String[]{"1 Denier et 1 tissu","Plan résidence"};
+    private String recOuvrier;
     /**
      * Constructeur initialisant le nom
      */
@@ -12,11 +13,17 @@ public class BNotaire extends Batiment {
 
     }
 
+    public void active(){
+        //recompenseOuvrier();
+    }
+
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-
+    public void recompenseOuvrier(String choix) {
+            //ouvrier.recoit("denier",1);
+           // ouvrier.recoit("tissu",1);
     }
 
     /**

@@ -31,6 +31,7 @@ public class Model {
     private ArrayList<Joueur> ordreDeTour;
     private ArrayList<Joueur> ordreDePhase2;
 
+
     protected ArrayList<Batiment> batSpeciaux;
     protected ArrayList<Batiment> batNeutre;
     protected ArrayList<Batiment> batBois;
@@ -41,6 +42,8 @@ public class Model {
     private Color[] couleur;
 
     protected Case[] cases;
+
+    protected String[] Ressources;
 
 
     public Model(int nbrJoueur) {
@@ -53,6 +56,7 @@ public class Model {
         finDePose = new ArrayList<Joueur>();
         ordreDeTour = new ArrayList<Joueur>();
         ordreDePhase2 = new ArrayList<Joueur>();
+        Ressources =  new String[] {"denier","nourriture","tissu","bois","pierre","or"};
         initBatiment();
         initCouleur();
         initCases();
@@ -381,6 +385,8 @@ public class Model {
         view.editPJoueur();
         view.editPInfo();
     }
+
+
 
 
 

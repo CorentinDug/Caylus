@@ -9,7 +9,10 @@ public class PFerme extends Batiment {
      */
     public PFerme(){
         super("PFerme");
+    }
 
+    public void active(){
+        recompenseOuvrier();
     }
 
     /**
