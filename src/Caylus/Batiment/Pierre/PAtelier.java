@@ -16,7 +16,8 @@ public class PAtelier extends Batiment {
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier() {
-
+        ouvrier.recoit("pierre", 2);
+        ouvrier.recoit("tissu", 1);
     }
 
     /**

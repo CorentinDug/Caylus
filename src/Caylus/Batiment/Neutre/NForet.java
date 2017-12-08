@@ -15,8 +15,8 @@ public class NForet extends Batiment {
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-
+    public void recompenseOuvrier(String choix) {
+        ouvrier.recoit(choix,1);
     }
 
     /**

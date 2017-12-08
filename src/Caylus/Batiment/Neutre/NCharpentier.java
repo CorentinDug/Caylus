@@ -16,6 +16,7 @@ public class NCharpentier extends Batiment {
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier() {
+        //ouvrier.recoit("pierre",1);
 
     }
 

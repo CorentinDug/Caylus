@@ -2,9 +2,11 @@ package Caylus.Batiment;
 
 
 import Caylus.Joueur;
+import Caylus.Model;
 
 public class Batiment {
     protected  String nom;
+    protected Joueur joueur;
     protected Joueur ouvrier;
 
     public Batiment(String nom){
@@ -21,5 +23,4 @@ public class Batiment {
         ouvrier=joueur;
         return true;
     }
-
 }

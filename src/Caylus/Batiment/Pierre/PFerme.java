@@ -16,7 +16,8 @@ public class PFerme extends Batiment {
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier() {
-
+        ouvrier.recoit("nourriture", 2);
+        ouvrier.recoit("tissu", 1);
     }
 
     /**

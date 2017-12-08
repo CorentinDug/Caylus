@@ -26,7 +26,7 @@ public class Model {
     protected  Chateau chateau;
     protected Prévot prévot;
     protected Baillis baillis;
-    protected Joueur[] listeJoueur;
+    public Joueur[] listeJoueur;
     private ArrayList<Joueur> finDePose;
     private ArrayList<Joueur> ordreDeTour;
 
@@ -62,6 +62,8 @@ public class Model {
             return listeJoueur[n].getNom();
         return "Joueur" + i;
     }
+
+
 
     public int getDenier(int i) {
         int n = i - 1;

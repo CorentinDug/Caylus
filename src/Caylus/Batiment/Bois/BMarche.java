@@ -15,8 +15,9 @@ public class BMarche extends Batiment {
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-
+    public void recompenseOuvrier(String choix) {
+        ouvrier.donne(choix,1);
+        ouvrier.recoit("denier", 4);
     }
 
     /**

@@ -14,8 +14,12 @@ public class BFermeSoie extends Batiment {
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-
+    public void recompenseOuvrier(String choix) {
+        if (choix.equals("soie")) {
+            ouvrier.recoit(choix, 2);
+        }else{
+            ouvrier.recoit(choix,1);
+        }
     }
 
     /**

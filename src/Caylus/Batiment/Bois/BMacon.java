@@ -8,7 +8,6 @@ public class BMacon extends Batiment {
      */
     public BMacon(){
         super("BMaçon");
-
     }
 
     /**

@@ -16,6 +16,7 @@ public class BScierie extends Batiment {
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier() {
+        ouvrier.recoit("bois", 2);
 
     }
 

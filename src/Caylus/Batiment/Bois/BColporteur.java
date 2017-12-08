@@ -17,6 +17,7 @@ public class BColporteur extends Batiment {
      */
     public void recompenseOuvrier() {
 
+
     }
 
     /**
