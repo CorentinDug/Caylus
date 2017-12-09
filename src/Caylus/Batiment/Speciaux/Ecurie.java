@@ -14,6 +14,10 @@ public class Ecurie extends Batiment {
         super("Ecurie");
     }
 
+    public void active(){
+        recompenseOuvrier();
+    }
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */

@@ -13,6 +13,10 @@ public class Porte extends Batiment {
         super("Porte");
     }
 
+    public void active(){
+        recompenseOuvrier();
+    }
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */

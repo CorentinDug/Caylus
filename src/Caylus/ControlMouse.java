@@ -22,7 +22,7 @@ public class ControlMouse extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
         Point point = e.getPoint();
         int coordonnees = detectionCase(point);
-        if(model.noPhase==1 && coordonnees==-100 && model.coutDePose!=1){
+        if(model.noPhase==1  && model.coutDePose!=1){
             model.phase1();
             coordonnees=-1;
         }
@@ -42,6 +42,22 @@ public class ControlMouse extends MouseAdapter {
         }
         if(model.noPhase==2 && coordonnees>-1 && coordonnees<34){
             model.poseOuvrier(coordonnees);
+            coordonnees=-1;
+        }
+        if(model.noPhase==3 && coordonnees==-100){
+            model.phase3();
+            coordonnees=-1;
+        }
+        if(model.noPhase==4 && coordonnees==-100){
+            model.phase4();
+            coordonnees=-1;
+        }
+        if(model.noPhase==5 && coordonnees==-100){
+            model.phase5();
+            coordonnees=-1;
+        }
+        if(model.noPhase==6 && coordonnees==-100){
+            model.phase6();
             coordonnees=-1;
         }
     }

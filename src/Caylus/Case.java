@@ -19,4 +19,8 @@ public class Case {
     public void setBatiment(Batiment batiment) {
         this.batiment = batiment;
     }
+
+    public Joueur getOuvrier(){
+        return batiment.getOuvrier();
+    }
 }

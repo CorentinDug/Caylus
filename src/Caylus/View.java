@@ -24,11 +24,11 @@ public class View extends JFrame {
     private JLabel ress1, ress2, ress3, ress4, ress5 ;
     private JLabel joueur1,joueur2,joueur3,joueur4,joueur5;
     private JPanel  ressJ1, ressJ2, ressJ3, ressJ4, ressJ5;
-    private JLabel denierJ1,orJ1,nourritureJ1,pierreJ1,boisJ1,tissuJ1;
-    private JLabel denierJ2,orJ2,nourritureJ2,pierreJ2,boisJ2,tissuJ2;
-    private JLabel denierJ3,orJ3,nourritureJ3,pierreJ3,boisJ3,tissuJ3;
-    private JLabel denierJ4,orJ4,nourritureJ4,pierreJ4,boisJ4,tissuJ4;
-    private JLabel denierJ5,orJ5,nourritureJ5,pierreJ5,boisJ5,tissuJ5;
+    private JLabel denierJ1,orJ1,nourritureJ1,pierreJ1,boisJ1,tissuJ1,prestigeJ1;
+    private JLabel denierJ2,orJ2,nourritureJ2,pierreJ2,boisJ2,tissuJ2,prestigeJ2;
+    private JLabel denierJ3,orJ3,nourritureJ3,pierreJ3,boisJ3,tissuJ3,prestigeJ3;
+    private JLabel denierJ4,orJ4,nourritureJ4,pierreJ4,boisJ4,tissuJ4,prestigeJ4;
+    private JLabel denierJ5,orJ5,nourritureJ5,pierreJ5,boisJ5,tissuJ5,prestigeJ5;
 
 
     protected JLabel[] cases;
@@ -78,10 +78,7 @@ public class View extends JFrame {
     public void setMouseListener(MouseAdapter listener) {
         panelPrinc.addMouseMotionListener(listener);
         panelPrinc.addMouseListener(listener);
-      /*  panelInfo.addMouseMotionListener(listener);
-        panelInfo.addMouseListener(listener);
-
-    */}
+    }
 
 
     public void editPInfo() {
@@ -144,6 +141,7 @@ public class View extends JFrame {
             pierreJ1.setText(""+model.getPierre(1));
             boisJ1.setText(""+model.getBois(1));
             tissuJ1.setText(""+model.getTissu(1));
+            prestigeJ1.setText(""+model.getPrestige(1));
 
         joueur2.setText(model.getNom(2));
         ress2.setBorder(BorderFactory.createLineBorder(model.getColor(2),3));
@@ -205,7 +203,7 @@ public class View extends JFrame {
                 panelJoueur.add(joueur1);
 
                 ress1 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-                initLabel(ress1,0,0,300,35,null,null);
+                initLabel(ress1,0,0,300,56,null,null);
 
 
                 ressJ1 = new JPanel(null);
@@ -229,9 +227,12 @@ public class View extends JFrame {
                     tissuJ1 = new JLabel(""+model.getTissu(1));
                         ressJ1.add(tissuJ1,0);
                         initLabel(tissuJ1,265,6,25,25,null,Color.BLACK);
+                    prestigeJ1 = new JLabel(""+model.getPrestige(1));
+                        ressJ1.add(prestigeJ1,0);
+                        initLabel(prestigeJ1,120,30,25,25,null,Color.BLACK);
 
 
-                initPanel(ressJ1,0,100,300,50,fontRess,Color.BLACK);
+                initPanel(ressJ1,0,100,300,56,fontRess,Color.BLACK);
                 panelJoueur.add(ressJ1,0);
 
 
@@ -240,7 +241,7 @@ public class View extends JFrame {
                 panelJoueur.add(joueur2);
 
                 ress2 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-                initLabel(ress2,0,0,300,35,null,null);
+                initLabel(ress2,0,0,300,56,null,null);
 
                 ressJ2 = new JPanel(null);
                     ressJ2.add(ress2);
@@ -263,8 +264,11 @@ public class View extends JFrame {
                     tissuJ2 = new JLabel(""+model.getTissu(2));
                         ressJ2.add(tissuJ2,0);
                         initLabel(tissuJ2,265,6,25,25,null,Color.BLACK);
+                    prestigeJ2 = new JLabel(""+model.getPrestige(2));
+                        ressJ2.add(prestigeJ2,0);
+                        initLabel(prestigeJ2,120,30,25,25,null,Color.BLACK);
 
-                initPanel(ressJ2,0,250,300,50,fontRess,Color.BLACK);
+                initPanel(ressJ2,0,250,300,56,fontRess,Color.BLACK);
                 panelJoueur.add(ressJ2,0);
 
 
@@ -274,7 +278,7 @@ public class View extends JFrame {
                 panelJoueur.add(joueur3);
 
                 ress3 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-                initLabel(ress3,0,0,300,35,null,null);
+                initLabel(ress3,0,0,300,56,null,null);
 
 
                 ressJ3 = new JPanel(null);
@@ -298,6 +302,9 @@ public class View extends JFrame {
                     tissuJ3 = new JLabel(""+model.getTissu(3));
                         ressJ3.add(tissuJ3,0);
                         initLabel(tissuJ3,265,6,25,25,null,Color.BLACK);
+                    prestigeJ3 = new JLabel(""+model.getPrestige(3));
+                        ressJ3.add(prestigeJ3,0);
+                        initLabel(prestigeJ3,120,30,25,25,null,Color.BLACK);
 
                 initPanel(ressJ3,0,400,300,50,fontRess,Color.BLACK);
                 panelJoueur.add(ressJ3,0);
@@ -308,7 +315,7 @@ public class View extends JFrame {
                 panelJoueur.add(joueur4);
 
                 ress4 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-                initLabel(ress4,0,0,300,35,null,null);
+                initLabel(ress4,0,0,300,56,null,null);
 
 
                 ressJ4 = new JPanel(null);
@@ -331,8 +338,12 @@ public class View extends JFrame {
                     tissuJ4 = new JLabel(""+model.getTissu(4));
                         ressJ4.add(tissuJ4,0);
                         initLabel(tissuJ4,265,6,25,25,null,Color.BLACK);
+                    prestigeJ4 = new JLabel(""+model.getPrestige(4));
+                        ressJ4.add(prestigeJ4,0);
+                        initLabel(prestigeJ4,120,30,25,25,null,Color.BLACK);
 
-                initPanel(ressJ4,0,550,300,50,fontRess,Color.BLACK);
+
+            initPanel(ressJ4,0,550,300,56,fontRess,Color.BLACK);
                 panelJoueur.add(ressJ4,0);
         }
         if(model.nbrJoueurs>=5){
@@ -342,7 +353,7 @@ public class View extends JFrame {
 
 
             ress5 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-            initLabel(ress5,0,0,300,35,null,null);
+            initLabel(ress5,0,0,300,56,null,null);
 
 
             ressJ5 = new JPanel(null);
@@ -366,8 +377,11 @@ public class View extends JFrame {
                 tissuJ5 = new JLabel(""+model.getTissu(5));
                     ressJ5.add(tissuJ5,0);
                     initLabel(tissuJ5,265,6,25,25,null,Color.BLACK);
+                prestigeJ5 = new JLabel(""+model.getPrestige(5));
+                    ressJ5.add(prestigeJ5,0);
+                    initLabel(prestigeJ5,120,30,25,25,null,Color.BLACK);
 
-            initPanel(ressJ5,0,700,300,50,fontRess,Color.BLACK);
+            initPanel(ressJ5,0,700,300,56,fontRess,Color.BLACK);
             panelJoueur.add(ressJ5,0);
         }
 
@@ -491,11 +505,21 @@ public class View extends JFrame {
 
 
     public void setBaillis(int coordonnees){
+        int coordPrévot = model.prévot.getCoordonnée();
+        int coordBaillis = model.baillis.getCoordonnée();
+        cases[coordBaillis].setBorder(null);
+        if(coordPrévot == coordBaillis)
+            cases[coordPrévot].setBorder(BorderFactory.createLineBorder(Color.white,1));
         cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white,3));
         cases[coordonnees].setOpaque(true);
     }
 
     public void setPrévot(int coordonnees){
+        int coordPrévot = model.prévot.getCoordonnée();
+        int coordBaillis = model.baillis.getCoordonnée();
+        cases[coordPrévot].setBorder(null);
+        if(coordPrévot == coordBaillis)
+            cases[coordBaillis].setBorder(BorderFactory.createLineBorder(Color.white,3));
         cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white,1));
         cases[coordonnees].setOpaque(true);
     }
@@ -534,6 +558,20 @@ public class View extends JFrame {
                 null,
                 tabRec, "Choisir");
         return recompense;
+    }
+
+    public int deplPrevot(Joueur joueur){
+        String[] cases = {"-3 case", "-2 cases", "-1 cases","0 case","+1 case", "+2 cases", "+3 cases"};
+        JOptionPane jop = new JOptionPane();
+        int rang = jop.showOptionDialog(null,
+                "Veuillez indiquer le nombre de cases "+joueur.getNom()+" !",
+                " Déplacement prévot !",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                cases,
+                cases[5]);
+        return rang;
     }
 
 }

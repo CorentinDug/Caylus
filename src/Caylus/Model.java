@@ -8,9 +8,14 @@ import Caylus.Batiment.Prestige.*;
 import Caylus.Batiment.Residentiel.Residence;
 import Caylus.Batiment.Speciaux.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
+
+
+import javax.swing.Timer;
+
 
 /**
  * Created by Schnoeby on 19/11/2017.
@@ -21,6 +26,7 @@ public class Model {
     protected int nbrJoueurs;
     protected int noPhase;
     protected int coutDePose;
+    protected int compteurBat;
 
 
     protected  Chateau chateau;
@@ -44,7 +50,6 @@ public class Model {
     protected Case[] cases;
 
     protected String[] Ressources;
-
 
     public Model(int nbrJoueur) {
         noPhase=0;
@@ -119,6 +124,14 @@ public class Model {
             return listeJoueur[n].getCouleur();
         return  null;
     }
+
+    public int getPrestige(int i) {
+        int n = i - 1;
+        if (listeJoueur[n] != null)
+            return listeJoueur[n].getPrestige();
+        return  0;
+    }
+
 
 
 
@@ -244,7 +257,7 @@ public class Model {
         if(noPhase==2)
             return "Le cout est de "+coutDePose+" deniers";
         if(noPhase==3)
-            return "";
+            return "Activation de "+cases[compteurBat].getBatiment().getNom();
         if(noPhase==4)
             return "Déplacement du prévôt";
         if(noPhase==5)
@@ -257,9 +270,10 @@ public class Model {
     }
 
     public String getTourJoueur(){
-        if(noPhase==1 || noPhase==0 ||  noPhase==3)
-            return "";
-        return ordreDePhase2.get(0).getNom();
+        if(noPhase==2)
+            return ordreDePhase2.get(0).getNom();
+        return "";
+
     }
 
 
@@ -384,6 +398,97 @@ public class Model {
         phase2();
         view.editPJoueur();
         view.editPInfo();
+
+    }
+
+    public void phase3()  {
+        view.editPInfo();
+        for(compteurBat=0;compteurBat<6;compteurBat++){
+            Case caseBat=cases[compteurBat];
+            if(caseBat.getBatiment()!=null){
+                if(caseBat.getOuvrier()!=null){
+                    caseBat.getBatiment().active();
+                    view.editPJoueur();
+                    view.editPInfo();
+                }
+            }
+        }
+        noPhase++;
+    }
+
+    public void phase4() {
+        view.editPInfo();
+        int rang = -1;
+        int coordonnée=-1,cout=-1;
+        for (Joueur joueur : finDePose) {
+            rang = view.deplPrevot(joueur);
+            switch (rang) {
+                case 0:
+                    coordonnée = prévot.getCoordonnée() - 3;
+                    cout = 3;
+                    break;
+                case 1:
+                    coordonnée = prévot.getCoordonnée() - 2;
+                    cout = 2;
+                    break;
+                case 2:
+                    coordonnée = prévot.getCoordonnée() - 1;
+                    cout = 1;
+                    break;
+                case 3:
+                    coordonnée = prévot.getCoordonnée();
+                    cout = 0;
+                    break;
+                case 4:
+                    coordonnée = prévot.getCoordonnée() + 1;
+                    cout = 1;
+                    break;
+                case 5:
+                    coordonnée = prévot.getCoordonnée() + 2;
+                    cout = 2;
+                    break;
+                case 6:
+                    coordonnée = prévot.getCoordonnée() + 3;
+                    cout = 3;
+                    break;
+            }
+            if(coordonnée<6)
+                coordonnée=6;
+            if(coordonnée>33)
+                coordonnée=33;
+            if (joueur.getDenier() >= cout) {
+                view.setPrévot(coordonnée);
+                prévot.coordonnée=coordonnée;
+                joueur.donne("denier", cout);
+                } else {
+                    view.problèmeOuvrier(joueur.getNom(), 4);
+                }
+
+                view.editPJoueur();
+                view.editPInfo();
+            }
+            noPhase++;
+        }
+
+    public void phase5()  {
+        view.editPInfo();
+        for(compteurBat=6;compteurBat<prévot.getCoordonnée();compteurBat++){
+            Case caseBat=cases[compteurBat];
+            if(caseBat.getBatiment()!=null){
+                if(caseBat.getOuvrier()!=null){
+                    caseBat.getBatiment().active();
+                    view.editPJoueur();
+                    view.editPInfo();
+                }
+            }
+        }
+        noPhase++;
+    }
+
+    public void phase6()  {
+        view.editPInfo();
+
+
     }
 
 
