@@ -11,8 +11,9 @@ public class BScierie extends Batiment {
         super("BScierie");
     }
 
-    public void active(){
+    public int active(){
         recompenseOuvrier();
+        return -1;
     }
 
     /**

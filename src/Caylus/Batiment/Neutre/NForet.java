@@ -1,6 +1,7 @@
 package Caylus.Batiment.Neutre;
 
 import Caylus.Batiment.Batiment;
+import Caylus.View;
 
 public class NForet extends Batiment {
     private String[] choix = new String[]{"bois","nourriture"};
@@ -13,9 +14,10 @@ public class NForet extends Batiment {
         super("NForet");
     }
 
-    public void active(){
-        recOuvrier = view.panneauRecompense(choix,mess);
+    public int active(View view){
+        recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         recompenseOuvrier(recOuvrier);
+        return -1;
     }
 
     /**

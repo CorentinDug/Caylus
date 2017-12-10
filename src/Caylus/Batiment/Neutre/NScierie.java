@@ -1,6 +1,7 @@
 package Caylus.Batiment.Neutre;
 
 import Caylus.Batiment.Batiment;
+import Caylus.View;
 
 public class NScierie extends Batiment {
 
@@ -11,8 +12,9 @@ public class NScierie extends Batiment {
         super("NScierie");
     }
 
-    public void active(){
+    public int active(View view){
         recompenseOuvrier();
+        return -1;
     }
 
     /**

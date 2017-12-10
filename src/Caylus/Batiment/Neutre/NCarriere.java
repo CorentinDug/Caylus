@@ -1,6 +1,7 @@
 package Caylus.Batiment.Neutre;
 
 import Caylus.Batiment.Batiment;
+import Caylus.View;
 
 public class NCarriere extends Batiment {
 
@@ -10,8 +11,10 @@ public class NCarriere extends Batiment {
     public NCarriere(){
         super("NCarriere");
     }
-    public void active(){
+
+    public int active(View view){
         recompenseOuvrier();
+        return -1;
     }
 
 

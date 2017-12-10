@@ -10,6 +10,12 @@ public class BMacon extends Batiment {
         super("BMaçon");
     }
 
+
+    public void active(){
+        recompenseOuvrier();
+        recompenseProprietaire();
+    }
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
@@ -17,12 +23,7 @@ public class BMacon extends Batiment {
 
     }
 
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
 
-    }
 
     /**
      * Donne la récompense de prestige dû au joueur

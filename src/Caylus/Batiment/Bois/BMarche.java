@@ -14,30 +14,23 @@ public class BMarche extends Batiment {
 
     }
 
-    public void active(){
+    public int active(){
         recOuvrier = view.panneauRecompense(choix,mess1);
-        recompenseOuvrier(recOuvrier);
+        if(!recompenseOuvrier(recOuvrier))
+            return 1;
+        recompenseProprietaire();
+        return -1;
     }
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier(String choix) {
-        ouvrier.donne(choix,1);
-        ouvrier.recoit("denier", 4);
+    public boolean recompenseOuvrier(String choix) {
+        if(ouvrier.donne(choix,1)){
+            ouvrier.recoit("denier", 4);
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 
 }

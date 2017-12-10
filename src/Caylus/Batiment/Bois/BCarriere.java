@@ -16,22 +16,29 @@ public class BCarriere extends Batiment {
      */
     public BCarriere(){
         super("BCarriere");
+        coutConst[0]=0;
+        coutConst[1]=0;
+        coutConst[2]=1;
+        coutConst[3]=1;
+        coutConst[4]=0;
     }
 
-    public void active(){
+    public int active(){
         recompenseOuvrier();
+        recompenseProprietaire();
+        return -1;
     }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
+    public boolean recompenseOuvrier() {
         ouvrier.recoit("pierre", 2);
+        return true;
     }
     /**
      * Donne la récompense de prestige dû au joueur
      */
-    public void recompensePrestige() {
 
-    }
+    public void recompensePrestige() {}
 }

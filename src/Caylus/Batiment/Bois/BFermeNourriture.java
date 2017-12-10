@@ -14,9 +14,11 @@ public class BFermeNourriture extends Batiment {
 
     }
 
-    public void active(){
+    public int active(){
         recOuvrier = view.panneauRecompense(choix,mess);
         recompenseOuvrier(recOuvrier);
+        recompenseProprietaire();
+        return -1;
     }
 
     /**
@@ -30,12 +32,7 @@ public class BFermeNourriture extends Batiment {
         }
     }
 
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
 
-    }
 
     /**
      * Donne la récompense de prestige dû au joueur

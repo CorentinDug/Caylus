@@ -2,6 +2,7 @@ package Caylus.Batiment.Neutre;
 
 
 import Caylus.Batiment.Batiment;
+import Caylus.View;
 
 public class NFerme extends Batiment {
     private String[] choix = new String[]{"nourriture","tissu"};
@@ -13,9 +14,10 @@ public class NFerme extends Batiment {
         super("NFerme");
     }
 
-    public void active(){
-        recOuvrier = view.panneauRecompense(choix,mess);
+    public int active(View view){
+        recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         recompenseOuvrier(recOuvrier);
+        return -1;
     }
     /**
      *  Donne la récompense ouvrière dû au joueur

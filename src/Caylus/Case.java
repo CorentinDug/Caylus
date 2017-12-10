@@ -23,4 +23,22 @@ public class Case {
     public Joueur getOuvrier(){
         return batiment.getOuvrier();
     }
+
+    public Joueur getProprietaire(){return batiment.getProprietaire();}
+
+    public String getNomBat(){
+        if(batiment==null)
+            return"Vide";
+        return batiment.getNom();
+    }
+
+    public String getNomOuvrier(){
+        return getOuvrier().getNom();
+    }
+
+    public String getNomProprio(){
+        if(getProprietaire()==null)
+            return "";
+        return getProprietaire().getNom();
+    }
 }

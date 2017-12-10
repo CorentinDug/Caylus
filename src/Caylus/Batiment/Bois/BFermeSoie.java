@@ -13,9 +13,11 @@ public class BFermeSoie extends Batiment {
 
     }
 
-    public void active(){
+    public int active(){
         recOuvrier = view.panneauRecompense(choix,mess);
         recompenseOuvrier(recOuvrier);
+        recompenseProprietaire();
+        return -1;
     }
 
     /**
@@ -27,13 +29,6 @@ public class BFermeSoie extends Batiment {
         }else{
             ouvrier.recoit(choix,1);
         }
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
     }
 
     /**

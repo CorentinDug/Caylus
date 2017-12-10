@@ -85,7 +85,10 @@ public class View extends JFrame {
         phase.setText(model.getPhase());
         infoPhase.setText(model.getInfoPhase());
         tourJoueur.setText(model.getTourJoueur());
+    }
 
+    public void editInfoPhase(String info) {
+        infoPhase.setText(info);
     }
 
     public void initPInfo() {
@@ -442,17 +445,8 @@ public class View extends JFrame {
     }
 
     public void initImageCase() {
-        for (int i = 0; i < 6; i++)
-            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batSpeciaux.get(i).getNom() + ".png"));
+        editImageCase();
 
-        int n=0;
-        for (int i = 6; i < 12; i++){
-            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.batNeutre.get(n).getNom() + ".png"));
-            n++;
-        }
-        for (int i = 12; i < 34; i++){
-            cases[i].setIcon(new ImageIcon("./res/img/Batiment/Vide.png"));
-        }
         for (JLabel label : ordreContruction){
             label.setBackground(Color.GRAY);
             label.setOpaque(true);
@@ -461,6 +455,11 @@ public class View extends JFrame {
             label.setBackground(Color.GRAY);
             label.setOpaque(true);
         }
+    }
+
+    public void editImageCase() {
+        for (int i = 0; i < 34; i++)
+            cases[i].setIcon(new ImageIcon("./res/img/Batiment/" +model.cases[i].getNomBat()+ ".png"));
     }
 
     public void createView() {
@@ -574,4 +573,19 @@ public class View extends JFrame {
         return rang;
     }
 
+    public void problèmeConstruction(int index, String ouvrier, String proprio) {
+        if(index==1)
+            JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+ouvrier);
+        if(index==2)
+            JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+proprio);
+        if(index==3)
+            JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+proprio+" et "+ ouvrier);
+    }
+
+    public int poseBatiment(){
+        int coordonne=0;
+        while(coordonne <12 || coordonne >=33)
+            coordonne =  Integer.parseInt( JOptionPane.showInputDialog(null, "Entrez une coordonné "));
+        return coordonne;
+    }
 }

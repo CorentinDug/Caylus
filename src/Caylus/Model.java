@@ -28,7 +28,6 @@ public class Model {
     protected int coutDePose;
     protected int compteurBat;
 
-
     protected  Chateau chateau;
     protected Prévot prévot;
     protected Baillis baillis;
@@ -40,10 +39,7 @@ public class Model {
 
     protected ArrayList<Batiment> batSpeciaux;
     protected ArrayList<Batiment> batNeutre;
-    protected ArrayList<Batiment> batBois;
-    protected ArrayList<Batiment> batPierre;
-    protected ArrayList<Batiment> batPrestiqe;
-    protected ArrayList<Batiment> batResidentiel;
+
 
     private Color[] couleur;
 
@@ -162,42 +158,6 @@ public class Model {
         batSpeciaux.add(new Auberge());
 
 
-        batBois = new ArrayList<>();
-        batBois.add(new BCarriere());
-        batBois.add(new BColporteur());
-        batBois.add(new BFermeNourriture());
-        batBois.add(new BFermeSoie());
-        batBois.add(new BMacon());
-        batBois.add(new BMarche());
-        batBois.add(new BNotaire());
-        batBois.add(new BScierie());
-
-        batPierre = new ArrayList<>();
-        batPierre.add(new PAlchimiste());
-        batPierre.add(new PArchitecte());
-        batPierre.add(new PArchitecte());
-        batPierre.add(new PAtelier());
-        batPierre.add(new PBanque());
-        batPierre.add(new PEglise());
-        batPierre.add(new PFerme());
-        batPierre.add(new PParc());
-        batPierre.add(new PTailleur());
-
-        batPrestiqe = new ArrayList<>();
-        batPrestiqe.add(new Bibliotheque());
-        batPrestiqe.add(new Cathedrale());
-        batPrestiqe.add(new Grenier());
-        batPrestiqe.add(new Hotel());
-        batPrestiqe.add(new Monument());
-        batPrestiqe.add(new Statue());
-        batPrestiqe.add(new Theatre());
-        batPrestiqe.add(new Tisserand());
-        batPrestiqe.add(new Universite());
-
-        batResidentiel = new ArrayList<>();
-        for (int i = 0; i < 8; i++)
-            batResidentiel.add(new Residence());
-
         Collections.shuffle(batNeutre);
     }
 
@@ -271,7 +231,8 @@ public class Model {
 
     public String getTourJoueur(){
         if(noPhase==2)
-            return ordreDePhase2.get(0).getNom();
+            if(!ordreDePhase2.isEmpty())
+                return ordreDePhase2.get(0).getNom();
         return "";
 
     }
@@ -339,17 +300,16 @@ public class Model {
         Joueur joueur = ordreDePhase2.get(0);
         int coordonnée = chateau.ajouterConstructeur(joueur);
         if(coordonnée!=-1)
-            if ( joueur.getDenier() >= coutDePose) {
-                if(joueur.getOuvrier() != 0){
-                    joueur.donne("denier",coutDePose);
+            if ( joueur.getOuvrier() != 0) {
+                if(joueur.donne("denier",coutDePose)){
                     joueur.poseOuvrier();
                     ordreDePhase2.remove(0);
                     view.constChateau(coordonnée, joueur);
                 }else{
-                    view.problèmeOuvrier(joueur.getNom(), 2);
+                    view.problèmeOuvrier(joueur.getNom(), 4);
                 }
             }else{
-                view.problèmeOuvrier(joueur.getNom(), 4);
+                view.problèmeOuvrier(joueur.getNom(), 2);
             }
         else{
             view.problèmeChateau(joueur.getNom(),1);
@@ -398,22 +358,22 @@ public class Model {
         phase2();
         view.editPJoueur();
         view.editPInfo();
-
+        compteurBat=0;
     }
 
     public void phase3()  {
         view.editPInfo();
-        for(compteurBat=0;compteurBat<6;compteurBat++){
-            Case caseBat=cases[compteurBat];
-            if(caseBat.getBatiment()!=null){
-                if(caseBat.getOuvrier()!=null){
-                    caseBat.getBatiment().active();
-                    view.editPJoueur();
-                    view.editPInfo();
-                }
+        Case caseBat=cases[compteurBat];
+        if(caseBat.getBatiment()!=null){
+            if(caseBat.getOuvrier()!=null){
+                caseBat.getBatiment().active(view);
+                view.editPJoueur();
+                view.editPInfo();
             }
         }
-        noPhase++;
+        compteurBat++;
+        if(compteurBat==6)
+            noPhase++;
     }
 
     public void phase4() {
@@ -472,11 +432,22 @@ public class Model {
 
     public void phase5()  {
         view.editPInfo();
-        for(compteurBat=6;compteurBat<prévot.getCoordonnée();compteurBat++){
-            Case caseBat=cases[compteurBat];
-            if(caseBat.getBatiment()!=null){
-                if(caseBat.getOuvrier()!=null){
-                    caseBat.getBatiment().active();
+        Joueur ouvrier;
+        for(int i=6;i<=prévot.getCoordonnée();i++){
+            if(cases[i].getBatiment()!=null){
+                if(cases[i].getOuvrier()!=null){
+                    int index = cases[i].getBatiment().active(view);
+                    if(index!=-1 && index !=-2){
+                            view.problèmeConstruction(index,cases[i].getNomOuvrier(),cases[i].getNomProprio());
+                    }
+                    if(index==-2){
+                        ouvrier = cases[i].getOuvrier();
+                        view.editInfoPhase("Lieu Construction "+ouvrier.getNom());
+                        int coordonnéConst =  view.poseBatiment();
+                        cases[ coordonnéConst].setBatiment(ouvrier.dernierePropriete());
+
+                        view.editImageCase();
+                    }
                     view.editPJoueur();
                     view.editPInfo();
                 }

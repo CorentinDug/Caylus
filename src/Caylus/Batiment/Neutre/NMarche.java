@@ -1,11 +1,12 @@
 package Caylus.Batiment.Neutre;
 
 import Caylus.Batiment.Batiment;
+import Caylus.View;
 
 public class NMarche extends Batiment {
     private String[] choix = new String[]{"nourriture","tissu","bois","pierre","or"};
     private String recOuvrier;
-    private String mess1 = "Choississez quoi donnez";
+    private String mess = "Choississez quoi donner";
 
     /**
      * Constructeur initialisant le nom
@@ -13,16 +14,22 @@ public class NMarche extends Batiment {
     public NMarche(){
         super("NMarche");
     }
-    public void active(){
-        recOuvrier = view.panneauRecompense(choix,mess1);
-        recompenseOuvrier(recOuvrier);
+
+    public int active(View view){
+        recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
+        if(!recompenseOuvrier(recOuvrier))
+            return 1;
+        return -1;
     }
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier(String choix) {
-        ouvrier.donne(choix,1);
-        ouvrier.recoit("denier", 4);
+    public boolean recompenseOuvrier(String choix) {
+        if(ouvrier.donne(choix,1)){
+            ouvrier.recoit("denier", 4);
+            return true;
+        }
+        return false;
     }
 
     /**

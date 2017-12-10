@@ -3,7 +3,7 @@ import Caylus.Batiment.Batiment;
 import Caylus.Joueur;
 
 public class BColporteur extends Batiment {
-    private String[] choix = new String[]{"nourriture","tissu","bois","pierre","or"};
+    private String[] choix = new String[]{"nourriture","tissu","bois","pierre"};
     private String[] choixProprio = new String[]{"1 nourriture + 1 tissu","1 nourriture + 1 pierre","1 nourriture + 1 bois","2 nourritures","1 tissu + 1 pierre","1 tissu + 1 bois","2 tissus","1 pierre + 1 bois","2 pierres","2 bois"};
 
     private String recOuvrier;
@@ -18,63 +18,84 @@ public class BColporteur extends Batiment {
     }
 
 
-    public void active(){
+
+
+    public int active(){
+        int retour=-1;
         recOuvrier = view.panneauRecompense(choix,mess);
-        recompenseOuvrier(recOuvrier);
+        if(!recompenseOuvrier(recOuvrier)){
+            retour =1;
+        }
         recProprio = view.panneauRecompense(choixProprio,messProprio);
-        recompenseProprietaire(recProprio);
+        if(!recompenseProprietaire(recProprio)){
+            if(retour ==1)
+                retour = 3;
+            else
+                retour = 2;
+        }
+        return retour;
     }
 
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier(String chaine) {
-        ouvrier.recoit(chaine, 1);
+    public boolean recompenseOuvrier(String chaine) {
+        if(ouvrier.donne("denier", 2)){
+            ouvrier.recoit(chaine, 1);
+            return true;
+        }
+        return false;
     }
 
     /**
      * Donne la récompense propriétaire dû au joueur
      */
-    public void recompenseProprietaire(String choix) {
-        switch (choix) {
-            case "1 nourriture + 1 tissu":
-                ouvrier.recoit("nourriture", 1);
-                ouvrier.recoit("tissu", 1);
-                break;
-            case "1 nourriture + 1 pierre":
-                ouvrier.recoit("nourriture",1);
-                ouvrier.recoit("pierre",1);
-                break;
-            case "1 nourriture + 1 bois":
-                ouvrier.recoit("nourriture",1);
-                ouvrier.recoit("bois",1);
-                break;
-            case "2 nourritures":
-                ouvrier.recoit("nourriture",1);
-                break;
-            case "1 tissu + 1 pierre":
-                ouvrier.recoit("tissu",1);
-                ouvrier.recoit("pierre",1);
-                break;
-            case "1 tissu + 1 bois":
-                ouvrier.recoit("tissu",1);
-                ouvrier.recoit("bois",1);
-                break;
-            case "2 tissus":
-                ouvrier.recoit("tissu",2);
-                break;
-            case "1 pierre + 1 bois":
-                ouvrier.recoit("pierre",1);
-                ouvrier.recoit("bois",1);
-                break;
-            case "2 pierres":
-                ouvrier.recoit("pierre",2);
-                break;
-            case "2 bois":
-                ouvrier.recoit("bois",2);
-                break;
+    public boolean recompenseProprietaire(String choix) {
+        if(proprietaire!=ouvrier)
+            proprietaire.recoit("prestige",1);
+        if(proprietaire.donne("denier",2)){
+            switch (choix) {
+                case "1 nourriture + 1 tissu":
+                    proprietaire.recoit("nourriture", 1);
+                    proprietaire.recoit("tissu", 1);
+                    break;
+                case "1 nourriture + 1 pierre":
+                    proprietaire.recoit("nourriture",1);
+                    proprietaire.recoit("pierre",1);
+                    break;
+                case "1 nourriture + 1 bois":
+                    proprietaire.recoit("nourriture",1);
+                    proprietaire.recoit("bois",1);
+                    break;
+                case "2 nourritures":
+                    proprietaire.recoit("nourriture",1);
+                    break;
+                case "1 tissu + 1 pierre":
+                    proprietaire.recoit("tissu",1);
+                    proprietaire.recoit("pierre",1);
+                    break;
+                case "1 tissu + 1 bois":
+                    proprietaire.recoit("tissu",1);
+                    proprietaire.recoit("bois",1);
+                    break;
+                case "2 tissus":
+                    ouvrier.recoit("tissu",2);
+                    break;
+                case "1 pierre + 1 bois":
+                    proprietaire.recoit("pierre",1);
+                    proprietaire.recoit("bois",1);
+                    break;
+                case "2 pierres":
+                    proprietaire.recoit("pierre",2);
+                    break;
+                case "2 bois":
+                    proprietaire.recoit("bois",2);
+                    break;
+            }
+            return true;
         }
+       return false;
     }
 
     /**
