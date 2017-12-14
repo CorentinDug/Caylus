@@ -10,27 +10,20 @@ public class Residence extends Batiment {
      */
     public Residence(){
         super("Résidence");
+        prestige=2;
+    }
+
+    public int active(){
+        recompenseOuvrier();
+        return 0;
     }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
+    public boolean recompenseOuvrier() {
+        ouvrier.recoit("denier",1);
+        return true;
     }
 }
 

@@ -9,27 +9,12 @@ public class Monument extends Batiment {
      */
     public Monument(){
         super("Monument");
-
+        coutConst[0]=2;
+        coutConst[1]=0;
+        coutConst[2]=4;
+        coutConst[3]=0;
+        coutConst[4]=0;
+        prestige=14;
     }
 
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

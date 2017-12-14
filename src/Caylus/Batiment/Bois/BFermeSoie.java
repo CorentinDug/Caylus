@@ -10,14 +10,19 @@ public class BFermeSoie extends Batiment {
      */
     public BFermeSoie(){
         super("BFermeSoie");
-
+        coutConst[0]=0;
+        coutConst[1]=1;
+        coutConst[2]=0;
+        coutConst[3]=1;
+        coutConst[4]=0;
+        prestige=2;
     }
 
     public int active(){
         recOuvrier = view.panneauRecompense(choix,mess);
         recompenseOuvrier(recOuvrier);
         recompenseProprietaire();
-        return -1;
+        return 0;
     }
 
     /**
@@ -31,10 +36,4 @@ public class BFermeSoie extends Batiment {
         }
     }
 
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

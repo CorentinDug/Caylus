@@ -11,15 +11,20 @@ public class BMarche extends Batiment {
      */
     public BMarche(){
         super("BMarché");
-
+        coutConst[0]=0;
+        coutConst[1]=0;
+        coutConst[2]=0;
+        coutConst[3]=1;
+        coutConst[4]=0;
+        prestige=4;
     }
 
     public int active(){
+        recompenseProprietaire();
         recOuvrier = view.panneauRecompense(choix,mess1);
         if(!recompenseOuvrier(recOuvrier))
-            return 1;
-        recompenseProprietaire();
-        return -1;
+            return -1;
+        return 0;
     }
     /**
      *  Donne la récompense ouvrière dû au joueur

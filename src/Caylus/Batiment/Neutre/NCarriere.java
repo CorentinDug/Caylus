@@ -14,9 +14,8 @@ public class NCarriere extends Batiment {
 
     public int active(View view){
         recompenseOuvrier();
-        return -1;
+        return 0;
     }
-
 
     /**
      *  Donne la récompense ouvrière dû au joueur
@@ -25,18 +24,5 @@ public class NCarriere extends Batiment {
             ouvrier.recoit("pierre",1);
     }
 
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }
 

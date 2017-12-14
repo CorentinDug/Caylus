@@ -17,14 +17,14 @@ public class NCharpentier extends Batiment {
         super("NCharpentier");
         mess = "Choisissez un batiment";
         choix = new ArrayList<>();
-        choix.add("Carrière");
-        choix.add("Notaire");
-        choix.add("Scierie");
-        choix.add("Marché");
-        choix.add("Maçon");
-        choix.add("Ferme Tissu");
-        choix.add("Ferme Nourriture");
-        choix.add("Colporteur");
+        choix.add("Carrière  1 bois + 1 pierre");
+        choix.add("Notaire 1 bois + 1 tissu");
+        choix.add("Scierie 1bois + 1pierre");
+        choix.add("Marché 1 bois + 1 ressource");
+        choix.add("Maçon 1 bois + 1 pierre");
+        choix.add("Ferme Tissu 1 bois + 1 pierre");
+        choix.add("Ferme Nourriture  1 bois + 1 pierre ");
+        choix.add("Colporteur 1 bois + 1 ressource");
     }
 
     public int active(View view) {
@@ -36,9 +36,9 @@ public class NCharpentier extends Batiment {
         }
         recOuvrier = view.panneauRecompense(choixPossible,mess+" "+getNom()+" "+ouvrier.getNom());
         if(!recompenseOuvrier(recOuvrier))
-            return 1;
+            return -1;
         choix.remove(recOuvrier);
-        return -2;
+        return 10;
     }
 
     /**
@@ -48,12 +48,4 @@ public class NCharpentier extends Batiment {
         return ouvrier.fabriqueBat(choix);
     }
 
-
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

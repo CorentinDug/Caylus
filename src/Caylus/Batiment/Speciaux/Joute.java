@@ -11,15 +11,25 @@ public class Joute extends Batiment {
     /**
      * Constructeur initialisant le nom
      */
-    public Joute(){
+    public Joute() {
         super("Joute");
     }
 
-    public void active(){}
+    public int active() {
+        if (!recompenseOuvrier())
+            return  1;
+        return 0;
+    }
 
     /**
-     *  Donne la récompense ouvrière dû au joueur
+     * Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {}
+    public boolean recompenseOuvrier() {
+        if (ouvrier.donne("denier", 4)) {
+            ouvrier.recoit("or", 1);
+            return true;
+        }
+        return false;
+    }
 }
 

@@ -2,6 +2,9 @@ package Caylus;
 
 import Caylus.Batiment.Batiment;
 import Caylus.Batiment.Bois.*;
+import Caylus.Batiment.Pierre.*;
+import Caylus.Batiment.Prestige.*;
+import Caylus.Batiment.Residentiel.Residence;
 
 
 import java.awt.*;
@@ -31,10 +34,9 @@ public class Joueur {
         nourriture=0;
         tissu=0;
         bois=0;
-        pierre=1;
+        pierre=0;
         or=0;
         ouvrier=6;
-        maison=20;
         prestige = 0;
         propriété = new ArrayList<>();
     }
@@ -74,22 +76,10 @@ public class Joueur {
         return ouvrier;
     }
 
-    public int getMaison() {
-        return maison;
-    }
-
     public int getPrestige() {
         return prestige;
     }
 
-
-
-    public boolean poseMaison(){
-        if(maison==0)
-            return false;
-        maison--;
-        return true;
-    }
 
     public Batiment dernierePropriete(){
         return propriété.get(propriété.size()-1);
@@ -104,58 +94,109 @@ public class Joueur {
         Batiment bat=null;
         int[] coutConst;
         switch (nomBat) {
-            case "Carrière":
+            case "Carrière  1 bois + 1 pierre":
                 bat = new BCarriere();
                 break;
-            case "Notaire":
+            case "Notaire 1 bois + 1 tissu":
                 bat = new BNotaire();
                 break;
-            case "Scierie":
+            case "Scierie 1bois + 1pierree":
                 bat = new BScierie();
                 break;
-            case "Marché":
+            case "Marché 1 bois + 1 ressource":
                 bat = new BMarche();
                 break;
-            case "Maçon":
+            case "Maçon 1 bois + 1 pierre":
                 bat = new BMarche();
-
                 break;
-            case "Ferme Tissu":
+            case "Ferme Tissu 1 bois + 1 nourriture":
                 bat = new BFermeSoie();
-
                 break;
-            case "Ferme Nourriture":
+            case "Ferme Nourriture  1 bois + 1 nourriture":
                 bat = new BFermeNourriture();
                 break;
-            case "Colporteur":
+            case "Colporteur 1 bois + 1 ressource":
                 bat = new BColporteur();
                 break;
+            case "Eglise 1 pierre + 1 tissu":
+                bat = new PEglise();
+                break;
+            case "Parc 1 bois + 1 nourriture":
+                bat = new PParc();
+                break;
+            case "Banque 1 bois + 1 pierre":
+                bat = new PBanque();
+                break;
+            case "Alchimiste 1 pierre + 1 nourriture":
+                bat = new PAlchimiste();
+                break;
+            case "Ferme 1 pierre + 1 nourriture":
+                bat = new PFerme();
+                break;
+            case "Tailleur 1 bois + 1 tissu":
+                bat = new PTailleur();
+                break;
+            case "Atelier 1 pierre + 1 nourritur":
+                bat = new PAtelier();
+                break;
+            case "Architecte 1 bois + 1 nouriture":
+                bat = new PArchitecte();
+                break;
+            case "Residentiel":
+                bat = new Residence();
+                break;
+            case "Cathedrale 1 bois + 4 pierres + 3 or":
+                bat = new Cathedrale();
+                break;
+            case "Monument 4 pierrs + 1 2 or":
+                bat = new Monument();
+                break;
+            case "Bibliothèque 3 bois + 1 or":
+                bat = new Bibliotheque();
+                break;
+            case "Grenier 3 nourriture + 1 or":
+                bat = new Grenier();
+                break;
+            case "Tisserand 3 tissus + 1 or":
+                bat = new Tisserand();
+                break;
+            case "Statue 2 pierres + 1 or":
+                bat = new Statue();
+                break;
+            case "Theatre 3 bois + 2 or":
+                bat = new Theatre();
+                break;
+            case "Université 3 pierres + 2 or":
+                bat = new Universite();
+                break;
+            case "Hotel 3 pierres + 2 or":
+                bat = new Hotel();
+                break;
         }
+
         if(bat !=null){
             coutConst=bat.coutContructon();
-            if(coutConst[0]<=or && coutConst[1]<=nourriture && coutConst[2]<=pierre && coutConst[3]<=bois && coutConst[4]<=tissu && 0<maison ){
+            if(bat instanceof BColporteur || bat instanceof BMarche)
+                //faire des choses
+
+            if(coutConst[0]<=or && coutConst[1]<=nourriture && coutConst[2]<=pierre && coutConst[3]<=bois && coutConst[4]<=tissu){
                 donne("or", coutConst[0]);
                 donne("nourriture", coutConst[1]);
                 donne("pierre", coutConst[2]);
                 donne("bois", coutConst[3]);
                 donne("tissu", coutConst[4]);
-                poseMaison();
                 bat.setProprietaire(this);
+                donne("prestige",bat.getPrestige());
                 propriété.add(bat);
                 return true;
             }
         }
-
         return  false;
     }
 
 
     public void reprendOuvrier(){
         ouvrier++;
-    }
-
-    public void reprendMaison(){
-        maison++;
     }
 
     public boolean donne(String ressource, int quantité) {

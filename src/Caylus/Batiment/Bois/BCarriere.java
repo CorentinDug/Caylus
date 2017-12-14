@@ -21,12 +21,13 @@ public class BCarriere extends Batiment {
         coutConst[2]=1;
         coutConst[3]=1;
         coutConst[4]=0;
+        prestige=2;
     }
 
     public int active(){
         recompenseOuvrier();
         recompenseProprietaire();
-        return -1;
+        return 0;
     }
 
     /**
@@ -36,9 +37,5 @@ public class BCarriere extends Batiment {
         ouvrier.recoit("pierre", 2);
         return true;
     }
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
 
-    public void recompensePrestige() {}
 }
