@@ -216,6 +216,7 @@ public class View extends JFrame {
 
         JLabel fond = new JLabel();
         fond.setIcon(new ImageIcon("res/img/joueur.png"));
+        //g.drawImage(fond, 0, 0, this.getWidth(), this.getHeight(), this);
 
         Font font = new Font("Arial",Font.BOLD,30);
         Font fontRess = new Font("Arial",Font.BOLD,20);
