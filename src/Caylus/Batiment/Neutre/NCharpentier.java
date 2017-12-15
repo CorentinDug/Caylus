@@ -27,6 +27,10 @@ public class NCharpentier extends Batiment {
         choix.add("Colporteur 1 bois + 1 ressource");
     }
 
+    public boolean isNeutre(){
+        return true;
+    }
+
     public int active(View view) {
         choixPossible = new String[choix.size()];
         int i = 0;

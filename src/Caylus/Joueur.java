@@ -176,8 +176,9 @@ public class Joueur {
 
         if(bat !=null){
             coutConst=bat.coutContructon();
-            if(bat instanceof BColporteur || bat instanceof BMarche)
+            if(bat instanceof BColporteur || bat instanceof BMarche) {
                 //faire des choses
+            }
 
             if(coutConst[0]<=or && coutConst[1]<=nourriture && coutConst[2]<=pierre && coutConst[3]<=bois && coutConst[4]<=tissu){
                 donne("or", coutConst[0]);
@@ -186,7 +187,7 @@ public class Joueur {
                 donne("bois", coutConst[3]);
                 donne("tissu", coutConst[4]);
                 bat.setProprietaire(this);
-                donne("prestige",bat.getPrestige());
+                recoit("prestige",bat.getPrestige());
                 propriété.add(bat);
                 return true;
             }
@@ -261,7 +262,7 @@ public class Joueur {
                 or+=quantité;
                 break;
             case "prestige":
-                maison +=quantité;
+                prestige +=quantité;
                 break;
         }
     }

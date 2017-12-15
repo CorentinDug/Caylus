@@ -9,7 +9,7 @@ public class Residence extends Batiment {
      * Constructeur initialisant le nom
      */
     public Residence(){
-        super("Résidence");
+        super("Residence");
         prestige=2;
     }
 

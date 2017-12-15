@@ -3,7 +3,6 @@ package Caylus.Batiment.Prestige;
 import Caylus.Batiment.Batiment;
 
 public class Statue extends Batiment {
-
     /**
      * Constructeur initialisant le nom
      */

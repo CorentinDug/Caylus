@@ -1,6 +1,7 @@
 package Caylus.Batiment.Speciaux;
 
 import Caylus.Batiment.Batiment;
+import Caylus.View;
 
 /**
  * Created by Schnoeby on 01/12/2017.
@@ -15,7 +16,7 @@ public class Joute extends Batiment {
         super("Joute");
     }
 
-    public int active() {
+    public int active(View view) {
         if (!recompenseOuvrier())
             return  1;
         return 0;

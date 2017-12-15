@@ -212,20 +212,8 @@ public class Model {
     }
 
     public String getInfoPhase(){
-        if(noPhase==1)
-            return "";
         if(noPhase==2)
             return "Le cout est de "+coutDePose+" deniers";
-        if(noPhase==3)
-            return "Activation de "+cases[compteurBat].getBatiment().getNom();
-        if(noPhase==4)
-            return "Déplacement du prévôt";
-        if(noPhase==5)
-            return "L’activation des bâtiments";
-        if(noPhase==6)
-            return "Construction du château";
-        if(noPhase==7)
-            return "Fin de tour";
         return "";
     }
 
@@ -321,24 +309,25 @@ public class Model {
 
     public void poseOuvrier(int coordonnee) {
         Joueur joueur = ordreDePhase2.get(0);
-        if ( joueur.getDenier() >= coutDePose) {
+        if (joueur.getDenier() >= coutDePose || cases[5].getBatiment().getOuvrier() != joueur) {
             if (getBatiment(coordonnee) != null) {
                 if (joueur.getOuvrier() != 0) {
-                    if ( getBatiment(coordonnee).engager(joueur)) {
-                        joueur.donne("denier",coutDePose);
+                    if (getBatiment(coordonnee).engager(joueur)) {
+                        if (cases[5].getBatiment().getOuvrier() != joueur)
+                            joueur.donne("denier", coutDePose);
                         joueur.poseOuvrier();
                         ordreDePhase2.remove(0);
                         view.poserOuvrier(coordonnee, joueur);
                     } else {
                         view.problèmeOuvrier(joueur.getNom(), -3);
                     }
-                }else{
+                } else {
                     view.problèmeOuvrier(joueur.getNom(), -2);
                 }
-            }else{
+            } else {
                 view.problèmeOuvrier(joueur.getNom(), -1);
             }
-        }else{
+        } else {
             view.problèmeOuvrier(joueur.getNom(), -4);
         }
         phase2();
@@ -358,22 +347,94 @@ public class Model {
         phase2();
         view.editPJoueur();
         view.editPInfo();
-        compteurBat=0;
     }
 
-    public void phase3()  {
+    public void phase3() {
         view.editPInfo();
-        Case caseBat=cases[compteurBat];
-        if(caseBat.getBatiment()!=null){
-            if(caseBat.getOuvrier()!=null){
-                caseBat.getBatiment().active(view);
-                view.editPJoueur();
-                view.editPInfo();
+        Joueur ouvrier;
+        ArrayList<Joueur> newOrdre;
+        for (int i = 0; i <= 5; i++) {
+            ouvrier = cases[i].getOuvrier();
+            if (cases[i].getBatiment() != null) {
+                if (ouvrier != null) {
+                    int index = cases[i].getBatiment().active(view);
+
+                    if (index == -1 || index == -2 || index == -3)
+                        view.problèmeConstruction(index, ouvrier.getNom(), cases[i].getNomProprio());
+
+                    if(index==1){
+                        int coordonné = view.panneauPorte(ouvrier.getNom());
+                        if (ouvrier.getOuvrier() != 0) {
+                            if (getBatiment(coordonné).engager(ouvrier)) {
+                                ouvrier.poseOuvrier();
+                                view.poserOuvrier(coordonné, ouvrier);
+                            } else {
+                                    view.problèmeOuvrier(ouvrier.getNom(), -3);
+                                }
+                        } else {
+                            view.problèmeOuvrier(ouvrier.getNom(), -2);
+                        }
+                    }
+
+                    if (index == 3) {
+                        int rang = -1;
+                        int coordonnée = -1;
+                        rang = view.deplPrevot(cases[i].getOuvrier());
+                        switch (rang) {
+                            case 0:
+                                coordonnée = prévot.getCoordonnée() - 3;
+                                break;
+                            case 1:
+                                coordonnée = prévot.getCoordonnée() - 2;
+                                break;
+                            case 2:
+                                coordonnée = prévot.getCoordonnée() - 1;
+                                break;
+                            case 3:
+                                coordonnée = prévot.getCoordonnée();
+                                break;
+                            case 4:
+                                coordonnée = prévot.getCoordonnée() + 1;
+                                break;
+                            case 5:
+                                coordonnée = prévot.getCoordonnée() + 2;
+                                break;
+                            case 6:
+                                coordonnée = prévot.getCoordonnée() + 3;
+                                break;
+                        }
+                        if (coordonnée < 6)
+                            coordonnée = 6;
+                        if (coordonnée > 33)
+                            coordonnée = 33;
+                        view.setPrévot(coordonnée);
+                        prévot.coordonnée = coordonnée;
+                    }
+                    if(index==5){
+                        newOrdre = new ArrayList<Joueur>();
+                        newOrdre.add(cases[i].getBatiment().getOuvrier(0));
+                        newOrdre.add(cases[i].getBatiment().getOuvrier(1));
+                        newOrdre.add(cases[i].getBatiment().getOuvrier(3));
+                        for(Joueur joueur : ordreDeTour){
+                            for(Joueur joueurOrdre : newOrdre){
+                                if(joueur==joueurOrdre)
+                                    ordreDeTour.remove(joueurOrdre);
+                            }
+                        }
+                        newOrdre.addAll(ordreDeTour);
+                        ordreDeTour=new ArrayList<Joueur>();
+                        ordreDeTour.addAll(newOrdre);
+
+                    }
+
+                    cases[i].getBatiment().retireOuvrier();
+                    view.retireOuvrier(i);
+                    view.editPJoueur();
+                    view.editPInfo();
+                }
             }
         }
-        compteurBat++;
-        if(compteurBat==6)
-            noPhase++;
+        noPhase++;
     }
 
     public void phase4() {
@@ -430,37 +491,98 @@ public class Model {
             noPhase++;
         }
 
-    public void phase5()  {
+    public void phase5() {
         view.editPInfo();
         Joueur ouvrier;
-        for(int i=6;i<=prévot.getCoordonnée();i++){
-            if(cases[i].getBatiment()!=null){
-                if(cases[i].getOuvrier()!=null){
+        String[] batResidence;
+        ArrayList<String> batPossibleRes;
+        for (int i = 6; i <= prévot.getCoordonnée(); i++) {
+            batPossibleRes = new ArrayList<>();
+            if (cases[i].getBatiment() != null) {
+                if (cases[i].getOuvrier() != null) {
+                    ouvrier = cases[i].getOuvrier();
                     int index = cases[i].getBatiment().active(view);
-                    if(index==-1 || index==-2 || index==-3 ){
-                            view.problèmeConstruction(index,cases[i].getNomOuvrier(),cases[i].getNomProprio());
-                    }
-                    if(index==10){
-                        ouvrier = cases[i].getOuvrier();
-                        for(Case cases : cases){
-                            if(cases.getBatiment()==null){
-                                cases.setBatiment(ouvrier.dernierePropriete());
+                    if (index == 0)
+                        cases[i].getBatiment().retireOuvrier();
+                    if (index == -1 || index == -2 || index == -3)
+                        view.problèmeConstruction(index, cases[i].getNomOuvrier(), cases[i].getNomProprio());
+
+                    if (index == 10) {
+                        for (Case caseVerif : cases) {
+                            if (caseVerif.getBatiment() == null) {
+                                caseVerif.setBatiment(ouvrier.dernierePropriete());
                                 break;
                             }
-
                         }
-                        view.editImageCase();
                     }
+                    if (index == 11) {
+                        int m=-1;
+                        cases[15]=new Case();
+                        for (Case caseVerif : cases) {
+                            if (caseVerif.getBatiment()!=null)
+                                if(caseVerif.getBatiment().isNeutre())
+                                    batPossibleRes.add(caseVerif.getNomBat());
+                        }
+                        for(Batiment bat : ouvrier.propriété)
+                            batPossibleRes.add(bat.getNom());
+
+                        batResidence = new String[batPossibleRes.size()];
+                        for(int j =0;j<batPossibleRes.size();j++)
+                            batResidence[j]=batPossibleRes.get(j);
+
+                        String batchoisis = view.choixConst(batResidence, cases[i].getNomOuvrier());
+                        if (batchoisis!=null){
+                            for (Case caseVerif : cases) {
+                                if (caseVerif.getNomBat().equals(batchoisis))
+                                    caseVerif.setBatiment(ouvrier.dernierePropriete());
+                            }
+                        }else{
+                            view.problèmeConstruction(-5,ouvrier.getNom(),null);
+                            ouvrier.propriété.remove(ouvrier.propriété.size()-1);
+                        }
+                    }
+                    if (index == 12) {
+                        int nbrRes=1;
+                        for (Case cases : cases) {
+                            if (cases.getNomBat().equals("Residence"))
+                                batPossibleRes.add(cases.getNomBat()+" "+nbrRes++);
+                        }
+                        batResidence = new String[batPossibleRes.size()];
+                        for(int j =0;j<batPossibleRes.size();j++)
+                            batResidence[j]=batPossibleRes.get(j);
+
+                        String batchoisis = view.choixConst(batResidence, cases[i].getNomOuvrier());
+                        if (batchoisis!=null){
+                            nbrRes=0;
+                            for (Case caseVerif : cases) {
+                                if (caseVerif.getNomBat().equals("Residence")) {
+                                    nbrRes++;
+                                    if (batchoisis.equals(caseVerif.getNomBat() + " " + nbrRes++))
+                                        caseVerif.setBatiment(ouvrier.dernierePropriete());
+                                }
+                            }
+                        }else{
+                            view.problèmeConstruction(-5,ouvrier.getNom(),null);
+                            ouvrier.propriété.remove(ouvrier.propriété.size()-1);
+                        }
+                    }
+                    cases[i].getBatiment().retireOuvrier();
+                    view.retireOuvrier(i);
+                    view.editImageCase();
                     view.editPJoueur();
                     view.editPInfo();
+
                 }
             }
+
         }
         noPhase++;
     }
 
+
     public void phase6()  {
         view.editPInfo();
+        chateau.constPartie(view);
 
 
     }

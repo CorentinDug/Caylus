@@ -14,6 +14,10 @@ public class NFerme extends Batiment {
         super("NFerme");
     }
 
+    public boolean isNeutre(){
+        return true;
+    }
+
     public int active(View view){
         recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         recompenseOuvrier(recOuvrier);
