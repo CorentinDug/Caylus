@@ -33,7 +33,7 @@ public class ControlButtonMenu implements ActionListener {
             }
             viewMenu.undisplay();
             Model model = new Model(nbrJoueurs);
-            ControlGroup controlGroup = new ControlGroup(model);
+            ControlGroup controlGroup = new ControlGroup(model, backgroundMusic);
         }
 
     }

@@ -34,6 +34,11 @@ public class BackgroundMusic implements Runnable {
         return isPlay;
     }
 
+
+    public void stop(){
+        clip.stop();
+    }
+
     /**
      * Lancer la musique
      */
