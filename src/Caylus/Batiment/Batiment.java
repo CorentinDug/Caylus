@@ -29,6 +29,10 @@ public class Batiment {
         return ouvrier;
     }
 
+    public Joueur getOuvrier(int index) {
+        return null;
+    }
+
     public Joueur getProprietaire(){return proprietaire;}
 
     public boolean engager(Joueur joueur) {
@@ -36,6 +40,16 @@ public class Batiment {
             return false;
         ouvrier=joueur;
         return true;
+    }
+
+
+    public void retireOuvrier() {
+        ouvrier = null;
+    }
+
+
+    public boolean isNeutre(){
+        return false;
     }
 
     public int getPrestige() {

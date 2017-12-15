@@ -11,6 +11,8 @@ public class Chateau {
     protected Joueur[] muraille;
     protected Joueur[] tour;
     protected ArrayList<Joueur> ordreConstruction;
+    protected int nbrPartie;
+    protected String mess;
 
 
     public  Chateau(){
@@ -18,9 +20,15 @@ public class Chateau {
         donjon= new Joueur[10];
         donjon= new Joueur[14];
         ordreConstruction = new ArrayList<>();
+        mess = "Choisissez un nbr de partie";
     }
 
-
+    public int constPartie(View view){
+        for(Joueur joueur : ordreConstruction){
+            nbrPartie = view.panneauChateau(joueur.getNom());
+        }
+        return nbrPartie;
+    }
 
     public int ajouterConstructeur(Joueur joueur){
         for(Joueur joueurs : ordreConstruction){

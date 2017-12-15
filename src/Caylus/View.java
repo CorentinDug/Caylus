@@ -1,15 +1,9 @@
 package Caylus;
 
-import com.apple.eawt.Application;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +28,9 @@ public class View extends JFrame {
 
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
+    protected JLabel casesAuberge;
+    protected JLabel caseEcurie2;
+    protected JLabel caseEcurie3;
 
     protected JLabel[] ordreContruction;
     protected JLabel[] donjon;
@@ -52,7 +49,7 @@ public class View extends JFrame {
         this.model = model;
         setTitle("Caylus");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
         pack();
         setSize(1300, 1000);
         setLocationRelativeTo(null);
@@ -416,52 +413,68 @@ public class View extends JFrame {
     }
 
     public void initPLateau() {
-        panelPlateau = new PanelPrinc(1000,1000);
+        panelPlateau = new PanelPrinc(1000, 1000);
         panelPlateau.setLayout(null);
+        casesAuberge = new JLabel();
+        caseEcurie2 = new JLabel();
+        caseEcurie3 = new JLabel();
 
         int x = 400;
         int y = 200;
-        int decalColonne =90;
-        int decalLigne =80;
-        int j=3;
+        int decalColonne = 90;
+        int decalLigne = 80;
+        int j = 3;
 
-        cases=new JLabel[34];
-        casesOuvrier=new JLabel[34];
-        for(int i=0;i<34;i++) {
+        cases = new JLabel[34];
+        casesOuvrier = new JLabel[34];
+        for (int i = 0; i < 34; i++) {
             cases[i] = new JLabel();
             casesOuvrier[i] = new JLabel();
             panelPlateau.add(casesOuvrier[i]);
             panelPlateau.add(cases[i]);
-            if(j%6==0 && j!=0){
-                y+=decalLigne;
+            if (j % 6 == 0 && j != 0) {
+                y += decalLigne;
             }
             cases[i].setBounds(x, y, 70, 70);
-            casesOuvrier[i].setBounds(x+50, y+50, 20, 20);
-            if(j%6==0 && j!=0){
-                decalColonne=-decalColonne;
-                y+=decalLigne;
+
+            casesOuvrier[i].setBounds(x + 50, y + 50, 20, 20);
+            if (i == 4){
+                caseEcurie2.setBounds(x + 50, y+20 , 20, 20);
+                caseEcurie3.setBounds(x + 50, y , 20, 20);
+                panelPlateau.add(casesAuberge);
             }
-            if(i==5){
-                x+=3*decalColonne;
-                decalLigne =50;
-                j=4;
+            if (i == 5){
+                casesAuberge.setBounds(x + 50, y , 20, 20);
+                panelPlateau.add(casesAuberge);
             }
 
-            x+=decalColonne;
+
+            if (j % 6 == 0 && j != 0) {
+                decalColonne = -decalColonne;
+                y += decalLigne;
+            }
+            if (i == 5) {
+                x += 3 * decalColonne;
+                decalLigne = 50;
+                j = 4;
+            }
+
+            x += decalColonne;
             j++;
         }
+
         ordreContruction = new JLabel[model.nbrJoueurs];
-        for(int i=0;i<model.nbrJoueurs;i++) {
-            ordreContruction[i]= new JLabel();
+        for (int i = 0; i < model.nbrJoueurs; i++) {
+            ordreContruction[i] = new JLabel();
             panelPlateau.add(ordreContruction[i]);
-            ordreContruction[i].setBounds(20,50+i*30,25,25);
+            ordreContruction[i].setBounds(20, 50 + i * 30, 25, 25);
         }
 
         donjon = new JLabel[6];
-        for(int i=0;i<6;i++) {
-            donjon[i]= new JLabel();
+        for (int i = 0; i < 6; i++) {
+            donjon[i] = new JLabel();
             panelPlateau.add(donjon[i]);
-            donjon[i].setBounds(50+i*30,230,25,25);
+            donjon[i].setBounds(50 + i * 30, 230, 25, 25);
         }
         muraille = new JLabel[10];
         tour = new JLabel[6];
@@ -479,6 +492,7 @@ public class View extends JFrame {
             label.setOpaque(true);
         }
     }
+
 
     public void editImageCase() {
         for (int i = 0; i < 34; i++)
@@ -515,9 +529,32 @@ public class View extends JFrame {
         this.setVisible(true);
     }
 
-    public void poserOuvrier(int coordonnees, Joueur joueur){
-        casesOuvrier[coordonnees].setBackground(joueur.getCouleur());
-        casesOuvrier[coordonnees].setOpaque(true);
+    public void poserOuvrier(int coordonnees, Joueur joueur) {
+        JLabel label = new JLabel();
+        if (coordonnees == 5) {
+            if (casesOuvrier[coordonnees].getBackground() == label.getBackground()) {
+                casesOuvrier[coordonnees].setBackground(joueur.getCouleur());
+                casesOuvrier[coordonnees].setOpaque(true);
+            } else {
+                casesAuberge.setBackground(joueur.getCouleur());
+                casesAuberge.setOpaque(true);
+            }
+
+        } else if (coordonnees == 4) {
+            if (casesOuvrier[coordonnees].getBackground() == label.getBackground()) {
+                casesOuvrier[coordonnees].setBackground(joueur.getCouleur());
+                casesOuvrier[coordonnees].setOpaque(true);
+            } else if (caseEcurie2.getBackground() == label.getBackground()){
+                caseEcurie2.setBackground(joueur.getCouleur());
+                caseEcurie2.setOpaque(true);
+            }else{
+                caseEcurie3.setBackground(joueur.getCouleur());
+                caseEcurie3.setOpaque(true);
+            }
+        } else {
+            casesOuvrier[coordonnees].setBackground(joueur.getCouleur());
+            casesOuvrier[coordonnees].setOpaque(true);
+        }
     }
 
     public void constChateau(int coordonnees, Joueur joueur){
@@ -569,6 +606,14 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Vous avez déjà un ouvrier qui travaille "+joueur);
     }
 
+    public void retireOuvrier(int i){
+        if(i==4){
+            caseEcurie2.setOpaque(false);
+            caseEcurie3.setOpaque(false);
+        }
+        casesOuvrier[i].setOpaque(false);
+    }
+
     public String panneauRecompense(String[] tabRec,String mess){
         JOptionPane jop = new JOptionPane();
         String recompense = (String)jop.showInputDialog(null,
@@ -581,6 +626,33 @@ public class View extends JFrame {
                 tabRec, "Choisir");
         return recompense;
     }
+
+    public int panneauChateau(String nom){
+        int nbrPartie=-1;
+        while(nbrPartie<0 || nbrPartie >30)
+            nbrPartie = Integer.parseInt(JOptionPane.showInputDialog(null, "Entrez un nombre de partie "+nom)) ;
+        return nbrPartie;
+    }
+
+    public int panneauPorte(String nom){
+        int coordonné=-1;
+        while(coordonné<0 || coordonné >33)
+            coordonné = Integer.parseInt(JOptionPane.showInputDialog(null, "Entrez une coordonnée "+nom)) ;
+        return coordonné;
+    }
+
+    public String choixConst(String[] bat, String joueur){
+            JOptionPane jop = new JOptionPane();
+            return (String)jop.showInputDialog(null,
+
+                    "Faites un choix!",
+
+                    "Choisir où construire la résidence",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    bat, "Choisir");
+    }
+
 
     public int deplPrevot(Joueur joueur){
         String[] cases = {"-3 case", "-2 cases", "-1 cases","0 case","+1 case", "+2 cases", "+3 cases"};
@@ -596,6 +668,8 @@ public class View extends JFrame {
         return rang;
     }
 
+
+
     public void problèmeConstruction(int index, String ouvrier, String proprio) {
         if(index==-1)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+ouvrier);
@@ -603,6 +677,8 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+proprio);
         if(index==-3)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+proprio+" et "+ ouvrier);
+        if(index==-5)
+            JOptionPane.showMessageDialog(null, "Vous n'avez pas de lieu de construction "+ouvrier);
     }
 
 

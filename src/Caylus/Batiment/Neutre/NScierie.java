@@ -12,6 +12,10 @@ public class NScierie extends Batiment {
         super("NScierie");
     }
 
+    public boolean isNeutre(){
+        return true;
+    }
+
     public int active(View view){
         recompenseOuvrier();
         return 0;
