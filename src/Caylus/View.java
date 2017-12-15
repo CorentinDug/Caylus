@@ -18,9 +18,8 @@ import javax.swing.JOptionPane;
 
 public class View extends JFrame {
     private Model model;
-    private  PanelPrinc panelPlateau;
+    private PanelPrinc panelPlateau;
     private JPanel panelPrinc, panelInfo, panelJoueur;
-
     private JLabel ress1, ress2, ress3, ress4, ress5 ;
     private JLabel joueur1,joueur2,joueur3,joueur4,joueur5;
     private JPanel  ressJ1, ressJ2, ressJ3, ressJ4, ressJ5;
@@ -29,7 +28,9 @@ public class View extends JFrame {
     private JLabel denierJ3,orJ3,nourritureJ3,pierreJ3,boisJ3,tissuJ3,prestigeJ3;
     private JLabel denierJ4,orJ4,nourritureJ4,pierreJ4,boisJ4,tissuJ4,prestigeJ4;
     private JLabel denierJ5,orJ5,nourritureJ5,pierreJ5,boisJ5,tissuJ5,prestigeJ5;
-
+    private JMenuBar menuBar;
+    protected JMenuItem aide,quitter,newGame;
+    private JMenu menu;
 
     protected JLabel[] cases;
     protected JLabel[] casesOuvrier;
@@ -51,17 +52,17 @@ public class View extends JFrame {
         this.model = model;
         setTitle("Caylus");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
         pack();
         setSize(1300, 1000);
         setLocationRelativeTo(null);
         initPLateau();
         initPInfo();
         initPJoueur();
+        initMenu();
         createView();
         setPrévot(model.prévot.coordonnée);
         setBaillis(model.baillis.coordonnée);
-
         icone = Toolkit.getDefaultToolkit().getImage("res/img/icone.png");
         iconeDUT = new ImageIcon("res/img/dut.png");
         ImageIcon imageIcon = new ImageIcon("res/img/icone.png");
@@ -73,6 +74,21 @@ public class View extends JFrame {
         newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
         iconeDUT = new ImageIcon(newimg);
         img = new ImageIcon("res/img/icone.png").getImage();
+
+    }
+
+    private void initMenu() {
+        menuBar = new JMenuBar();
+        menu = new JMenu("menu");
+        quitter = new JMenuItem("quitter");
+        aide = new JMenuItem("aide");
+        newGame = new JMenuItem("Nouvelle Partie");
+        menu.add(newGame);
+        menu.add(aide);
+        menu.addSeparator();
+        menu.add(quitter);
+        menuBar.add(menu);
+        setJMenuBar(menuBar);
     }
 
     public void setMouseListener(MouseAdapter listener) {
@@ -80,6 +96,12 @@ public class View extends JFrame {
         panelPrinc.addMouseListener(listener);
     }
 
+    public void setMenuListener(ActionListener listener){
+        quitter.addActionListener(listener);
+        aide.addActionListener(listener);
+        newGame.addActionListener(listener);
+
+    }
 
     public void editPInfo() {
         phase.setText(model.getPhase());
