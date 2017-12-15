@@ -9,6 +9,7 @@ public class BackgroundMusic implements Runnable {
     Thread  UnThread ;
     Clip clip;
     boolean isPlay = true;
+    boolean isMenu = true;
 
     /**
      * Créer une musique de fond
@@ -44,12 +45,28 @@ public class BackgroundMusic implements Runnable {
      */
     public void run() {
         try {
-            clip = AudioSystem.getClip();
-            File file = new File("res/sound/musique1.wav");
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(file);
-            clip.open(inputStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-            clip.start();
+
+
+            if (isMenu){
+                clip = AudioSystem.getClip();
+                File file;
+                file = new File("res/sound/musiqueIntro.wav");
+                AudioInputStream inputStream = AudioSystem.getAudioInputStream(file);
+                clip.open(inputStream);
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
+                clip.start();
+            }else {
+                clip.stop();
+                clip = AudioSystem.getClip();
+                File file;
+                file = new File("res/sound/musique1.wav");
+                AudioInputStream inputStream = AudioSystem.getAudioInputStream(file);
+                clip.open(inputStream);
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
+                clip.start();
+            }
+
+
         } catch (IOException e) {
             System.err.println(e);
         } catch (LineUnavailableException e) {

@@ -11,6 +11,7 @@ public class ControlButtonMenu implements ActionListener {
     private BackgroundMusic backgroundMusic;
 
 
+
     public ControlButtonMenu(ViewMenu viewMenu, BackgroundMusic backgroundMusic) {
         this.viewMenu = viewMenu;
         this.backgroundMusic = backgroundMusic;
@@ -31,6 +32,8 @@ public class ControlButtonMenu implements ActionListener {
             }else if (e.getSource() == viewMenu.getCinqJoueurs()) {
                 nbrJoueurs = 5;
             }
+            backgroundMusic.isMenu = false;
+            backgroundMusic.run();
             viewMenu.undisplay();
             Model model = new Model(nbrJoueurs);
             ControlGroup controlGroup = new ControlGroup(model, backgroundMusic);
