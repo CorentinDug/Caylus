@@ -9,27 +9,12 @@ public class Statue extends Batiment {
      */
     public Statue(){
         super("Statue");
-
+        coutConst[0]=1;
+        coutConst[1]=0;
+        coutConst[2]=2;
+        coutConst[3]=0;
+        coutConst[4]=0;
+        prestige=7;
     }
 
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

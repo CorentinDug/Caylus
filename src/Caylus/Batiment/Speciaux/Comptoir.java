@@ -14,16 +14,18 @@ public class Comptoir extends Batiment {
         super("Comptoir");
     }
 
-    public void active(){
+    public int active(){
         recompenseOuvrier();
+        return 0;
     }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
+    public boolean recompenseOuvrier() {
         System.out.println("marche");
         ouvrier.recoit("denier", 3);
+        return true;
     }
 }
 

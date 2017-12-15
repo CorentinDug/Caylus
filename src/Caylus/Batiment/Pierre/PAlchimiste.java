@@ -13,32 +13,42 @@ public class PAlchimiste extends Batiment {
      */
     public PAlchimiste(){
         super("PAlchimiste");
+        coutConst[0]=0;
+        coutConst[1]=1;
+        coutConst[2]=0;
+        coutConst[3]=1;
+        coutConst[4]=0;
+        prestige=6;
     }
 
-    public void active(){
+    public int active(){
         recOuvrier = view.panneauRecompense(choixOuvrier,mess);
         recompenseOuvrier(recOuvrier);
         recProprio = view.panneauRecompense(choixProprio,messProprio);
         recompenseProprietaire(recProprio);
+        return 0;
     }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
     public void recompenseOuvrier(String choix) {
-        ouvrier.recoit("or",1);
+        boolean aDonné=false;
         switch (choix) {
             case "1 nourriture + 1 tissu":
-                ouvrier.donne("nourriture", 1);
-                ouvrier.donne("tissu", 1);
+                if(ouvrier.donne("nourriture", 1))
+                    if( ouvrier.donne("tissu", 1))
+                        aDonné=true;
                 break;
             case "1 nourriture + 1 pierre":
-                ouvrier.donne("nourriture",1);
-                ouvrier.donne("pierre",1);
+                if(ouvrier.donne("nourriture", 1))
+                    if( ouvrier.donne("pierre", 1))
+                        aDonné=true;
                 break;
             case "1 nourriture + 1 bois":
-                ouvrier.donne("nourriture",1);
-                ouvrier.donne("bois",1);
+                if(ouvrier.donne("nourriture", 1))
+                    if( ouvrier.donne("bois", 1))
+                        aDonné=true;
                 break;
             case "2 nourritures":
                 ouvrier.donne("nourriture",1);
@@ -65,12 +75,16 @@ public class PAlchimiste extends Batiment {
                 ouvrier.donne("bois",2);
                 break;
         }
+        if(aDonné == true)
+            ouvrier.recoit("or",1);
     }
 
     /**
      * Donne la récompense propriétaire dû au joueur
      */
     public void recompenseProprietaire(String choix) {
+        if(proprietaire!=null && proprietaire!=ouvrier)
+            proprietaire.recoit("prestige",1);
         switch(choix){
             case "1 de chaque":
                 proprietaire.donne("nourriture", 1);

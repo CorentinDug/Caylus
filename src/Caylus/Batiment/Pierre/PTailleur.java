@@ -9,34 +9,49 @@ public class PTailleur extends Batiment {
      */
     public PTailleur(){
         super("PTailleur");
+        coutConst[0]=0;
+        coutConst[1]=0;
+        coutConst[2]=0;
+        coutConst[3]=1;
+        coutConst[4]=1;
+        prestige=6;
     }
 
-    public void active(){
-        recompenseOuvrier();
-        recompenseProprietaire();
+    public int active(){
+        int retour=0;
+        if(!recompenseOuvrier()){
+            retour =-1;
+        }
+        if(!recompenseProprietaire()){
+            if(retour ==-1)
+                retour = -3;
+            else
+                retour = -2;
+        }
+        return retour;
     }
-
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-        proprietaire.recoit("prestige",4);
-        proprietaire.donne("tissu", 2);
+    public boolean recompenseOuvrier() {
+        if(ouvrier.donne("tissu", 2)){
+            ouvrier.recoit("prestige",4);
+            return true;
+        }
+        return false;
     }
 
     /**
      * Donne la récompense propriétaire dû au joueur
      */
-    public void recompenseProprietaire() {
-        proprietaire.recoit("prestige",6);
-        proprietaire.donne("tissu", 3);
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
+    public boolean recompenseProprietaire() {
+        if(proprietaire!=null && proprietaire!=ouvrier)
+            proprietaire.recoit("prestige",1);
+        if(proprietaire.donne("tissu", 3)){
+            proprietaire.recoit("prestige",6);
+            return true;
+        }
+        return false;
     }
 }

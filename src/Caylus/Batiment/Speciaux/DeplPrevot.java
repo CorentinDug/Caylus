@@ -15,29 +15,9 @@ public class DeplPrevot extends Batiment {
 
     }
 
-    public void active(){
-        recompenseOuvrier();
+    public int active(){
+        return 3;
     }
 
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }
 

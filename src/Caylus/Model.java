@@ -306,13 +306,13 @@ public class Model {
                     ordreDePhase2.remove(0);
                     view.constChateau(coordonnée, joueur);
                 }else{
-                    view.problèmeOuvrier(joueur.getNom(), 4);
+                    view.problèmeOuvrier(joueur.getNom(), -4);
                 }
             }else{
-                view.problèmeOuvrier(joueur.getNom(), 2);
+                view.problèmeOuvrier(joueur.getNom(), -2);
             }
         else{
-            view.problèmeChateau(joueur.getNom(),1);
+            view.problèmeChateau(joueur.getNom(),-1);
         }
         phase2();
         view.editPInfo();
@@ -330,16 +330,16 @@ public class Model {
                         ordreDePhase2.remove(0);
                         view.poserOuvrier(coordonnee, joueur);
                     } else {
-                        view.problèmeOuvrier(joueur.getNom(), 3);
+                        view.problèmeOuvrier(joueur.getNom(), -3);
                     }
                 }else{
-                    view.problèmeOuvrier(joueur.getNom(), 2);
+                    view.problèmeOuvrier(joueur.getNom(), -2);
                 }
             }else{
-                view.problèmeOuvrier(joueur.getNom(), 1);
+                view.problèmeOuvrier(joueur.getNom(), -1);
             }
         }else{
-            view.problèmeOuvrier(joueur.getNom(), 4);
+            view.problèmeOuvrier(joueur.getNom(), -4);
         }
         phase2();
         view.editPInfo();
@@ -421,7 +421,7 @@ public class Model {
                 prévot.coordonnée=coordonnée;
                 joueur.donne("denier", cout);
                 } else {
-                    view.problèmeOuvrier(joueur.getNom(), 4);
+                    view.problèmeOuvrier(joueur.getNom(), -4);
                 }
 
                 view.editPJoueur();
@@ -437,15 +437,18 @@ public class Model {
             if(cases[i].getBatiment()!=null){
                 if(cases[i].getOuvrier()!=null){
                     int index = cases[i].getBatiment().active(view);
-                    if(index!=-1 && index !=-2){
+                    if(index==-1 || index==-2 || index==-3 ){
                             view.problèmeConstruction(index,cases[i].getNomOuvrier(),cases[i].getNomProprio());
                     }
-                    if(index==-2){
+                    if(index==10){
                         ouvrier = cases[i].getOuvrier();
-                        view.editInfoPhase("Lieu Construction "+ouvrier.getNom());
-                        int coordonnéConst =  view.poseBatiment();
-                        cases[ coordonnéConst].setBatiment(ouvrier.dernierePropriete());
+                        for(Case cases : cases){
+                            if(cases.getBatiment()==null){
+                                cases.setBatiment(ouvrier.dernierePropriete());
+                                break;
+                            }
 
+                        }
                         view.editImageCase();
                     }
                     view.editPJoueur();

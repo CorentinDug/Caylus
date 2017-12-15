@@ -9,27 +9,12 @@ public class Grenier extends Batiment {
      */
     public Grenier(){
         super("Grenier");
-
+        coutConst[0]=1;
+        coutConst[1]=3;
+        coutConst[2]=0;
+        coutConst[3]=0;
+        coutConst[4]=0;
+        prestige=10;
     }
 
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

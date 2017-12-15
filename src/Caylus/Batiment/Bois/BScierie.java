@@ -9,11 +9,18 @@ public class BScierie extends Batiment {
      */
     public BScierie(){
         super("BScierie");
+        coutConst[0]=0;
+        coutConst[1]=0;
+        coutConst[2]=1;
+        coutConst[3]=1;
+        coutConst[4]=0;
+        prestige=2;
     }
 
     public int active(){
         recompenseOuvrier();
-        return -1;
+        recompenseProprietaire();
+        return 0;
     }
 
     /**
@@ -23,17 +30,4 @@ public class BScierie extends Batiment {
         ouvrier.recoit("bois", 2);
     }
 
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

@@ -14,7 +14,7 @@ public class NScierie extends Batiment {
 
     public int active(View view){
         recompenseOuvrier();
-        return -1;
+        return 0;
     }
 
     /**
@@ -25,17 +25,4 @@ public class NScierie extends Batiment {
 
     }
 
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

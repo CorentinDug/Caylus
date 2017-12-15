@@ -531,18 +531,18 @@ public class View extends JFrame {
     }
 
     public void problèmeOuvrier(String joueur, int index){
-        if(index==1)
+        if(index==-1)
             JOptionPane.showMessageDialog(null, "Il n'y a pas de poste ici "+joueur);
-        if(index==2)
+        if(index==-2)
                 JOptionPane.showMessageDialog(null, "Vous n'avez plus d'ouvrier "+joueur);
-        if(index==3)
+        if(index==-3)
             JOptionPane.showMessageDialog(null, "Le poste est d'jà prit "+joueur);
-        if(index==4)
+        if(index==-4)
             JOptionPane.showMessageDialog(null, "Pas assez d'argent "+joueur);
     }
 
     public void problèmeChateau(String joueur, int index){
-        if(index==1)
+        if(index==-1)
             JOptionPane.showMessageDialog(null, "Vous avez déjà un ouvrier qui travaille "+joueur);
     }
 
@@ -574,18 +574,13 @@ public class View extends JFrame {
     }
 
     public void problèmeConstruction(int index, String ouvrier, String proprio) {
-        if(index==1)
+        if(index==-1)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+ouvrier);
-        if(index==2)
+        if(index==-2)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+proprio);
-        if(index==3)
+        if(index==-3)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource "+proprio+" et "+ ouvrier);
     }
 
-    public int poseBatiment(){
-        int coordonne=0;
-        while(coordonne <12 || coordonne >=33)
-            coordonne =  Integer.parseInt( JOptionPane.showInputDialog(null, "Entrez une coordonné "));
-        return coordonne;
-    }
+
 }

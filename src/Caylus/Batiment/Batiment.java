@@ -12,12 +12,14 @@ public class Batiment {
     protected Joueur ouvrier;
     protected String mess = "Choix de récompense";
     protected int[] coutConst;
+    protected int prestige;
 
     public Batiment(String nom){
         this.nom=nom;
         ouvrier=null;
         proprietaire=null;
         coutConst = new int[5];
+        prestige=0;
     }
     public String getNom() {
         return nom;
@@ -36,18 +38,22 @@ public class Batiment {
         return true;
     }
 
+    public int getPrestige() {
+        return prestige;
+    }
     public void setProprietaire(Joueur proprietaire) {
         this.proprietaire = proprietaire;
     }
 
-    public int active(View view){return -1;}
+    public int active(View view){return 0;}
 
     /**
      * Donne la récompense propriétaire dû au joueur
      */
-    public void recompenseProprietaire() {
+    public boolean recompenseProprietaire() {
         if(proprietaire!=null && proprietaire!=ouvrier)
             proprietaire.recoit("prestige",1);
+        return true;
     }
 
     /**

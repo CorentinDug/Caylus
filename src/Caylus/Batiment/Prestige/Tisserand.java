@@ -9,27 +9,13 @@ public class Tisserand extends Batiment {
      */
     public Tisserand(){
         super("Tisserand");
-
+        coutConst[0]=1;
+        coutConst[1]=0;
+        coutConst[2]=0;
+        coutConst[3]=0;
+        coutConst[4]=3;
+        prestige=12;
     }
 
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
 
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

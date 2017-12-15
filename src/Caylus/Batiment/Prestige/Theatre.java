@@ -9,27 +9,12 @@ public class Theatre extends Batiment {
      */
     public Theatre(){
         super("Théatre");
-
+        coutConst[0]=2;
+        coutConst[1]=0;
+        coutConst[2]=0;
+        coutConst[3]=3;
+        coutConst[4]=0;
+        prestige=14;
     }
 
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

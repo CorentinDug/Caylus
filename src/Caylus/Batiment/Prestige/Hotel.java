@@ -9,28 +9,25 @@ public class Hotel extends Batiment {
      */
     public Hotel(){
         super("Hotel");
+        coutConst[0]=2;
+        coutConst[1]=0;
+        coutConst[2]=3;
+        coutConst[3]=0;
+        coutConst[4]=0;
+        prestige=16;
+    }
 
+    public int active(){
+        recompenseOuvrier();
+        return 0;
     }
 
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
+    public boolean recompenseOuvrier() {
+        ouvrier.recoit("denier",2);
+        return true;
     }
 }
 

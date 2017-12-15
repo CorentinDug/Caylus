@@ -9,27 +9,11 @@ public class Cathedrale extends Batiment {
      */
     public Cathedrale(){
         super("Cathédrale");
-
-    }
-
-    /**
-     *  Donne la récompense ouvrière dû au joueur
-     */
-    public void recompenseOuvrier() {
-
-    }
-
-    /**
-     * Donne la récompense propriétaire dû au joueur
-     */
-    public void recompenseProprietaire() {
-
-    }
-
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
+        coutConst[0]=3;
+        coutConst[1]=4;
+        coutConst[2]=0;
+        coutConst[3]=1;
+        coutConst[4]=0;
+        prestige=25;
     }
 }

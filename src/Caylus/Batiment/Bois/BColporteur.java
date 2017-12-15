@@ -15,23 +15,29 @@ public class BColporteur extends Batiment {
      */
     public BColporteur(){
         super("BColporteur");
+        coutConst[0]=0;
+        coutConst[1]=0;
+        coutConst[2]=0;
+        coutConst[3]=1;
+        coutConst[4]=0;
+        prestige=4;
     }
 
 
 
 
     public int active(){
-        int retour=-1;
+        int retour=0;
         recOuvrier = view.panneauRecompense(choix,mess);
         if(!recompenseOuvrier(recOuvrier)){
-            retour =1;
+            retour =-1;
         }
         recProprio = view.panneauRecompense(choixProprio,messProprio);
         if(!recompenseProprietaire(recProprio)){
-            if(retour ==1)
-                retour = 3;
+            if(retour ==-1)
+                retour = -3;
             else
-                retour = 2;
+                retour = -2;
         }
         return retour;
     }
