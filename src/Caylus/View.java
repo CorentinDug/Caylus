@@ -266,7 +266,7 @@ public class View extends JFrame {
 
         denierJ1 = new JLabel("" + model.getDenier(1));
         ressJ1.add(denierJ1, 0);
-        initLabel(denierJ1, 29, 6, 25, 25, null, Color.white);
+        initLabel(denierJ1, 29, 10, 25, 25, null, Color.white);
         orJ1 = new JLabel("" + model.getOr(1));
         ressJ1.add(orJ1, 0);
         initLabel(orJ1, 76, 6, 25, 25, null, Color.white);
@@ -303,7 +303,7 @@ public class View extends JFrame {
 
         denierJ2 = new JLabel("" + model.getDenier(2));
         ressJ2.add(denierJ2, 0);
-        initLabel(denierJ2, 29, 6, 25, 25, null, Color.white);
+        initLabel(denierJ2, 29, 10, 25, 25, null, Color.white);
         orJ2 = new JLabel("" + model.getOr(2));
         ressJ2.add(orJ2, 0);
         initLabel(orJ2, 76, 6, 25, 25, null, Color.white);
@@ -341,7 +341,7 @@ public class View extends JFrame {
 
             denierJ3 = new JLabel("" + model.getDenier(3));
             ressJ3.add(denierJ3, 0);
-            initLabel(denierJ3, 29, 6, 25, 25, null, Color.white);
+            initLabel(denierJ3, 29, 10, 25, 25, null, Color.white);
             orJ3 = new JLabel("" + model.getOr(3));
             ressJ3.add(orJ3, 0);
             initLabel(orJ3, 76, 6, 25, 25, null, Color.white);
@@ -377,7 +377,7 @@ public class View extends JFrame {
             ressJ4.add(ress4);
             denierJ4 = new JLabel("" + model.getDenier(4));
             ressJ4.add(denierJ4, 0);
-            initLabel(denierJ4, 29, 6, 25, 25, null, Color.white);
+            initLabel(denierJ4, 29, 10, 25, 25, null, Color.white);
             orJ4 = new JLabel("" + model.getOr(4));
             ressJ4.add(orJ4, 0);
             initLabel(orJ4, 76, 6, 25, 25, null, Color.white);
@@ -416,7 +416,7 @@ public class View extends JFrame {
 
             denierJ5 = new JLabel("" + model.getDenier(5));
             ressJ5.add(denierJ5, 0);
-            initLabel(denierJ5, 29, 6, 25, 25, null, Color.white);
+            initLabel(denierJ5, 29, 10, 25, 25, null, Color.white);
             orJ5 = new JLabel("" + model.getOr(5));
             ressJ5.add(orJ5, 0);
             initLabel(orJ5, 76, 6, 25, 25, null, Color.white);
@@ -651,7 +651,7 @@ public class View extends JFrame {
         int coordBaillis = model.baillis.getCoordonnée();
         cases[coordBaillis].setBorder(null);
         cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 3));
-        cases[coordonnees].setOpaque(true);
+        cases[coordonnees].setOpaque(false);
     }
 
     public void setPrévot(int coordonnees) {
@@ -664,7 +664,7 @@ public class View extends JFrame {
             cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 3));
         else
             cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 1));
-        cases[coordonnees].setOpaque(true);
+        cases[coordonnees].setOpaque(false);
     }
 
     public String créerJoueur(int i) {
@@ -764,6 +764,10 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Vous n'avez pas de lieu de construction " + ouvrier);
         if (index == -6)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas  construit pénalité de 2 prestiges " + ouvrier);
+    }
+
+    public void finDuGame(String vainqueur) {
+            JOptionPane.showMessageDialog(null, "Vous avez gagné " + vainqueur);
     }
 
 }
