@@ -309,12 +309,15 @@ public class Model {
 
     public void poseOuvrier(int coordonnee) {
         Joueur joueur = ordreDePhase2.get(0);
-        if (joueur.getDenier() >= coutDePose || cases[5].getBatiment().getOuvrier() != joueur) {
+        if (joueur.getDenier() >= coutDePose || (cases[5].getBatiment().getOuvrier() != joueur && joueur.getDenier() >= 1)) {
             if (getBatiment(coordonnee) != null) {
                 if (joueur.getOuvrier() != 0) {
                     if (getBatiment(coordonnee).engager(joueur)) {
                         if (cases[5].getBatiment().getOuvrier() != joueur)
                             joueur.donne("denier", coutDePose);
+                        else
+                            joueur.donne("denier", 1);
+
                         joueur.poseOuvrier();
                         ordreDePhase2.remove(0);
                         view.poserOuvrier(coordonnee, joueur);
@@ -428,6 +431,7 @@ public class Model {
                     }
 
                     cases[i].getBatiment().retireOuvrier();
+                    view.editImageCase();
                     view.retireOuvrier(i);
                     view.editPJoueur();
                     view.editPInfo();
@@ -484,7 +488,7 @@ public class Model {
                 } else {
                     view.problèmeOuvrier(joueur.getNom(), -4);
                 }
-
+                view.editImageCase();
                 view.editPJoueur();
                 view.editPInfo();
             }

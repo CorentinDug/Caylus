@@ -521,8 +521,10 @@ public class View extends JFrame {
 
 
     public void editImageCase() {
-        for (int i = 0; i < 34; i++)
+        for (int i = 0; i < 34; i++){
+            cases[i].setOpaque(false);
             cases[i].setIcon(new ImageIcon("./res/img/Batiment/" + model.cases[i].getNomBat() + ".png"));
+        }
     }
 
     public void createView() {
@@ -586,11 +588,8 @@ public class View extends JFrame {
 
 
     public void setBaillis(int coordonnees) {
-        int coordPrévot = model.prévot.getCoordonnée();
         int coordBaillis = model.baillis.getCoordonnée();
         cases[coordBaillis].setBorder(null);
-        if (coordPrévot == coordBaillis)
-            cases[coordPrévot].setBorder(BorderFactory.createLineBorder(Color.white, 1));
         cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 3));
         cases[coordonnees].setOpaque(true);
     }
@@ -601,7 +600,10 @@ public class View extends JFrame {
         cases[coordPrévot].setBorder(null);
         if (coordPrévot == coordBaillis)
             cases[coordBaillis].setBorder(BorderFactory.createLineBorder(Color.white, 3));
-        cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 1));
+        if (coordonnees == coordBaillis)
+            cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 3));
+        else
+            cases[coordonnees].setBorder(BorderFactory.createLineBorder(Color.white, 1));
         cases[coordonnees].setOpaque(true);
     }
 
