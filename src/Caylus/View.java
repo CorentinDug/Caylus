@@ -65,7 +65,6 @@ public class View extends JFrame {
         setPrévot(model.prévot.coordonnée);
         setBaillis(model.baillis.coordonnée);
         icone = Toolkit.getDefaultToolkit().getImage("res/img/icone.png");
-        iconeDUT = new ImageIcon("res/img/dut.png");
         ImageIcon imageIcon = new ImageIcon("res/img/icone.png");
         Image image = imageIcon.getImage();
         Image newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
@@ -73,8 +72,8 @@ public class View extends JFrame {
         imageIcon = new ImageIcon("res/img/dut.png"); //unscaled image
         image = imageIcon.getImage();
         newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH);
-        iconeDUT = new ImageIcon(newimg);
         img = new ImageIcon("res/img/icone.png").getImage();
+        this.setIconImage(icone);
 
     }
 

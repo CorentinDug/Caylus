@@ -3,7 +3,7 @@ package Caylus.Batiment.Bois;
 import Caylus.Batiment.Batiment;
 
 public class BMarche extends Batiment {
-    private String[] choix = new String[]{"nourriture","tissu","bois","pierre","or"};
+    private String[] choix = new String[]{"nourriture","tissu","bois","pierre"};
     private String recOuvrier;
     private String mess1 = "Choississez quoi donnez";
     /**
