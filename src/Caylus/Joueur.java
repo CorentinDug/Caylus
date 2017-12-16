@@ -235,7 +235,8 @@ public class Joueur {
             case "prestige":
                 if(quantité>prestige)
                     prestige=0;
-                prestige-=quantité;
+                else
+                    prestige-=quantité;
                 break;
         }
         return true;
