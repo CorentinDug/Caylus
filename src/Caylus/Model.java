@@ -605,7 +605,7 @@ public class Model {
         }
         view.retireOuvrierChateau();
         int indexMax=-1;
-        for(int i=0;i<compteurPartie.length;i++){
+        for(i=0;i<compteurPartie.length;i++){
             if(compteurPartie[i]>compteurPartie[i++])
                 indexMax=i;
             else{
