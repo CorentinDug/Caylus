@@ -144,7 +144,6 @@ public class View extends JFrame {
         panelInfo.add(tourJoueur, 0);
         initLabel(tourJoueur, 120, 100, 300, 50, sizedFont, Color.white);
 
-
         passer = new JLabel(new ImageIcon("res/img/Passer.png"));
         panelInfo.add(passer, 0);
         initLabel(passer, 125, 200, 50, 50, sizedFont, Color.white);
