@@ -62,8 +62,7 @@ public class View extends JFrame {
         initPJoueur();
         initMenu();
         createView();
-        setPrévot(model.prévot.coordonnée);
-        setBaillis(model.baillis.coordonnée);
+
         icone = Toolkit.getDefaultToolkit().getImage("res/img/icone.png");
         ImageIcon imageIcon = new ImageIcon("res/img/icone.png");
         Image image = imageIcon.getImage();
