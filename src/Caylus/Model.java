@@ -26,7 +26,9 @@ public class Model {
     protected int nbrJoueurs;
     protected int noPhase;
     protected int coutDePose;
-    protected int compteurBat;
+    protected boolean décompteDonjon;
+    protected boolean décompteMuraille;
+    protected boolean décompteTour;
 
     protected  Chateau chateau;
     protected Prévot prévot;
@@ -585,9 +587,37 @@ public class Model {
 
 
     public void phase6()  {
-        view.editPInfo();
-        chateau.constPartie(view);
+        int[] compteurPartie = new int[chateau.ordreConstruction.size()];
+        Joueur[] joueurs = new Joueur[chateau.ordreConstruction.size()];
 
+        int i=0;
+        for(Joueur joueursChateau : chateau.ordreConstruction){
+            joueurs[i]=joueursChateau;
+            i++;
+        }
+        view.editPInfo();
+        i=0;
+        while(!chateau.ordreConstruction.isEmpty()){
+           compteurPartie[i]=chateau.constPartie(view);
+            view.editPInfo();
+            view.editChateau();
+            i++;
+        }
+        view.retireOuvrierChateau();
+        int indexMax=-1;
+        for(int i=0;i<compteurPartie.length;i++){
+            if(compteurPartie[i]>compteurPartie[i++])
+                indexMax=i;
+            else{
+                indexMax=++i;
+            }
+        }
+
+        noPhase++;
+    }
+
+    public void phase7()  {
+        view.editPInfo();
 
     }
 

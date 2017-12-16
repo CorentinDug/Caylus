@@ -31,10 +31,10 @@ public class Joueur {
     public Joueur(String nom) {
         this.nom = nom;
         denier=0;
-        nourriture=0;
-        tissu=0;
-        bois=0;
-        pierre=0;
+        nourriture=5;
+        tissu=5;
+        bois=5;
+        pierre=5;
         or=0;
         ouvrier=6;
         prestige = 0;
@@ -234,7 +234,7 @@ public class Joueur {
                 break;
             case "prestige":
                 if(quantité>prestige)
-                    return false;
+                    prestige=0;
                 prestige-=quantité;
                 break;
         }

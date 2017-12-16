@@ -1,5 +1,7 @@
 package Caylus;
 
+import jdk.nashorn.internal.scripts.JO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -188,6 +190,8 @@ public class View extends JFrame {
         pierreJ2.setText("" + model.getPierre(2));
         boisJ2.setText("" + model.getBois(2));
         tissuJ2.setText("" + model.getTissu(2));
+        prestigeJ2.setText("" + model.getPrestige(2));
+
 
         if (model.nbrJoueurs >= 3) {
             joueur3.setText(model.getNom(3));
@@ -198,6 +202,7 @@ public class View extends JFrame {
             pierreJ3.setText("" + model.getPierre(3));
             boisJ3.setText("" + model.getBois(3));
             tissuJ3.setText("" + model.getTissu(3));
+            prestigeJ3.setText("" + model.getPrestige(3));
         }
         if (model.nbrJoueurs >= 4) {
             joueur4.setText(model.getNom(4));
@@ -208,6 +213,7 @@ public class View extends JFrame {
             pierreJ4.setText("" + model.getPierre(4));
             boisJ4.setText("" + model.getBois(4));
             tissuJ4.setText("" + model.getTissu(4));
+            prestigeJ4.setText("" + model.getPrestige(4));
         }
         if (model.nbrJoueurs >= 5) {
             joueur5.setText(model.getNom(5));
@@ -218,6 +224,7 @@ public class View extends JFrame {
             pierreJ5.setText("" + model.getPierre(5));
             boisJ5.setText("" + model.getBois(5));
             tissuJ5.setText("" + model.getTissu(5));
+            prestigeJ5.setText("" + model.getPrestige(5));
         }
     }
 
@@ -252,7 +259,7 @@ public class View extends JFrame {
         panelJoueur.add(joueur1);
 
         ress1 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-        initLabel(ress1, 0, 0, 300, 56, null, null);
+        initLabel(ress1, 0, 0, 300, 65, null, null);
 
 
         ressJ1 = new JPanel(null);
@@ -278,10 +285,10 @@ public class View extends JFrame {
         initLabel(tissuJ1, 265, 6, 25, 25, null, Color.white);
         prestigeJ1 = new JLabel("" + model.getPrestige(1));
         ressJ1.add(prestigeJ1, 0);
-        initLabel(prestigeJ1, 135, 30, 25, 25, null, Color.white);
+        initLabel(prestigeJ1, 135, 33, 50, 25, null, Color.white);
 
 
-        initPanel(ressJ1, 0, 100, 300, 56, sizedFont, Color.BLACK);
+        initPanel(ressJ1, 0, 100, 300, 65, sizedFont, Color.BLACK);
         panelJoueur.add(ressJ1, 0);
 
 
@@ -290,7 +297,7 @@ public class View extends JFrame {
         panelJoueur.add(joueur2);
 
         ress2 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-        initLabel(ress2, 0, 0, 300, 56, null, null);
+        initLabel(ress2, 0, 0, 300, 65, null, null);
 
         ressJ2 = new JPanel(null);
         ressJ2.add(ress2);
@@ -315,9 +322,9 @@ public class View extends JFrame {
         initLabel(tissuJ2, 265, 6, 25, 25, null, Color.white);
         prestigeJ2 = new JLabel("" + model.getPrestige(2));
         ressJ2.add(prestigeJ2, 0);
-        initLabel(prestigeJ2, 135, 30, 25, 25, null, Color.white);
+        initLabel(prestigeJ2, 135, 33, 50, 25, null, Color.white);
 
-        initPanel(ressJ2, 0, 250, 300, 56, sizedFont, Color.white);
+        initPanel(ressJ2, 0, 250, 300, 65, sizedFont, Color.white);
         panelJoueur.add(ressJ2, 0);
 
 
@@ -327,7 +334,7 @@ public class View extends JFrame {
             panelJoueur.add(joueur3);
 
             ress3 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-            initLabel(ress3, 0, 0, 300, 56, null, null);
+            initLabel(ress3, 0, 0, 300, 65, null, null);
 
 
             ressJ3 = new JPanel(null);
@@ -353,9 +360,9 @@ public class View extends JFrame {
             initLabel(tissuJ3, 265, 6, 25, 25, null, Color.white);
             prestigeJ3 = new JLabel("" + model.getPrestige(3));
             ressJ3.add(prestigeJ3, 0);
-            initLabel(prestigeJ3, 135, 30, 25, 25, null, Color.white);
+            initLabel(prestigeJ3, 135, 33, 50, 25, null, Color.white);
 
-            initPanel(ressJ3, 0, 400, 300, 50, sizedFont, Color.white);
+            initPanel(ressJ3, 0, 400, 300, 60, sizedFont, Color.white);
             panelJoueur.add(ressJ3, 0);
         }
         if (model.nbrJoueurs >= 4) {
@@ -364,7 +371,7 @@ public class View extends JFrame {
             panelJoueur.add(joueur4);
 
             ress4 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-            initLabel(ress4, 0, 0, 300, 56, null, null);
+            initLabel(ress4, 0, 0, 300, 65, null, null);
 
 
             ressJ4 = new JPanel(null);
@@ -389,10 +396,10 @@ public class View extends JFrame {
             initLabel(tissuJ4, 265, 6, 25, 25, null, Color.white);
             prestigeJ4 = new JLabel("" + model.getPrestige(4));
             ressJ4.add(prestigeJ4, 0);
-            initLabel(prestigeJ4, 135, 30, 25, 25, null, Color.white);
+            initLabel(prestigeJ4, 135, 33, 50, 25, null, Color.white);
 
 
-            initPanel(ressJ4, 0, 550, 300, 56, sizedFont, Color.white);
+            initPanel(ressJ4, 0, 550, 300, 65, sizedFont, Color.white);
             panelJoueur.add(ressJ4, 0);
         }
         if (model.nbrJoueurs >= 5) {
@@ -402,7 +409,7 @@ public class View extends JFrame {
 
 
             ress5 = new JLabel(new ImageIcon("./res/img/Ressource/Ressource.png"));
-            initLabel(ress5, 0, 0, 300, 56, null, null);
+            initLabel(ress5, 0, 0, 300, 65, null, null);
 
 
             ressJ5 = new JPanel(null);
@@ -428,9 +435,9 @@ public class View extends JFrame {
             initLabel(tissuJ5, 265, 6, 25, 25, null, Color.white);
             prestigeJ5 = new JLabel("" + model.getPrestige(5));
             ressJ5.add(prestigeJ5, 0);
-            initLabel(prestigeJ5, 135, 30, 25, 25, null, Color.white);
+            initLabel(prestigeJ5, 135, 33, 50, 25, null, Color.white);
 
-            initPanel(ressJ5, 0, 700, 300, 56, sizedFont, Color.white);
+            initPanel(ressJ5, 0, 700, 300, 65, sizedFont, Color.white);
             panelJoueur.add(ressJ5, 0);
         }
 
@@ -500,10 +507,20 @@ public class View extends JFrame {
         for (int i = 0; i < 6; i++) {
             donjon[i] = new JLabel();
             panelPlateau.add(donjon[i]);
-            donjon[i].setBounds(50 + i * 30, 230, 25, 25);
+            donjon[i].setBounds(300 + i * 30, 50, 25, 25);
         }
         muraille = new JLabel[10];
-        tour = new JLabel[6];
+        for (int i = 0; i <10; i++) {
+            muraille[i] = new JLabel();
+            panelPlateau.add(muraille[i]);
+            muraille[i].setBounds(300 + i * 30, 80, 25, 25);
+        }
+        tour = new JLabel[14];
+        for (int i = 0; i <14; i++) {
+            tour[i] = new JLabel();
+            panelPlateau.add(tour[i]);
+            tour[i].setBounds(300 + i * 30, 110, 25, 25);
+        }
     }
 
     public void initImageCase() {
@@ -514,6 +531,14 @@ public class View extends JFrame {
             label.setOpaque(true);
         }
         for (JLabel label : donjon) {
+            label.setBackground(Color.GRAY);
+            label.setOpaque(true);
+        }
+        for (JLabel label : muraille) {
+            label.setBackground(Color.GRAY);
+            label.setOpaque(true);
+        }
+        for (JLabel label : tour) {
             label.setBackground(Color.GRAY);
             label.setOpaque(true);
         }
@@ -585,6 +610,42 @@ public class View extends JFrame {
     public void constChateau(int coordonnees, Joueur joueur) {
         ordreContruction[coordonnees].setBackground(joueur.getCouleur());
     }
+
+    public void editChateau() {
+        int i =0;
+        for(Joueur joueur : model.chateau.donjon){
+            if (joueur==null){
+                donjon[i].setBackground(Color.GRAY);
+            }else{
+                donjon[i].setBackground(joueur.getCouleur());
+            }
+            i++;
+        }
+        i =0;
+        for(Joueur joueur : model.chateau.muraille) {
+            if (joueur == null) {
+                muraille[i].setBackground(Color.GRAY);
+            } else {
+                muraille[i].setBackground(joueur.getCouleur());
+            }
+            i++;
+        }
+        i = 0;
+        for (Joueur joueur : model.chateau.tour) {
+            if (joueur == null) {
+                tour[i].setBackground(Color.GRAY);
+            } else {
+                tour[i].setBackground(joueur.getCouleur());
+            }
+            i++;
+        }
+    }
+
+    public void retireOuvrierChateau(){
+        for(JLabel label : ordreContruction)
+            label.setBackground(Color.gray);
+    }
+
 
 
     public void setBaillis(int coordonnees) {
@@ -702,6 +763,8 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource " + proprio + " et " + ouvrier);
         if (index == -5)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas de lieu de construction " + ouvrier);
+        if (index == -6)
+            JOptionPane.showMessageDialog(null, "Vous n'avez pas  construit pénalité de 2 prestiges " + ouvrier);
     }
 
 }

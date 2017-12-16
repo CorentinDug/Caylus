@@ -60,6 +60,10 @@ public class ControlMouse extends MouseAdapter {
             model.phase6();
             coordonnees=-1;
         }
+        if(model.noPhase==7 && coordonnees==-100){
+            model.phase7();
+            coordonnees=-1;
+        }
     }
 
     public int detectionCase(Point point){
