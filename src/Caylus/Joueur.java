@@ -30,12 +30,12 @@ public class Joueur {
 
     public Joueur(String nom) {
         this.nom = nom;
-        denier=100;
-        nourriture=100;
-        tissu=100;
-        bois=100;
-        pierre=100;
-        or=100;
+        denier=0;
+        nourriture=0;
+        tissu=0;
+        bois=0;
+        pierre=0;
+        or=0;
         ouvrier=6;
         prestige = 0;
         propriété = new ArrayList<>();

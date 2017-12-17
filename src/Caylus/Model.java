@@ -720,12 +720,12 @@ public class Model {
         if(indexMax!=-1)
             joueursConst[indexMax].recoit("or", 1);
 
-        if(chateau.donjon[0]!=null && !decompteDonjon)
+        if(chateau.donjon[5]!=null && !decompteDonjon)
             decompteDonjon();
-        if(chateau.muraille[0]!=null && !decompteMuraille)
+        if(chateau.muraille[9]!=null && !decompteMuraille)
             decompteMuraille();
 
-        if(chateau.tour[0]!=null && !decompteTour)
+        if(chateau.tour[13]!=null && !decompteTour)
             decompteTour();
 
         noPhase++;

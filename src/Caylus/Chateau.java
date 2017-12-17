@@ -90,16 +90,15 @@ public class Chateau {
                                 pose = true;
                             }
                         }
-                        if (muraille[13]!=null)
-                            compteurMuraille = true;
-
-                        if (!pose){
-                            compteurMuraille = true;
-                            view.problèmeConstruction(-5,joueur.getNom(),null);
-                            joueur.donne("prestige",2);
-                            view.problèmeConstruction(-6,joueur.getNom(),null);
+                        if (tour[13]!=null){
+                            compteurTour = true;
                             nbrPartie--;
                         }
+                    }else {
+                        view.problèmeConstruction(-5,joueur.getNom(),null);
+                        joueur.donne("prestige", 2);
+                        view.problèmeConstruction(-6, joueur.getNom(), null);
+                        nbrPartie--;
                     }
                 }else{
                     view.problèmeConstruction(-1,joueur.getNom(),null);
