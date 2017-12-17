@@ -53,9 +53,9 @@ public class View extends JFrame {
         this.model = model;
         setTitle("Caylus");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);
         pack();
-        setSize(1300, 1000);
+        setSize(1300, 1060);
         setLocationRelativeTo(null);
         initPLateau();
         initPInfo();
