@@ -22,8 +22,8 @@ public class NCharpentier extends Batiment {
         choix.add("Scierie 1bois + 1pierre");
         choix.add("Marché 1 bois + 1 ressource");
         choix.add("Maçon 1 bois + 1 pierre");
-        choix.add("Ferme Tissu 1 bois + 1 pierre");
-        choix.add("Ferme Nourriture  1 bois + 1 pierre ");
+        choix.add("Ferme Tissu 1 bois + 1 nourriture");
+        choix.add("Ferme Nourriture  1 bois + 1 nourriture");
         choix.add("Colporteur 1 bois + 1 ressource");
     }
 

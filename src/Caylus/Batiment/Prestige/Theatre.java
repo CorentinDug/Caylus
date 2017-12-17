@@ -8,7 +8,7 @@ public class Theatre extends Batiment {
      * Constructeur initialisant le nom
      */
     public Theatre(){
-        super("Théatre");
+        super("Theatre");
         coutConst[0]=2;
         coutConst[1]=0;
         coutConst[2]=0;

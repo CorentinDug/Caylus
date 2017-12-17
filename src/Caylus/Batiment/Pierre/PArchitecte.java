@@ -10,7 +10,7 @@ public class PArchitecte extends Batiment {
      * Constructeur initialisant le nom
      */
     public PArchitecte(){
-        super("PArchitecte");
+        super("Architecte");
         mess = "Choisissez un batiment";
         choix = new String[]{
                 "Cathedrale 1 bois + 4 pierres + 3 or",

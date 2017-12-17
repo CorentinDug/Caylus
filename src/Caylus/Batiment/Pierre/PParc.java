@@ -9,7 +9,7 @@ public class PParc extends Batiment {
      * Constructeur initialisant le nom
      */
     public PParc(){
-        super("PParc");
+        super("Parc");
         coutConst[0]=0;
         coutConst[1]=1;
         coutConst[2]=0;

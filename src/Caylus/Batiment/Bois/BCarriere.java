@@ -15,7 +15,7 @@ public class BCarriere extends Batiment {
      * Constructeur initialisant le nom
      */
     public BCarriere(){
-        super("BCarriere");
+        super("Carriere");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=1;

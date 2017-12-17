@@ -8,7 +8,7 @@ public class BScierie extends Batiment {
      * Constructeur initialisant le nom
      */
     public BScierie(){
-        super("BScierie");
+        super("Scierie");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=1;

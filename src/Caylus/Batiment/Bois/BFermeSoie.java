@@ -9,7 +9,7 @@ public class BFermeSoie extends Batiment {
      * Constructeur initialisant le nom
      */
     public BFermeSoie(){
-        super("BFermeSoie");
+        super("FermeTissu");
         coutConst[0]=0;
         coutConst[1]=1;
         coutConst[2]=0;

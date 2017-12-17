@@ -10,9 +10,9 @@ public class BMarche extends Batiment {
      * Constructeur initialisant le nom
      */
     public BMarche(){
-        super("BMarché");
+        super("Marche");
         coutConst[0]=0;
-        coutConst[1]=0;
+        coutConst[1]=1;
         coutConst[2]=0;
         coutConst[3]=1;
         coutConst[4]=0;

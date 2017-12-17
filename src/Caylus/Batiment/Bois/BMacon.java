@@ -12,7 +12,7 @@ public class BMacon extends Batiment {
      * Constructeur initialisant le nom
      */
     public BMacon(){
-        super("BMaçon");
+        super("Macon");
         mess = "Choisissez un batiment";
         choix = new String[]{
                 "Eglise 1 pierre + 1 tissu",

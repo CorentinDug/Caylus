@@ -9,7 +9,7 @@ public class PFerme extends Batiment {
      * Constructeur initialisant le nom
      */
     public PFerme(){
-        super("PFerme");
+        super("Ferme");
         coutConst[0]=0;
         coutConst[1]=1;
         coutConst[2]=1;

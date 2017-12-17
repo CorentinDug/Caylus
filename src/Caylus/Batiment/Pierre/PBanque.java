@@ -8,7 +8,7 @@ public class PBanque extends Batiment {
      * Constructeur initialisant le nom
      */
     public PBanque(){
-        super("PBanque");
+        super("Banque");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=1;

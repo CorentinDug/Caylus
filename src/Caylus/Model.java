@@ -596,6 +596,7 @@ public class Model {
                         }
                     }
                     cases[i].getBatiment().retireOuvrier();
+                    ouvrier.reprendOuvrier();
                     view.retireOuvrier(i);
                     view.editImageCase();
                     view.editPJoueur();
@@ -604,6 +605,11 @@ public class Model {
                 }
             }
 
+        }
+        for(int i =prévot.getCoordonnée();i<33;i++){
+            if(cases[i].getBatiment()!=null)
+                cases[i].getBatiment().retireOuvrier();
+            view.retireOuvrier(i);
         }
         noPhase++;
     }

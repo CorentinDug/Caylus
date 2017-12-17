@@ -8,7 +8,7 @@ public class PEglise extends Batiment {
      * Constructeur initialisant le nom
      */
     public PEglise(){
-        super("PEglise");
+        super("Eglise");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=1;

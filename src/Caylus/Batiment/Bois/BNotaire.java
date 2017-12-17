@@ -13,7 +13,7 @@ public class BNotaire extends Batiment {
      * Constructeur initialisant le nom
      */
     public BNotaire(){
-        super("BNotaire");
+        super("Notaire");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=0;

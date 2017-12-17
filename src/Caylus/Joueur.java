@@ -30,12 +30,12 @@ public class Joueur {
 
     public Joueur(String nom) {
         this.nom = nom;
-        denier=0;
-        nourriture=5;
-        tissu=5;
-        bois=5;
-        pierre=5;
-        or=0;
+        denier=100;
+        nourriture=100;
+        tissu=100;
+        bois=100;
+        pierre=100;
+        or=100;
         ouvrier=6;
         prestige = 0;
         propriété = new ArrayList<>();
@@ -107,7 +107,7 @@ public class Joueur {
                 bat = new BMarche();
                 break;
             case "Maçon 1 bois + 1 pierre":
-                bat = new BMarche();
+                bat = new BMacon();
                 break;
             case "Ferme Tissu 1 bois + 1 nourriture":
                 bat = new BFermeSoie();
@@ -176,10 +176,6 @@ public class Joueur {
 
         if(bat !=null){
             coutConst=bat.coutContructon();
-            if(bat instanceof BColporteur || bat instanceof BMarche) {
-                //faire des choses
-            }
-
             if(coutConst[0]<=or && coutConst[1]<=nourriture && coutConst[2]<=pierre && coutConst[3]<=bois && coutConst[4]<=tissu){
                 donne("or", coutConst[0]);
                 donne("nourriture", coutConst[1]);

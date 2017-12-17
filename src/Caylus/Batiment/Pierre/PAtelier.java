@@ -11,7 +11,7 @@ public class PAtelier extends Batiment {
      * Constructeur initialisant le nom
      */
     public PAtelier(){
-        super("PAtelier");
+        super("Atelier");
         coutConst[0]=0;
         coutConst[1]=1;
         coutConst[2]=1;

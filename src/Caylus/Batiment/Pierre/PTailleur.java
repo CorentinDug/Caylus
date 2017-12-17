@@ -8,7 +8,7 @@ public class PTailleur extends Batiment {
      * Constructeur initialisant le nom
      */
     public PTailleur(){
-        super("PTailleur");
+        super("Tailleur");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=0;

@@ -14,12 +14,12 @@ public class BColporteur extends Batiment {
      * Constructeur initialisant le nom
      */
     public BColporteur(){
-        super("BColporteur");
+        super("Colporteur");
         coutConst[0]=0;
         coutConst[1]=0;
         coutConst[2]=0;
         coutConst[3]=1;
-        coutConst[4]=0;
+        coutConst[4]=1;
         prestige=4;
     }
 

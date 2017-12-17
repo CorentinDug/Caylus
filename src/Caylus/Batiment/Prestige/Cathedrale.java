@@ -8,7 +8,7 @@ public class Cathedrale extends Batiment {
      * Constructeur initialisant le nom
      */
     public Cathedrale(){
-        super("Cathédrale");
+        super("Cathedrale");
         coutConst[0]=3;
         coutConst[1]=4;
         coutConst[2]=0;

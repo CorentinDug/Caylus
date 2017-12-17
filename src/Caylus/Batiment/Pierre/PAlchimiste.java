@@ -12,7 +12,7 @@ public class PAlchimiste extends Batiment {
      * Constructeur initialisant le nom
      */
     public PAlchimiste(){
-        super("PAlchimiste");
+        super("Alchimiste");
         coutConst[0]=0;
         coutConst[1]=1;
         coutConst[2]=0;

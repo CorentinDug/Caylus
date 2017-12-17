@@ -10,7 +10,7 @@ public class BFermeNourriture extends Batiment {
      * Constructeur initialisant le nom
      */
     public BFermeNourriture(){
-        super("BFermeNourriture");
+        super("FermeNourriture");
         coutConst[0]=0;
         coutConst[1]=1;
         coutConst[2]=0;
