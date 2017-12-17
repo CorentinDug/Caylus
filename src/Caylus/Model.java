@@ -374,6 +374,7 @@ public class Model {
             if (cases[i].getBatiment() != null) {
                 if (ouvrier != null) {
                     int index = cases[i].getBatiment().active(view);
+                    ouvrier.reprendOuvrier();
 
                     if (index == -1 || index == -2 || index == -3)
                         view.problèmeConstruction(index, ouvrier.getNom(), cases[i].getNomProprio());
@@ -382,7 +383,6 @@ public class Model {
                         int coordonné = view.panneauPorte(ouvrier.getNom());
                         if (ouvrier.getOuvrier() != 0) {
                             if (getBatiment(coordonné).engager(ouvrier)) {
-                                ouvrier.poseOuvrier();
                                 view.poserOuvrier(coordonné, ouvrier);
                             } else {
                                 view.problèmeOuvrier(ouvrier.getNom(), -3);
@@ -428,7 +428,6 @@ public class Model {
                     }
 
                     if (index == 5) {
-                        System.out.println(ordreDeTourOrigine);
                         newOrdre = new ArrayList<Joueur>();
                         newOrdre2 = new ArrayList<Joueur>();
                         newOrdre2.addAll(ordreDeTourOrigine);
@@ -446,7 +445,6 @@ public class Model {
                         newOrdre.addAll(newOrdre2);
                         ordreDeTourOrigine = new ArrayList<Joueur>();
                         ordreDeTourOrigine.addAll(newOrdre);
-                        System.out.println(ordreDeTourOrigine);
                     }
 
                     if (index == 6) {

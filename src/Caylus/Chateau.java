@@ -66,7 +66,7 @@ public class Chateau {
                             }
                         }
 
-                        if (donjon[5]==null){
+                        if (donjon[5]!=null){
                             compteurDonjon = true;
                         }
 
@@ -79,7 +79,7 @@ public class Chateau {
                             }
                         }
 
-                        if (muraille[9]==null)
+                        if (muraille[9]!=null)
                             compteurMuraille = true;
 
                     } else if (!compteurTour) {
@@ -90,7 +90,7 @@ public class Chateau {
                                 pose = true;
                             }
                         }
-                        if (muraille[13]==null)
+                        if (muraille[13]!=null)
                             compteurMuraille = true;
 
                         if (!pose){
