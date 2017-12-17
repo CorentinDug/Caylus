@@ -93,10 +93,4 @@ public class PAlchimiste extends Batiment {
         return true;
     }
 
-    /**
-     * Donne la récompense de prestige dû au joueur
-     */
-    public void recompensePrestige() {
-
-    }
 }

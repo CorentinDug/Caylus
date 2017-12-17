@@ -24,7 +24,6 @@ public class Comptoir extends Batiment {
      *  Donne la récompense ouvrière dû au joueur
      */
     public boolean recompenseOuvrier() {
-        System.out.println("marche");
         ouvrier.recoit("denier", 3);
         return true;
     }

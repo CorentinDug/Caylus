@@ -20,7 +20,7 @@ public class Auberge extends Batiment {
     public int active(View view){
         ouvrier2=ouvrier;
         ouvrier=null;
-        return 0;
+        return 6;
     }
 
 
@@ -32,17 +32,12 @@ public class Auberge extends Batiment {
     }
 
     public boolean engager(Joueur joueur) {
-        if(ouvrier!=null && ouvrier2!=null)
-            return false;
         if(ouvrier==null){
             ouvrier=joueur;
+            return true;
         }else{
-            if(ouvrier!=joueur)
-                ouvrier2=joueur;
-            else
-                return false;
+            return false;
         }
-        return true;
     }
 
     public void retireOuvrier() {}

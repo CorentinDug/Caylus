@@ -41,7 +41,6 @@ public class Ecurie extends Batiment {
             ouvrier3=joueur;
         else
             return false;
-
         return true;
     }
 

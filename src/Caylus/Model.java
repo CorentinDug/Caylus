@@ -296,19 +296,22 @@ public class Model {
     public void constChateau() {
         Joueur joueur = ordreDePhase2.get(0);
         int coordonnée = chateau.ajouterConstructeur(joueur);
-        if (coordonnée != -1)
+        if (coordonnée != -1) {
             if (joueur.getOuvrier() != 0) {
-                if (joueur.donne("denier", coutDePose)) {
+                if (joueur.donne("denier", coutDePose) || (cases[5].getBatiment().getOuvrier(2) == joueur && joueur.donne("denier", 1))) {
                     joueur.poseOuvrier();
                     ordreDePhase2.remove(0);
                     view.constChateau(coordonnée, joueur);
                 } else {
+                    chateau.ordreConstruction.remove(joueur);
                     view.problèmeOuvrier(joueur.getNom(), -4);
                 }
             } else {
+                chateau.ordreConstruction.remove(joueur);
                 view.problèmeOuvrier(joueur.getNom(), -2);
             }
-        else {
+        } else {
+            chateau.ordreConstruction.remove(joueur);
             view.problèmeChateau(joueur.getNom(), -1);
         }
         phase2();
@@ -318,11 +321,11 @@ public class Model {
 
     public void poseOuvrier(int coordonnee) {
         Joueur joueur = ordreDePhase2.get(0);
-        if (joueur.getDenier() >= coutDePose || (cases[5].getBatiment().getOuvrier() != joueur && joueur.getDenier() >= 1)) {
+        if (joueur.getDenier() >= coutDePose || (cases[5].getBatiment().getOuvrier(2) == joueur && joueur.getDenier() >= 1)) {
             if (getBatiment(coordonnee) != null) {
                 if (joueur.getOuvrier() != 0) {
                     if (getBatiment(coordonnee).engager(joueur)) {
-                        if (cases[5].getBatiment().getOuvrier() != joueur)
+                        if (cases[5].getBatiment().getOuvrier(2) != joueur)
                             joueur.donne("denier", coutDePose);
                         else
                             joueur.donne("denier", 1);
@@ -365,6 +368,7 @@ public class Model {
         view.editPInfo();
         Joueur ouvrier;
         ArrayList<Joueur> newOrdre;
+        ArrayList<Joueur> newOrdre2;
         for (int i = 0; i <= 5; i++) {
             ouvrier = cases[i].getOuvrier();
             if (cases[i].getBatiment() != null) {
@@ -422,22 +426,35 @@ public class Model {
                         view.setPrévot(coordonnée);
                         prévot.coordonnée = coordonnée;
                     }
+
                     if (index == 5) {
+                        System.out.println(ordreDeTourOrigine);
                         newOrdre = new ArrayList<Joueur>();
-                        newOrdre.add(cases[i].getBatiment().getOuvrier(0));
+                        newOrdre2 = new ArrayList<Joueur>();
+                        newOrdre2.addAll(ordreDeTourOrigine);
                         newOrdre.add(cases[i].getBatiment().getOuvrier(1));
-                        newOrdre.add(cases[i].getBatiment().getOuvrier(3));
+                        if(cases[i].getBatiment().getOuvrier(2)!=null)
+                            newOrdre.add(cases[i].getBatiment().getOuvrier(2));
+                        if(cases[i].getBatiment().getOuvrier(3)!=null)
+                            newOrdre.add(cases[i].getBatiment().getOuvrier(3));
                         for (Joueur joueur : ordreDeTourOrigine) {
                             for (Joueur joueurOrdre : newOrdre) {
                                 if (joueur == joueurOrdre)
-                                    ordreDeTourOrigine.remove(joueurOrdre);
+                                    newOrdre2.remove(joueurOrdre);
                             }
                         }
-                        newOrdre.addAll(ordreDeTourOrigine);
+                        newOrdre.addAll(newOrdre2);
                         ordreDeTourOrigine = new ArrayList<Joueur>();
                         ordreDeTourOrigine.addAll(newOrdre);
-
+                        System.out.println(ordreDeTourOrigine);
                     }
+
+                    if (index == 6) {
+                        view.poserOuvrier(5, ouvrier);
+                    }
+
+
+
 
                     cases[i].getBatiment().retireOuvrier();
                     view.editImageCase();
@@ -447,6 +464,7 @@ public class Model {
                 }
             }
         }
+
         noPhase++;
     }
 

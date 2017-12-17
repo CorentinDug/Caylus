@@ -87,7 +87,7 @@ public class ViewMenu extends JFrame {
 
     }
     public void createView(){
-        PanelPrinc jpp = new PanelPrinc(800,400);
+        PanelPrinc jpp = new PanelPrinc(800,400,"res/img/plateau.png");
 
         jpp.setLayout(new GridLayout(1,1));
         JPanel jPanelGlobal = new JPanel(new GridBagLayout());

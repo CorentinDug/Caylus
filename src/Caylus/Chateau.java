@@ -65,7 +65,8 @@ public class Chateau {
                                 pose = true;
                             }
                         }
-                        if (!pose){
+
+                        if (donjon[5]==null){
                             compteurDonjon = true;
                         }
 
@@ -77,7 +78,8 @@ public class Chateau {
                                 pose = true;
                             }
                         }
-                        if (!pose)
+
+                        if (muraille[9]==null)
                             compteurMuraille = true;
 
                     } else if (!compteurTour) {
@@ -88,6 +90,9 @@ public class Chateau {
                                 pose = true;
                             }
                         }
+                        if (muraille[13]==null)
+                            compteurMuraille = true;
+
                         if (!pose){
                             compteurMuraille = true;
                             view.problèmeConstruction(-5,joueur.getNom(),null);
