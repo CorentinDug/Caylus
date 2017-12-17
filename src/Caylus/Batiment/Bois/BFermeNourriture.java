@@ -26,6 +26,7 @@ public class BFermeNourriture extends Batiment {
         return 0;
     }
 
+
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
