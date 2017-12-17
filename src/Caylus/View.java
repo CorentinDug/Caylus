@@ -721,6 +721,7 @@ public class View extends JFrame {
         return nbrPartie;
     }
 
+
     public int panneauPorte(String nom) {
         int coordonné = -1;
         while (coordonné < 0 || coordonné > 33)
