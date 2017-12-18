@@ -9,7 +9,11 @@ public class ControlGroup {
     private ControlMouse controlMouse;
     private ControlMenu controlMenu;
 
-
+    /**
+     * Initialise la vue, le model et la musique du jeu
+     * @param model La classe qui gère toute les donnée
+     * @param backgroundMusic La musique lancé pendant le jeu
+     */
     public ControlGroup(Model model, BackgroundMusic backgroundMusic) {
         this.model = model;
         view = new View(this.model);

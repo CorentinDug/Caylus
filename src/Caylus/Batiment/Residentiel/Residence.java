@@ -6,13 +6,17 @@ public class Residence extends Batiment {
         private static String nom = "Residence";
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom et le nombre de prestiges reçue à la construction
      */
     public Residence(){
         super("Residence");
         prestige=2;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         recompenseOuvrier();
         return 0;

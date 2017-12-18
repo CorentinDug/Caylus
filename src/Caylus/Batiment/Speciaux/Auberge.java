@@ -9,6 +9,7 @@ import Caylus.View;
  */
 public class Auberge extends Batiment {
     protected Joueur ouvrier2;
+
     /**
      * Constructeur initialisant le nom
      */
@@ -17,6 +18,11 @@ public class Auberge extends Batiment {
         ouvrier2=null;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * la valeur de retour permet de savoir quoi faire dans le model après l'activation, 0 rien et [1=>6] correspond à un batiment spécial
+     * @return
+     */
     public int active(View view){
         ouvrier2=ouvrier;
         ouvrier=null;

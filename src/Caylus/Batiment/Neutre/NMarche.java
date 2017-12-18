@@ -15,10 +15,15 @@ public class NMarche extends Batiment {
         super("NMarche");
     }
 
+
     public boolean isNeutre(){
         return true;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view){
         recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         if(!recompenseOuvrier(recOuvrier))

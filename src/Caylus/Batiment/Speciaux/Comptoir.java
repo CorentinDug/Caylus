@@ -15,6 +15,10 @@ public class Comptoir extends Batiment {
         super("Comptoir");
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view){
         recompenseOuvrier();
         return 0;

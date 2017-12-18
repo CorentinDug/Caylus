@@ -11,7 +11,7 @@ public class BColporteur extends Batiment {
     private String messProprio = "Proprietaire choix récompense";
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public BColporteur(){
         super("Colporteur");
@@ -25,7 +25,10 @@ public class BColporteur extends Batiment {
 
 
 
-
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         int retour=0;
         recOuvrier = view.panneauRecompense(choix,mess);
@@ -44,7 +47,9 @@ public class BColporteur extends Batiment {
 
 
     /**
-     *  Donne la récompense ouvrière dû au joueur
+     * Donne la récompense ouvrière dû au joueur
+     * @param chaine
+     * @return
      */
     public boolean recompenseOuvrier(String chaine) {
         if(ouvrier.donne("denier", 2)){

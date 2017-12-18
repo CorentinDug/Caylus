@@ -10,7 +10,7 @@ public class BNotaire extends Batiment {
     private String recOuvrier;
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public BNotaire(){
         super("Notaire");
@@ -22,6 +22,10 @@ public class BNotaire extends Batiment {
         prestige=4;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view) {
         recompenseProprietaire();
         if(!recompenseOuvrier())

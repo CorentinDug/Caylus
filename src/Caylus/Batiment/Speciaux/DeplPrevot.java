@@ -16,6 +16,11 @@ public class DeplPrevot extends Batiment {
 
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * la valeur de retour permet de savoir quoi faire dans le model après l'activation, 0 rien et [1=>6] correspond à un batiment spécial
+     * @return
+     */
     public int active(View view){
         return 3;
     }

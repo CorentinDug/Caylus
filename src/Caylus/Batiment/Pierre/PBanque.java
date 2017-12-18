@@ -5,7 +5,7 @@ import Caylus.Batiment.Batiment;
 public class PBanque extends Batiment {
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public PBanque(){
         super("Banque");
@@ -17,6 +17,10 @@ public class PBanque extends Batiment {
         prestige=6;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         int retour=0;
         if(!recompenseOuvrier()){

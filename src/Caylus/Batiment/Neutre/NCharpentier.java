@@ -27,10 +27,17 @@ public class NCharpentier extends Batiment {
         choix.add("Colporteur 1 bois + 1 ressource");
     }
 
+    /**
+     *  Renvoie true si le batiment est une batiments neutre
+     */
     public boolean isNeutre(){
         return true;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view) {
         choixPossible = new String[choix.size()];
         int i = 0;
