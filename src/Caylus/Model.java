@@ -1,21 +1,12 @@
 package Caylus;
 
 import Caylus.Batiment.Batiment;
-import Caylus.Batiment.Bois.*;
 import Caylus.Batiment.Neutre.*;
-import Caylus.Batiment.Pierre.*;
-import Caylus.Batiment.Prestige.*;
-import Caylus.Batiment.Residentiel.Residence;
 import Caylus.Batiment.Speciaux.*;
-import jdk.nashorn.internal.scripts.JO;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
-
-
-import javax.swing.Timer;
 
 
 /**
@@ -51,6 +42,10 @@ public class Model {
 
     protected String[] Ressources;
 
+    /**
+     * Constructeur intialise le model et le nombre de joueur
+     * @param nbrJoueur nobmre de joueur dans la partie
+     */
     public Model(int nbrJoueur) {
         noPhase = 0;
         chateau = new Chateau();
@@ -68,6 +63,11 @@ public class Model {
         decompteTour = false;
     }
 
+    /**
+     * Récupère le nom du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nom
+     */
     public String getNom(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -75,7 +75,11 @@ public class Model {
         return "Joueur" + i;
     }
 
-
+    /**
+     * Récupère le nombre de denier du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nombre de denier
+     */
     public int getDenier(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -83,6 +87,11 @@ public class Model {
         return 0;
     }
 
+    /**
+     * Récupère le nombre d'or du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nombre d'or
+     */
     public int getOr(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -90,6 +99,11 @@ public class Model {
         return 0;
     }
 
+    /**
+     * Récupère le nombre de nourriture du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nombre de nourriture
+     */
     public int getNourriture(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -97,6 +111,11 @@ public class Model {
         return 0;
     }
 
+    /**
+     * Récupère le nombre de pierre du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nombre de pierre
+     */
     public int getPierre(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -104,6 +123,11 @@ public class Model {
         return 0;
     }
 
+    /**
+     * Récupère le nombre de bois du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nombre de bois
+     */
     public int getBois(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -111,6 +135,11 @@ public class Model {
         return 0;
     }
 
+    /**
+     * Récupère le nombre de tissu du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le nombre de tissu
+     */
     public int getTissu(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -118,6 +147,11 @@ public class Model {
         return 0;
     }
 
+    /**
+     * Récupère la couleur du joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return la couleur du joueur
+     */
     public Color getColor(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -125,6 +159,11 @@ public class Model {
         return null;
     }
 
+    /**
+     * Récupère le score joueur en fonction de son index dans la liste des joueurs
+     * @param i position de joueur dans la liste
+     * @return le score du joueur
+     */
     public int getPrestige(int i) {
         int n = i - 1;
         if (listeJoueur[n] != null)
@@ -132,7 +171,9 @@ public class Model {
         return 0;
     }
 
-
+    /**
+     * Intialise les couleurs utiliser pour les joueurs
+     */
     public void initCouleur() {
         couleur = new Color[5];
         couleur[0] = Color.blue;
@@ -142,6 +183,9 @@ public class Model {
         couleur[4] = Color.black;
     }
 
+    /**
+     * Initialise les batiments qui sont de base sur le plateau
+     */
     public void initBatiment() {
         batNeutre = new ArrayList<>();
         batNeutre.add(new NCarriere());
@@ -163,6 +207,9 @@ public class Model {
         Collections.shuffle(batNeutre);
     }
 
+    /**
+     * Initialise les cases avec les batiments correspondant
+     */
     public void initCases() {
         cases = new Case[34];
         for (int i = 0; i < 34; i++) {
@@ -178,6 +225,9 @@ public class Model {
         }
     }
 
+    /**
+     * Associe chaque joueur à une couleur, place mélange les batiments neutre et créé l'ordre de tour
+     */
     public void initJoueur() {
         ordreDeTour = new ArrayList<Joueur>();
         ordreDeTourOrigine = new ArrayList<Joueur>();
@@ -199,6 +249,9 @@ public class Model {
 
     }
 
+    /**
+     * @return Le message à afficher dans le panneau de droite en fonction de la phase
+     */
     public String getPhase() {
         if (noPhase == 1)
             return "Perception des revenues";
@@ -217,12 +270,18 @@ public class Model {
         return "Initialisation des ressources";
     }
 
+    /**
+     * @return Le message à afficher dans le panneau de droite en fonction de la phase
+     */
     public String getInfoPhase() {
         if (noPhase == 2)
             return "Le cout est de " + coutDePose + " deniers";
         return "";
     }
 
+    /**
+     * @return Le joueur à afficher dans le panneau de droite en fonction de la phase
+     */
     public String getTourJoueur() {
         if (noPhase == 2)
             if (!ordreDePhase2.isEmpty())
@@ -231,12 +290,19 @@ public class Model {
 
     }
 
-
+    /**
+     * Retourne le batiment associé à la case
+     * @param coordonnee coordonnée de la case
+     * @return le batiment
+     */
     public Batiment getBatiment(int coordonnee) {
         return cases[coordonnee].getBatiment();
     }
 
-
+    /**
+     * Associe la vue au model
+     * @param vue la vue à associer
+     */
     public void setView(View vue) {
         this.view = vue;
         view.setPrévot(prévot.coordonnée);
@@ -245,7 +311,9 @@ public class Model {
 
     }
 
-
+    /**
+     * Initialise les ressource de début de jeu
+     */
     public void initRessource() {
         //changer label info
         int compteurJoueur = 0;
@@ -265,6 +333,9 @@ public class Model {
         view.editPJoueur();
     }
 
+    /**
+     * Distribue des ressources en fonction des propriétés des joueurs
+     */
     public void phase1() {
         view.editPInfo();
         int revenue;
@@ -288,11 +359,17 @@ public class Model {
         ordreDeTour.addAll(ordreDeTourOrigine);
     }
 
+    /**
+     * Initialise l'ordre de pose d'ouvrier
+     */
     public void phase2() {
         if (ordreDePhase2.isEmpty())
             ordreDePhase2.addAll(ordreDeTour);
     }
 
+    /**
+     * Ajoute un joueur en constructeur du chateau
+     */
     public void constChateau() {
         Joueur joueur = ordreDePhase2.get(0);
         int coordonnée = chateau.ajouterConstructeur(joueur);
@@ -312,13 +389,17 @@ public class Model {
             }
         } else {
             chateau.ordreConstruction.remove(joueur);
-            view.problèmeChateau(joueur.getNom(), -1);
+            view.problèmeChateau(joueur.getNom());
         }
         phase2();
         view.editPInfo();
         view.editPJoueur();
     }
 
+    /**
+     * Ajoute un joueur en tant qu'ouvrier sur un batiment
+     * @param coordonnee coordonnée du batiment
+     */
     public void poseOuvrier(int coordonnee) {
         Joueur joueur = ordreDePhase2.get(0);
         if (joueur.getDenier() >= coutDePose || (cases[5].getBatiment().getOuvrier(2) == joueur && joueur.getDenier() >= 1)) {
@@ -350,6 +431,9 @@ public class Model {
         view.editPJoueur();
     }
 
+    /**
+     * retire un joueur de l'ordre de pose
+     */
     public void joueurPasse() {
         if (finDePose.isEmpty())
             ordreDePhase2.get(0).recoit("denier", 1);
@@ -364,6 +448,9 @@ public class Model {
         view.editPInfo();
     }
 
+    /**
+     * Active les batiments spéciaux si un ouvrier est dessus
+     */
     public void phase3() {
         view.editPInfo();
         Joueur ouvrier;
@@ -377,7 +464,7 @@ public class Model {
                     ouvrier.reprendOuvrier();
 
                     if (index == -1 || index == -2 || index == -3)
-                        view.problèmeConstruction(index, ouvrier.getNom(), cases[i].getNomProprio());
+                        view.problèmeActivation(index, ouvrier.getNom(), cases[i].getNomProprio());
 
                     if (index == 1) {
                         int coordonné = view.panneauPorte(ouvrier.getNom());
@@ -466,6 +553,9 @@ public class Model {
         noPhase++;
     }
 
+    /**
+     * Demande à chaque joueur si il veut déplacer le prévot et de combien de cases
+     */
     public void phase4() {
         view.editPInfo();
         int rang;
@@ -520,6 +610,9 @@ public class Model {
         noPhase++;
     }
 
+    /**
+     * Active tout les batiments situé avant le prévot
+     */
     public void phase5() {
         view.editPInfo();
         Joueur ouvrier;
@@ -534,7 +627,7 @@ public class Model {
                     if (index == 0)
                         cases[i].getBatiment().retireOuvrier();
                     if (index == -1 || index == -2 || index == -3)
-                        view.problèmeConstruction(index, cases[i].getNomOuvrier(), cases[i].getNomProprio());
+                        view.problèmeActivation(index, cases[i].getNomOuvrier(), cases[i].getNomProprio());
 
                     if (index == 10) {
                         for (Case caseVerif : cases) {
@@ -566,7 +659,7 @@ public class Model {
                                     caseVerif.setBatiment(ouvrier.dernierePropriete());
                             }
                         } else {
-                            view.problèmeConstruction(-5, ouvrier.getNom(), null);
+                            view.problèmeActivation(-5, ouvrier.getNom(), null);
                             ouvrier.propriété.remove(ouvrier.propriété.size() - 1);
                         }
                     }
@@ -591,7 +684,7 @@ public class Model {
                                 }
                             }
                         } else {
-                            view.problèmeConstruction(-5, ouvrier.getNom(), null);
+                            view.problèmeActivation(-5, ouvrier.getNom(), null);
                             ouvrier.propriété.remove(ouvrier.propriété.size() - 1);
                         }
                     }
@@ -614,6 +707,9 @@ public class Model {
         noPhase++;
     }
 
+    /**
+     * Effectue le décompte du donjon
+     */
     public void decompteDonjon() {
         int[] compteurPartie = new int[nbrJoueurs];
 
@@ -636,6 +732,9 @@ public class Model {
         }
     }
 
+    /**
+     * Effectue le décompte de la muraille
+     */
     public void decompteMuraille(){
         int[] compteurPartie = new int[nbrJoueurs];
 
@@ -662,6 +761,9 @@ public class Model {
         }
     }
 
+    /**
+     * Effectue le décompte de la tour
+     */
     public void decompteTour(){
         int[] compteurPartie = new int[nbrJoueurs];
 
@@ -690,6 +792,9 @@ public class Model {
     }
 
 
+    /**
+     * Permet de construire les parties du chateau en fonction de la liste des constructeur
+     */
     public void phase6() {
         int[] compteurPartie = new int[chateau.ordreConstruction.size()];
         Joueur[] joueursConst = new Joueur[chateau.ordreConstruction.size()];
@@ -731,6 +836,10 @@ public class Model {
         noPhase++;
     }
 
+    /**
+     * Permet de désigner le vainqueur en fonction de son score
+     * @return
+     */
     public String vainqueur(){
         int prestigeMax=0;
         String vainqueur="";
@@ -744,6 +853,9 @@ public class Model {
     }
 
 
+    /**
+     * Vérifie si la partie est finis et distribue des récompense en fonction du nombre de partie de chateau construit
+     */
     public void phase7() {
         view.editPInfo();
 
@@ -778,5 +890,4 @@ public class Model {
             noPhase = 1;
         }
     }
-
 }

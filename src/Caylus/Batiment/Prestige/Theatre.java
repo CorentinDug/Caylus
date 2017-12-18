@@ -5,7 +5,7 @@ import Caylus.Batiment.Batiment;
 public class Theatre extends Batiment {
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public Theatre(){
         super("Theatre");

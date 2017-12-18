@@ -9,7 +9,7 @@ public class BMacon extends Batiment {
     private String recOuvrier;
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public BMacon(){
         super("Macon");
@@ -31,6 +31,10 @@ public class BMacon extends Batiment {
         prestige=4;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view) {
         recompenseProprietaire();
         recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
@@ -41,6 +45,8 @@ public class BMacon extends Batiment {
 
     /**
      *  Donne la récompense ouvrière dû au joueur
+     * @param choix
+     * @return
      */
     public boolean recompenseOuvrier(String choix) {
         return ouvrier.fabriqueBat(choix);

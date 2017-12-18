@@ -8,8 +8,9 @@ public class PAlchimiste extends Batiment {
     private String recOuvrier;
     private String recProprio;
     private String messProprio = "Proprietaire choix dons";
+
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public PAlchimiste(){
         super("Alchimiste");
@@ -21,6 +22,10 @@ public class PAlchimiste extends Batiment {
         prestige=6;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         recOuvrier = view.panneauRecompense(choixOuvrier,mess);
         recompenseOuvrier(recOuvrier);

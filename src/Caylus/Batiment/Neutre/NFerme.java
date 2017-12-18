@@ -7,6 +7,7 @@ import Caylus.View;
 public class NFerme extends Batiment {
     private String[] choix = new String[]{"nourriture","tissu"};
     private String recOuvrier;
+
     /**
      * Constructeur initialisant le nom
      */
@@ -14,10 +15,17 @@ public class NFerme extends Batiment {
         super("NFerme");
     }
 
+    /**
+     *  Renvoie true si le batiment est une batiments neutre
+     */
     public boolean isNeutre(){
         return true;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view){
         recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         recompenseOuvrier(recOuvrier);

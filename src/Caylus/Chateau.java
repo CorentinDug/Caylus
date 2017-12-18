@@ -1,7 +1,5 @@
 package Caylus;
 
-import jdk.nashorn.internal.scripts.JO;
-
 import java.util.ArrayList;
 
 /**
@@ -9,10 +7,6 @@ import java.util.ArrayList;
  */
 public class Chateau {
 
-    private String[] choix;
-    private String[] choix2;
-    private String choixRes1;
-    private String choixRes2;
     protected Joueur[] donjon;
     protected boolean compteurDonjon;
     protected Joueur[] muraille;
@@ -22,8 +16,11 @@ public class Chateau {
     protected ArrayList<Joueur> ordreConstruction;
     protected int nbrPartie;
     protected String mess;
+    private int position;
 
-
+    /**
+     * Constructeur initialisant les parties du chateau, l'ordre de construction et le message affiché lors de l'activation
+     */
     public Chateau() {
         donjon = new Joueur[6];
         compteurDonjon = false;
@@ -35,18 +32,24 @@ public class Chateau {
         mess = "Choisissez quoi donner";
     }
 
+
+    /**
+     * Permet au joueur de commencer à construire le chateau
+     * @param view Permet d'afficher les fenêtre de dialogue
+     * @return Retourne le nombre de partie du cahteau construit par le joueur
+     */
     public int constPartie(View view) {
         Joueur joueur = ordreConstruction.get(0);
         nbrPartie = view.panneauChateau(joueur.getNom());
         if(nbrPartie==0){
             joueur.donne("prestige",2);
-            view.problèmeConstruction(-6,joueur.getNom(),null);
+            view.problèmeActivation(-6,joueur.getNom(),null);
         }else{
             for (int i = 0; i <nbrPartie; i++) {
-                choix = new String[]{"or", "tissu", "bois", "pierre"};
-                choix2 = new String[3];
+                String[] choix = new String[]{"or", "tissu", "bois", "pierre"};
+                String[] choix2 = new String[3];
                 boolean pose = false;
-                choixRes1 = view.panneauRecompense(choix, mess+""+joueur.getNom()+" partie "+ (i+1));
+                String choixRes1 = view.panneauRecompense(choix, mess + "" + joueur.getNom() + " partie " + (i + 1));
                 int n = 0;
                 for (int j = 0; j < 4; j++) {
                     if (!choix[j].equals(choixRes1)) {
@@ -54,7 +57,7 @@ public class Chateau {
                         n++;
                     }
                 }
-                choixRes2 = view.panneauRecompense(choix2, mess+""+joueur.getNom()+" partie "+ (i+1));
+                String choixRes2 = view.panneauRecompense(choix2, mess + "" + joueur.getNom() + " partie " + (i + 1));
                 if (joueur.donne("nourriture", 1) && joueur.donne(choixRes1, 1) && joueur.donne(choixRes2, 1)) {
                     view.editPJoueur();
                     if (!compteurDonjon) {
@@ -95,15 +98,15 @@ public class Chateau {
                             nbrPartie--;
                         }
                     }else {
-                        view.problèmeConstruction(-5,joueur.getNom(),null);
+                        view.problèmeActivation(-5,joueur.getNom(),null);
                         joueur.donne("prestige", 2);
-                        view.problèmeConstruction(-6, joueur.getNom(), null);
+                        view.problèmeActivation(-6, joueur.getNom(), null);
                         nbrPartie--;
                     }
                 }else{
-                    view.problèmeConstruction(-1,joueur.getNom(),null);
+                    view.problèmeActivation(-1,joueur.getNom(),null);
                     joueur.donne("prestige",2);
-                    view.problèmeConstruction(-6,joueur.getNom(),null);
+                    view.problèmeActivation(-6,joueur.getNom(),null);
                     nbrPartie--;
                 }
                 view.editPJoueur();
@@ -115,6 +118,11 @@ public class Chateau {
     }
 
 
+    /**
+     * Ajouter un joueur dans l'ordre de construction
+     * @param joueur Le joueur à ajouter dans l'ordre de construction
+     * @return Retourne -1 si le joueur est déjà dans l'ordre de construction ou l'index du joueur qui vient d'être ajouter
+     */
     public int ajouterConstructeur(Joueur joueur){
         for(Joueur joueurs : ordreConstruction){
             if(joueurs==joueur)
@@ -124,4 +132,9 @@ public class Chateau {
         return ordreConstruction.size()-1;
     }
 
+    public Joueur getConstructeur(int position) {
+        Joueur constructeur;
+        constructeur = ordreConstruction.get(position);
+        return constructeur;
+    }
 }

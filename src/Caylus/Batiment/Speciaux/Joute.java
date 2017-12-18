@@ -16,6 +16,10 @@ public class Joute extends Batiment {
         super("Joute");
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view) {
         if (!recompenseOuvrier())
             return  1;

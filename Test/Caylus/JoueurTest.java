@@ -98,12 +98,4 @@ public class JoueurTest {
         joueur.recoit("or",1);
         Assert.assertFalse(joueur.donne("or",13));
     }
-
-    @Ignore
-    @Test
-    public void testDonnePrestigeFalse(){
-        Joueur joueur = new Joueur("joueur");
-        joueur.recoit("prestige",1);
-        Assert.assertFalse(joueur.donne("prestige",12));
-    }
 }

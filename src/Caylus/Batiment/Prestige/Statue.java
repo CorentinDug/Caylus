@@ -3,8 +3,9 @@ package Caylus.Batiment.Prestige;
 import Caylus.Batiment.Batiment;
 
 public class Statue extends Batiment {
+
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public Statue(){
         super("Statue");
