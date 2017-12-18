@@ -6,8 +6,9 @@ import Caylus.View;
 public class PArchitecte extends Batiment {
     private String[] choix;
     private String recOuvrier;
+
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public PArchitecte(){
         super("Architecte");
@@ -31,6 +32,10 @@ public class PArchitecte extends Batiment {
         prestige=6;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view) {
         recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         if(!recompenseOuvrier(recOuvrier))

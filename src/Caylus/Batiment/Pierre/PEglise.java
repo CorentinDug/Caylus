@@ -5,7 +5,7 @@ import Caylus.Batiment.Batiment;
 public class PEglise extends Batiment {
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public PEglise(){
         super("Eglise");
@@ -17,6 +17,10 @@ public class PEglise extends Batiment {
         prestige=3;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         int retour=0;
         if(!recompenseOuvrier()){

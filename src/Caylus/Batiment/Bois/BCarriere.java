@@ -12,7 +12,7 @@ import java.util.Collections;
 public class BCarriere extends Batiment {
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public BCarriere(){
         super("Carriere");
@@ -24,6 +24,10 @@ public class BCarriere extends Batiment {
         prestige=2;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         recompenseOuvrier();
         recompenseProprietaire();
@@ -31,7 +35,8 @@ public class BCarriere extends Batiment {
     }
 
     /**
-     *  Donne la récompense ouvrière dû au joueur
+     * Donne la récompense au joueur qui a posé un ouvrier
+     * @return
      */
     public boolean recompenseOuvrier() {
         ouvrier.recoit("pierre", 2);

@@ -11,12 +11,17 @@ import java.util.ArrayList;
  * Created by Schnoeby on 25/11/2017.
  */
 public class ControlMenu implements ActionListener {
-
     private View view;
     private Model model;
     private BackgroundMusic music;
     String[] test = new String[]{"test"};
 
+    /**
+     * Constructeur initialisant le controleur du menu
+     * @param view la vue du jeu
+     * @param model le model du jeu
+     * @param music la musique lancé dans le jeu
+     */
     public ControlMenu(View view, Model model, BackgroundMusic music) {
         this.view = view;
         this.model = model;
@@ -24,6 +29,10 @@ public class ControlMenu implements ActionListener {
         view.setMenuListener(this);
     }
 
+    /**
+     * Lance les actions en foncction de l'action dans le menu
+     * @param e Evènement capté
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

@@ -14,10 +14,17 @@ public class NForet extends Batiment {
         super("NForet");
     }
 
+    /**
+     *  Renvoie true si le batiment est une batiments neutre
+     */
     public boolean isNeutre(){
         return true;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view){
         recOuvrier = view.panneauRecompense(choix,mess+" "+getNom()+" "+ouvrier.getNom());
         recompenseOuvrier(recOuvrier);

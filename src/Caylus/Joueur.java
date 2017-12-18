@@ -27,7 +27,10 @@ public class Joueur {
     private Color couleur;
     protected ArrayList<Batiment> propriété;
 
-
+    /**
+     * Contructeur initialisant les ressource du joueur
+     * @param nom Le nom du joueur
+     */
     public Joueur(String nom) {
         this.nom = nom;
         denier=0;
@@ -41,8 +44,13 @@ public class Joueur {
         propriété = new ArrayList<>();
     }
 
+    /**
+     * Change la couleur du joueur
+     * @param couleur
+     */
     public void setCouleur(Color couleur) {this.couleur = couleur;}
     public Color getCouleur() {return couleur;}
+
 
     public String getNom() {
         return nom;
@@ -81,15 +89,25 @@ public class Joueur {
     }
 
 
+    /**
+     * @return Retourne la dernière propriété obtenu
+     */
     public Batiment dernierePropriete(){
         return propriété.get(propriété.size()-1);
     }
 
-    public boolean poseOuvrier(){
+    /**
+     * Décrémente le nombre d'ouvrier
+     */
+    public void poseOuvrier(){
         ouvrier--;
-        return true;
     }
 
+    /**
+     * Fabrique un batiment et rajoute le joueur en tant que propriétaire
+     * @param nomBat Nom du batiment à fabriqué
+     * @return Retourne vrai si le batiment est fabriqué
+     */
     public boolean fabriqueBat(String nomBat){
         Batiment bat=null;
         int[] coutConst;
@@ -191,11 +209,19 @@ public class Joueur {
         return  false;
     }
 
-
+    /**
+     * Rajoute un ouvrier au joueur
+     */
     public void reprendOuvrier(){
         ouvrier++;
     }
 
+    /**
+     * Le joueur donne des ressources
+     * @param ressource La ressource à donné
+     * @param quantité La quantité à donné
+     * @return Retourne vrai si le joueur a donné les ressources
+     */
     public boolean donne(String ressource, int quantité) {
         switch (ressource) {
             case "denier":
@@ -238,6 +264,11 @@ public class Joueur {
         return true;
     }
 
+    /**
+     * Le joueur reçoit des ressources
+     * @param ressource La ressource à donné
+     * @param quantité La quantit& à donné
+     */
     public void recoit(String ressource, int quantité) {
         switch (ressource) {
             case "denier":

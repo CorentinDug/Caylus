@@ -5,7 +5,7 @@ import Caylus.Batiment.Batiment;
 public class Hotel extends Batiment {
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public Hotel(){
         super("Hotel");
@@ -17,6 +17,10 @@ public class Hotel extends Batiment {
         prestige=16;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         recompenseOuvrier();
         return 0;
