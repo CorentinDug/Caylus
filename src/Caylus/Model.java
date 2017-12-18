@@ -778,5 +778,4 @@ public class Model {
             noPhase = 1;
         }
     }
-
 }

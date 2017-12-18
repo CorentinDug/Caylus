@@ -22,6 +22,7 @@ public class Chateau {
     protected ArrayList<Joueur> ordreConstruction;
     protected int nbrPartie;
     protected String mess;
+    private int position;
 
 
     public Chateau() {
@@ -124,4 +125,9 @@ public class Chateau {
         return ordreConstruction.size()-1;
     }
 
+    public Joueur getConstructeur(int position) {
+        Joueur constructeur;
+        constructeur = ordreConstruction.get(position);
+        return constructeur;
+    }
 }
