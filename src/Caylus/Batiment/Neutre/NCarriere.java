@@ -28,7 +28,6 @@ public class NCarriere extends Batiment {
         return true;
     }
 
-
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
