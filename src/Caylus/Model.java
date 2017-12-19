@@ -732,12 +732,12 @@ public class Model {
     }
 
     public String vainqueur(){
-        int prestigeMax=0;
+        int prestigeMax = 0;
         String vainqueur="";
         for (Joueur joueur : listeJoueur) {
             if (joueur.getPrestige() >= prestigeMax) {
+                vainqueur = joueur.getNom();
                 prestigeMax = joueur.getPrestige();
-                vainqueur+="-"+joueur.getNom();
             }
         }
         return vainqueur;
