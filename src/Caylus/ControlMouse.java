@@ -12,13 +12,21 @@ public class ControlMouse extends MouseAdapter {
     private Model model;
 
 
-
+    /**
+     * Initialise le controleur qui gère la souris
+     * @param view La vue du jeu
+     * @param model Le model du jeu
+     */
     public ControlMouse(View view, Model model) {
         this.view = view;
         this.model = model;
         this.view.setMouseListener(this);
     }
 
+    /**
+     * Gère les évènements quand on clique
+     * @param e Evènement capté
+     */
     public void mouseClicked(MouseEvent e) {
         Point point = e.getPoint();
         int coordonnees = detectionCase(point);
@@ -66,6 +74,11 @@ public class ControlMouse extends MouseAdapter {
         }
     }
 
+    /**
+     * Détecte où l'on a cliqué
+     * @param point Le point ou l'on a cliqué
+     * @return La coordonnée du point
+     */
     public int detectionCase(Point point){
         int coordonnees = -1;
         if( (point.getX() > 1125) && (point.getX() < 1173) && (point.getY() > 900) && (point.getY() < 948))

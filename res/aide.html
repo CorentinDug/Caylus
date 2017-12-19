@@ -5,44 +5,70 @@
     <link rel="stylesheet" href="foundation.css" type="text/css"/>
 </head>
 <body>
-<div class="grid-y" style="height: 50px;"><div class="grid-x small-1 large-offset-6 cell">Test</div></div>
+
+<div class="grid-y" style="height: 50px;"><div class="grid-x small-1 large-offset-5 cell"><h3>But du jeu</h3></div></div>
+<div style="width:800px; text-align: justify" class="large-offset-1 cell">
+Les joueurs incarnent des maîtres d’œuvre. En construisant
+le château du Roi et en développant les infrastructures de
+la  ville  qui  s’étend  à  ses  pieds,  ils  gagnent  des  points  de
+prestige. Quand le château est
+terminé ou que le bailli a fait le tour du plateau, le joueur ayant gagné le plus de prestige remporte
+la partie.
+</div>
+<div class="grid-y" style="height: 50px;"><div class="grid-x small-1 large-offset-5 cell"><h3>Regles du jeu</h3></div></div>
+<div style="width:800px; text-align: justify" class="large-offset-1 cell">
+Les joueurs devront recolter des ressources af des batiments qui leur permettront de gagner du prestige mais également différente ressources comme
+du bois, de la pierre, du tissus, de la nourriture, de l'or ou des deniers. Les joueurs devront donc essayer d'amasser le plus de ressources en apprenant a gerer leurs ouvrier pour pouvoir construire le chateau.
+Les joueurs devront également prendre en compte le prestige qui determinera le gagnant. Il faut donc choisir entre construire rapidement le chateau en essayant d'avoir le plus de prestige
+ou bien mettre du temps mais essayer de distancer les autres joueurs.
+</div>
+<div class="grid-y" style="height: 50px;"><div class="grid-x small-1 large-offset-5 cell"><h3>Prévot</h3></div></div>
+<div style="width:800px; text-align: justify" class="large-offset-1 cell">
+Le prévot a un coter très strategique il permet si bien utiliser de bloquer les autres joueur en desactivant leur batiment en effet tout les batiments qui se trouveront derriere le prévot ne seront pas appeler a la phase d'activation
+</div>
+<div class="grid-y" style="height: 50px;"><div class="grid-x small-1 large-offset-5 cell"><h3>Tableau des batiments</h3></div></div>
 <div class="grid-x">
     <div class="small-10 large-offset-1 cell">
         <table>
             <tr><th>Batiment</th><th>Image</th><th>Type</th><th>Coût de construction</th><th>Fonction</th><th>Recompense Ouvrier</th><th>Recompense Propriétaire</th></tr>
             <tr><td>Porte</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/porte.png" alt="porte"></td><td>Spécial</td><td>/</td><td>Permet de déplacer l'ouvrier qui se trouve sur la porte dans un emplacement libre, gratuitement</td><td>/</td><td>/</td></tr>
-            <tr><td>Comptoir</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/comptoir.png" alt="comptoir"></td><td>Spécial</td><td>/</td><td>Donne 3 deniers au propriétaire de l'ouvrier placé dessus</td><td>/</td><td>/</td></tr>
+            <tr><td>Comptoir</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Comptoir.png" alt="comptoir"></td><td>Spécial</td><td>/</td><td>Donne 3 deniers au propriétaire de l'ouvrier placé dessus</td><td>3 deniers</td><td>/</td></tr>
             <tr><td>Déplacement prévôt</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/DeplPrevot.png" alt="DeplPrevot"></td><td>Spécial</td><td>/</td><td>Permet au propriétaire de l'ouvrier poser dessus de déplacer le prévot de 1 à 3 cases en avant ou arrière gratuitement</td><td>/</td><td>/</td></tr>
-            <tr><td>Champ de joute</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Joute.png" alt="Joute"></td><td>Spécial</td><td>/</td><td>Le propriétaire de l'ouvrier devra payer 4 denier pour recevoir 1 lingot d'or </td><td>/</td><td>/</td></tr>
+            <tr><td>Champ de joute</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/joute.png" alt="Joute"></td><td>Spécial</td><td>/</td><td>Le propriétaire de l'ouvrier devra payer 4 denier pour recevoir 1 lingot d'or </td><td>4 deniers contre 1 or</td><td>/</td></tr>
             <tr><td>Écurie</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/ecurie.png" alt="ecurie"></td><td>Spécial</td><td>/</td><td>Permet de changer l'ordre de passage </td><td>/</td><td>/</td></tr>
-            <tr><td>Auberge</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/auberge.png" alt="auberge"></td><td>Spécial</td><td>/</td><td>L'auberge possède 2 cases, lors du placement de l'ouvrier celui qui se trouve sur la case de gauche lors de l'activation passe sur la case de droite. L'ouvrier sur la case de droite permet a son propriétaire de ne payer qu'un denier pour chaque ouvrier quelque soit le nombre de passage</td><td>/</td><td>/</td></tr>
-            <tr><td>Carrière</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NCarriere.png" alt="NCarriere"></td><td>Neutre/Bois</td><td>Bois: <br/> 1 bois + 1 nourriture</td><td>Permet de récuperer de la pierre en fonction du type <br/> Neutre: Gris <br/> Bois: Brun</td><td>Neutre: 1 pierre<br/>Bois: 2 pierres </td><td>Bois: 2 prestiges</td></tr>
-            <tr><td>Marché</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NMarche.png" alt="NMarche"></td><td>Neutre/Bois</td><td>1 bois + une ressource au choix</td><td>Permet d'échanger une ressource au choix contre des denier</td><td>Neutre: 1 denier <br/> Bois: 2 deniers</td><td>bois : 4 prestige a la construction</td></tr>
+            <tr><td>Auberge</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Auberge.png" alt="auberge"></td><td>Spécial</td><td>/</td><td>L'auberge possède 2 cases, lors du placement de l'ouvrier celui qui se trouve sur la case de gauche lors de l'activation passe sur la case de droite. L'ouvrier sur la case de droite permet a son propriétaire de ne payer qu'un denier pour chaque ouvrier quelque soit le nombre de passage</td><td>/</td><td>/</td></tr>
+            <tr><td>Carrière</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NCarriere.png" alt="NCarriere"></td><td>Neutre</td><td>/</td><td>Permet de recuperer une unité de pierre</td><td>1 pierre</td><td>/</td></tr>
+            <tr><td>Carrière</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Carriere.png" alt="BCarriere"></td><td>Bois</td><td>1 bois + 1 nourriture</td><td>Permet de recuperer deux unitées de pierres</td><td>2 pierres </td><td>2 prestiges a la construction</td></tr>
+            <tr><td>Marché</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NMarche.png" alt="NMarche"></td><td>Neutre</td><td>/</td><td>Permet d'échanger une ressource au choix contre des denier</td><td>1 denier</td><td>/</td></tr>
+            <tr><td>Marché</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Marche.png" alt="BMarche"></td><td>Bois</td><td>1 bois + une ressource au choix</td><td>Permet d'échanger une ressource au choix contre des denier</td><td>2 deniers</td><td>4 prestige a la construction</td></tr>
             <tr><td>Forêt</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NForet.png" alt="NForet"></td><td>Neutre</td><td>/</td><td>Permet de recuperer 1 bois ou une nourriture</td><td>1 bois ou 1 nourriture</td><td></td></tr>
-            <tr><td>Ferme</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NFerme.png" alt="NFerme"></td><td>Neutre/Bois/Pierre</td><td>/</td><td>Permet de recuperer 1 bois ou une nourriture</td><td>1 bois ou 1 nourriture</td><td></td></tr>
-            <tr><td>Scierie</td></tr>
-            <tr><td>Charpentier</td></tr>
-            <tr><td>Notaire</td></tr>
-            <tr><td>Maçon</td></tr>
-            <tr><td>Colporteur</td></tr>
-            <tr><td>Église</td></tr>
-            <tr><td>Parc</td></tr>
-            <tr><td>Banque</td></tr>
-            <tr><td>Alchimiste</td></tr>
-            <tr><td>Tailleur</td></tr>
-            <tr><td>Atelier</td></tr>
-            <tr><td>Architecte</td></tr>
-            <tr><td>Résidence</td></tr>
-            <tr><td>Cathédrale</td></tr>
-            <tr><td>Monument</td></tr>
-            <tr><td>Bibliothèque</td></tr>
-            <tr><td>Grenier</td></tr>
-            <tr><td>Tisserand</td></tr>
-            <tr><td>Statue</td></tr>
-            <tr><td>Théatre</td></tr>
-            <tr><td>Université</td></tr>
-            <tr><td>Hôtel</td></tr>
-
+            <tr><td>Ferme</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NFerme.png" alt="NFerme"></td><td>Neutre</td><td>/</td><td>Permet de recuperer 1 tissus ou une nouritture</td><td>1 tissus ou 1 nourriture</td><td></td></tr>
+            <tr><td>Ferme Tissu</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/FermeTissu.png" alt="BFerme"></td><td>Bois</td><td>1 bois + 1 nourriture</td><td>Permet de recuperer 2 tissus ou une nourriture</td><td>2 tissus ou 1 nourriture</td><td>2 prestiges a la construction</td></tr>
+            <tr><td>Ferme Nourriture</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/FermeNourriture.png" alt="BFerme"></td><td>Bois</td><td>1 bois + 1 nourriture</td><td>Permet de recuperer 2 tissus ou une nourriture</td><td>2 tissus ou 1 nourriture</td><td>2 prestiges a la construction</td></tr>
+            <tr><td>Ferme</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Ferme.png" alt="Ferme"></td><td>Pierre</td><td>1 bois + 1 nourriture</td><td>Permet de recuperer 2 nourittures et un tissus</td><td>2 nourittures et 1 tissus</td><td>3 prestiges a la construction + le choix entre 1 tissus ou 1 nouritture a l'activation</td></tr>
+            <tr><td>Scierie</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NScierie.png" alt="nScierie"></td><td>Neutre</td><td>/</td><td>Permet de recuperer une unite de bois</td><td>1 bois</td><td>/</td></tr>
+            <tr><td>Scierie</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Scierie.png" alt="BScierie"></td><td>Bois</td><td>1 bois + 1 nourriture</td><td>Permet de recuperer deux unite de bois</td><td>2 bois</td><td>2 prestiges</td></tr>
+            <tr><td>Charpentier</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/NCharpentier.png" alt="NCharpentier"></td><td>Neutre</td><td>/</td><td>Permet de construire un nouveau batiment</td><td>/</td><td>/</td></tr>
+            <tr><td>Notaire</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Notaire.png" alt="Notaire"></td><td>Bois</td><td>1 bois + 1 tissu</td><td>Permet de construire une residence si un ouvrier est sur le notaire</td><td>1 tissu</td><td>une residence et 4 prestige a la construction</td></tr>
+            <tr><td>Macon</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Macon.png" alt="Macon"></td><td>Bois</td><td>1 bois + 1 nourriture</td><td>Permet de construire un batiment en pierre</td><td>/</td><td>un batiment en pierre et 4 prestige a la construction</td></tr>
+            <tr><td>Colporteur</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Colporteur.png" alt="Colporteur"></td><td>Bois</td><td>1 bois + 1 ressource au choix</td><td>?</td><td>?</td><td>?</td></tr>
+            <tr><td>Eglise</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/eglise.png" alt="Eglise"></td><td>Pierre</td><td>1 pierre + 1 tissus</td><td>Permet d'echanger des denier contre du prestige</td><td>4 denier contre 5 prestige</td><td>Le proprietaire recoit forcement 1 prestige, il peut également payer 5 deniers pour recevoir de l'or. Le propriétaire recoit 3 prestige a la construction</td></tr>
+            <tr><td>Parc</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/parc.png" alt="Parc"></td><td>Pierre</td><td>1 pierre + 1 nouritture</td><td>Permet de recevoir du bois et de la nouritture</td><td>2 bois et 1 nouritture</td><td>Le proprietaire recoit 1 nourriture ou 1 bois au choix et 3 prestiges a la construction</td></tr>
+            <tr><td>Banque</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Banque.png" alt="Banque"></td><td>Pierre</td><td>1 pierre + 1 bois</td><td>Permet d'echanger des deniers contre de l'or</td><td>2 denier contre 1 or</td><td>6 prestige a la construction + la possibilite d'echanger 5 deniers contre 2 or a l'activation</td></tr>
+            <tr><td>Alchimiste</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/alchimiste.png" alt="Alchimiste"></td><td>Pierre</td><td>1 pierre + 1 nourriture</td><td>Permet d'echanger des ressources contre de l'or</td><td>2 ressource au choix contre 1 or</td><td>Le propriétaire reçoit 6 deniers a la construction et 1 supplementaire a chaque activation, il choisit également 4 ressources au choix</td></tr>
+            <tr><td>Tailleur</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/tailleur.png" alt="Tailleur"></td><td>Pierre</td><td>1 bois + 1 pierre</td><td>Permet d'echanger du tissus contre du prestige</td><td>2 tissus contre 4 presitge</td><td>Le propriétaire reçoit 6 prestige a la construction + 1 prestige a chaque activation et il peut donner 3 tissu contre 6 prestige</td></tr>
+            <tr><td>Atelier</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Atelier.png" alt="Atelier"></td><td>Pierre</td><td>1 pierre + 1 nourriture</td><td>Permet de recevoir du tissus et de la nourriture</td><td>2 nourriture + 1 tissus</td><td>Le propriétaire reçoit 3 prestige a la construction, il peut également choisir entre 1 tissus et 1 pierre a l'activation</td></tr>
+            <tr><td>Architecte</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/architecte.png" alt="Architecte"></td><td>Pierre</td><td>1 pierre + 1 nourriture</td><td>Permet de construire un batiment de type prestige</td><td>1 batiment de prestige</td><td>6 prestige</td></tr>
+            <tr><td>Residence</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Residence.png" alt="Residence"></td><td>Residence</td><td>/</td><td>Permet de recevoir un denier si un ouvrier est dessus</td><td>1 denier</td><td>2 prestiges</td></tr>
+            <tr><td>Cathedrale</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Cathedrale.png" alt="Cathedrale"></td><td>Prestige</td><td>3 or + 4 pierre + 1 bois</td><td>Permet au propriétaire de gagner 25 prestiges</td><td>/</td><td>25 prestiges</td></tr>
+            <tr><td>Monument</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Monument.png" alt="Monument"></td><td>Prestige</td><td>2 or + 4 pierre</td><td>Permet au propriétaire de gagner 14 prestiges</td><td>/</td><td>14 prestiges</td></tr>
+            <tr><td>Bibliotheque</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Bibliotheque.png" alt="Bibliotheque"></td><td>Prestige</td><td>1 or + 3 bois</td><td>Permet au propriétaire de gagner 10 prestiges ou 1 denier pour l'ouvrier</td><td>1 denier</td><td>10 prestiges</td></tr>
+            <tr><td>Grenier</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Grenier.png" alt="Grenier"></td><td>Prestige</td><td>1 or + 3 nourriture</td><td>Permet au propriétaire de gagner 10 prestiges</td><td>/</td><td>10 prestiges</td></tr>
+            <tr><td>Tisserand</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Tisserand.png" alt="Tisserand"></td><td>Prestige</td><td>1 or + 3 tissus</td><td>Permet au propriétaire de gagner 12 prestiges</td><td>/</td><td>12 prestiges</td></tr>
+            <tr><td>Statue</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Statue.png" alt="Statue"></td><td>Prestige</td><td>1 or + 2 pierre</td><td>Permet au propriétaire de gagner 7 prestiges</td><td>/</td><td>7 prestiges</td></tr>
+            <tr><td>Theatre</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Theatre.png" alt="Theatre"></td><td>Prestige</td><td>2 or + 3 bois</td><td>Permet au propriétaire de gagner 14 prestiges</td><td>/</td><td>14 prestiges</td></tr>
+            <tr><td>Universite</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Universite.png" alt="Universite"></td><td>Prestige</td><td>2 or + 3 pierre</td><td>Permet au propriétaire de gagner 14 prestiges</td><td>/</td><td>14 prestiges</td></tr>
+            <tr><td>Hotel</td><td><img style="width: 45px; height: 45px;" src="img/Batiment/Hotel.png" alt="Hotel"></td><td>Prestige</td><td>2 or + 3 pierre</td><td>Permet au propriétaire de gagner 16 prestiges ou 2 denier pour l'ouvrier</td><td>2 deniers</td><td>16 prestiges</td></tr>
 </table></div></div>
 </body>
 </html>

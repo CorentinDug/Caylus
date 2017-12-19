@@ -8,7 +8,7 @@ public class PAtelier extends Batiment {
 
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public PAtelier(){
         super("Atelier");
@@ -20,6 +20,10 @@ public class PAtelier extends Batiment {
         prestige=3;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         recompenseOuvrier();
         recompenseProprietaire();
@@ -29,9 +33,10 @@ public class PAtelier extends Batiment {
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
+    public boolean recompenseOuvrier() {
         ouvrier.recoit("pierre", 2);
         ouvrier.recoit("tissu", 1);
+        return true;
     }
 
     /**

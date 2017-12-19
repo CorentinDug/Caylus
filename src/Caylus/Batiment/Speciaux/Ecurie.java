@@ -10,6 +10,7 @@ import Caylus.View;
 public class Ecurie extends Batiment {
     protected Joueur ouvrier2;
     protected Joueur ouvrier3;
+
     /**
      * Constructeur initialisant le nom
      */
@@ -17,6 +18,11 @@ public class Ecurie extends Batiment {
         super("Ecurie");
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * la valeur de retour permet de savoir quoi faire dans le model après l'activation, 0 rien et [1=>6] correspond à un batiment spécial
+     * @return
+     */
     public int active(View view){
         return 5;
     }

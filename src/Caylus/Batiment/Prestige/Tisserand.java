@@ -5,7 +5,7 @@ import Caylus.Batiment.Batiment;
 public class Tisserand extends Batiment {
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public Tisserand(){
         super("Tisserand");

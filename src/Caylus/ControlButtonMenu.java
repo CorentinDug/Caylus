@@ -11,13 +11,21 @@ public class ControlButtonMenu implements ActionListener {
     private BackgroundMusic backgroundMusic;
 
 
-
+    /**
+     * Initialise le controlleur
+     * @param viewMenu La vue du menu de choix du nombre de joueur
+     * @param backgroundMusic La musique lancer dans le menu de choix du nombre joueur
+     */
     public ControlButtonMenu(ViewMenu viewMenu, BackgroundMusic backgroundMusic) {
         this.viewMenu = viewMenu;
         this.backgroundMusic = backgroundMusic;
         viewMenu.setButtonControler(this);
     }
 
+    /**
+     * Action à faire en fonction du bouton cliqué dans le menu du choix nombre joueur
+     * @param e Evenement détecté
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == viewMenu.getQuitter()) {
             System.exit(0);

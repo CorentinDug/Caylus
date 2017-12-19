@@ -12,21 +12,28 @@ public class NCarriere extends Batiment {
         super("NCarriere");
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view){
         recompenseOuvrier();
         return 0;
     }
 
+    /**
+     *  Renvoie true si le batiment est une batiments neutre
+     */
     public boolean isNeutre(){
         return true;
     }
 
-
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
+    public boolean recompenseOuvrier() {
             ouvrier.recoit("pierre",1);
+            return true;
     }
 
 }

@@ -16,6 +16,10 @@ public class NScierie extends Batiment {
         return true;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(View view){
         recompenseOuvrier();
         return 0;
@@ -24,9 +28,9 @@ public class NScierie extends Batiment {
     /**
      *  Donne la récompense ouvrière dû au joueur
      */
-    public void recompenseOuvrier() {
+    public boolean recompenseOuvrier() {
         ouvrier.recoit("bois",1);
-
+        return true;
     }
 
 }

@@ -48,7 +48,10 @@ public class View extends JFrame {
     private ImageIcon iconeApp;
     private Image img;
 
-
+    /**
+     * Initialise la fenêtre du jeu
+     * @param model Le model du jeu
+     */
     public View(Model model) {
         this.model = model;
         setTitle("Caylus");
@@ -76,8 +79,10 @@ public class View extends JFrame {
 
     }
 
+    /**
+     * Intialise le menu du jeu
+     */
     private void initMenu() {
-
         menuBar = new JMenuBar();
         menu = new JMenu("menu");
         quitter = new JMenuItem("quitter");
@@ -91,11 +96,19 @@ public class View extends JFrame {
         setJMenuBar(menuBar);
     }
 
+    /**
+     * Permet d'utiliser la souris
+     * @param listener
+     */
     public void setMouseListener(MouseAdapter listener) {
         panelPrinc.addMouseMotionListener(listener);
         panelPrinc.addMouseListener(listener);
     }
 
+    /**
+     * Permet d'utiliser le menu
+     * @param listener
+     */
     public void setMenuListener(ActionListener listener) {
         quitter.addActionListener(listener);
         aide.addActionListener(listener);
@@ -103,16 +116,18 @@ public class View extends JFrame {
 
     }
 
+    /**
+     * Actualise le panneau d'information de droite
+     */
     public void editPInfo() {
         phase.setText(model.getPhase());
         infoPhase.setText(model.getInfoPhase());
         tourJoueur.setText(model.getTourJoueur());
     }
 
-    public void editInfoPhase(String info) {
-        infoPhase.setText(info);
-    }
-
+    /**
+     * Initialise le panneau d'information de droite
+     */
     public void initPInfo() {
         panelInfo = new JPanel(null);
         panelInfo.setPreferredSize(new Dimension(300, 300));
@@ -154,6 +169,16 @@ public class View extends JFrame {
 
     }
 
+    /**
+     * Méthode permetant d'intialisé les labels plus rapidement
+     * @param label le label à initialisé
+     * @param x la coordonnée x
+     * @param y la coordonnée y
+     * @param width la largeur
+     * @param height la hauteur
+     * @param font la police de caractère
+     * @param color la couleur du label
+     */
     public void initLabel(JLabel label, int x, int y, int width, int height, Font font, Color color) {
         label.setFont(font);
         label.setForeground(color);
@@ -161,6 +186,16 @@ public class View extends JFrame {
         label.setOpaque(false);
     }
 
+    /**
+     * Méthode permetant d'intialisé les panels plus rapidement
+     * @param jPanel le panel à initialisé
+     * @param x la coordonnée x
+     * @param y la coordonnée y
+     * @param width la largeur
+     * @param height la hauteur
+     * @param font la police de caractère
+     * @param color la couleur du label
+     */
     public void initPanel(JPanel jPanel, int x, int y, int width, int height, Font font, Color color) {
         jPanel.setFont(font);
         jPanel.setForeground(color);
@@ -168,6 +203,9 @@ public class View extends JFrame {
         jPanel.setOpaque(false);
     }
 
+    /**
+     * Actualise le panneau d'information de gauche
+     */
     public void editPJoueur() {
 
         joueur1.setText(model.getNom(1));
@@ -226,6 +264,9 @@ public class View extends JFrame {
         }
     }
 
+    /**
+     * Initialise le panneau d'information de gauche
+     */
     public void initPJoueur() {
         panelJoueur = new JPanel();
         panelJoueur.setPreferredSize(new Dimension(300, 1000));
@@ -443,6 +484,9 @@ public class View extends JFrame {
         fond.setBounds(0, 0, 300, 1000);
     }
 
+    /**
+     * Initialise le plateau
+     */
     public void initPLateau() {
         panelPlateau = new PanelPrinc(1000, 1000,"res/img/plateau.png");
         panelPlateau.setLayout(null);
@@ -522,6 +566,9 @@ public class View extends JFrame {
         }
     }
 
+    /**
+     * Actualise les images du chateau et du plateau
+     */
     public void initImageCase() {
         editImageCase();
 
@@ -543,7 +590,9 @@ public class View extends JFrame {
         }
     }
 
-
+    /**
+     * Actualise les images du plateau
+     */
     public void editImageCase() {
         for (int i = 0; i < 34; i++){
             cases[i].setOpaque(false);
@@ -551,6 +600,9 @@ public class View extends JFrame {
         }
     }
 
+    /**
+     * Ajoute les panneaux dans un panneau principal
+     */
     public void createView() {
         panelPrinc = new JPanel();
         panelPrinc.setLayout(null);
@@ -573,11 +625,18 @@ public class View extends JFrame {
         setContentPane(panelPrinc);
     }
 
-
+    /**
+     * Affiche la fenêtre
+     */
     public void display() {
         this.setVisible(true);
     }
 
+    /**
+     * Ajoute la couleur du joueur sur la case
+     * @param coordonnees la case où ajouter
+     * @param joueur le joueur à qui appartient l'ouvrier
+     */
     public void poserOuvrier(int coordonnees, Joueur joueur) {
         JLabel label = new JLabel();
         if (coordonnees == 5) {
@@ -605,10 +664,18 @@ public class View extends JFrame {
         }
     }
 
+    /**
+     * Ajoute la couleur du joueur dans l'ordre de construction
+     * @param coordonnees la case où ajouter
+     * @param joueur le joueur à qui appartient l'ouvrier
+     */
     public void constChateau(int coordonnees, Joueur joueur) {
         ordreContruction[coordonnees].setBackground(joueur.getCouleur());
     }
 
+    /**
+     * Change la couleur des parties du chateau en fontion des joueurs qui l'ont construit
+     */
     public void editChateau() {
         int i =0;
         for(Joueur joueur : model.chateau.donjon){
@@ -639,13 +706,19 @@ public class View extends JFrame {
         }
     }
 
+    /**
+     * Retire la couleur des joueurs qui sont l'ordre de construction
+     */
     public void retireOuvrierChateau(){
         for(JLabel label : ordreContruction)
             label.setBackground(Color.gray);
     }
 
 
-
+    /**
+     * Changer la coordonnée de la bordure indiquant le baillis
+     * @param coordonnees La nouvelle coordonnée
+     */
     public void setBaillis(int coordonnees) {
         int coordBaillis = model.baillis.getCoordonnée();
         cases[coordBaillis].setBorder(null);
@@ -653,6 +726,10 @@ public class View extends JFrame {
         cases[coordonnees].setOpaque(false);
     }
 
+    /**
+     * Changer la coordonnée de la bordure indiquant le prévot
+     * @param coordonnees La nouvelle coordonnée
+     */
     public void setPrévot(int coordonnees) {
         int coordPrévot = model.prévot.getCoordonnée();
         int coordBaillis = model.baillis.getCoordonnée();
@@ -666,6 +743,11 @@ public class View extends JFrame {
         cases[coordonnees].setOpaque(false);
     }
 
+    /**
+     * Affiche une fenêtre pour écrire le nom d'un joueur
+     * @param i identifiant du joueur nommé
+     * @return le nom du joueur
+     */
     public String créerJoueur(int i) {
         String nom = "";
         while (nom.equals(""))
@@ -673,6 +755,11 @@ public class View extends JFrame {
         return nom;
     }
 
+    /**
+     * Affiche un fenêtre d'erreur de pose ouvrier en fonction de l'index
+     * @param joueur Le joueur concerné
+     * @param index L'index d'erreur
+     */
     public void problèmeOuvrier(String joueur, int index) {
         if (index == -1)
             JOptionPane.showMessageDialog(null, "Il n'y a pas de poste ici " + joueur);
@@ -684,11 +771,19 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Pas assez d'argent " + joueur);
     }
 
-    public void problèmeChateau(String joueur, int index) {
-        if (index == -1)
+
+    /**
+     * Affiche un fenêtre d'erreur si un de vos ouvrier travaille déjà sur le chateau
+     * @param joueur Le joueur concerné
+     */
+    public void problèmeChateau(String joueur) {
             JOptionPane.showMessageDialog(null, "Vous avez déjà un ouvrier qui travaille " + joueur);
     }
 
+    /**
+     * Retire la couleur du joueur sur la case
+     * @param i Coordonnée de la case
+     */
     public void retireOuvrier(int i) {
         JLabel label = new JLabel();
         if (i == 4) {
@@ -701,6 +796,12 @@ public class View extends JFrame {
         casesOuvrier[i].setOpaque(false);
     }
 
+    /**
+     * Affiche un fenêtre qui propose un choix au joueur
+     * @param tabRec Le tableau des choix
+     * @param mess Le mess à afficher
+     * @return la récompense choisis
+     */
     public String panneauRecompense(String[] tabRec, String mess) {
         JOptionPane jop = new JOptionPane();
         String recompense = (String) jop.showInputDialog(null,
@@ -714,6 +815,11 @@ public class View extends JFrame {
         return recompense;
     }
 
+    /**
+     * Demande le nombre de partie de chateau que le joueur veut construire
+     * @param nom nom du joueur
+     * @return le nombre de partue
+     */
     public int panneauChateau(String nom) {
         int nbrPartie = -1;
         while (nbrPartie < 0 || nbrPartie > 30)
@@ -721,7 +827,11 @@ public class View extends JFrame {
         return nbrPartie;
     }
 
-
+    /**
+     * Demande la coordonné ou déplacer l'ouvrier de la porte
+     * @param nom nom du joueur
+     * @return la coordonnée choisis
+     */
     public int panneauPorte(String nom) {
         int coordonné = -1;
         while (coordonné < 0 || coordonné > 33)
@@ -729,6 +839,12 @@ public class View extends JFrame {
         return coordonné;
     }
 
+    /**
+     * Demande au joueur où il veut construrie la résidence
+     * @param bat liste batiment possible
+     * @param joueur nom du joueur
+     * @return le batiment choisis
+     */
     public String choixConst(String[] bat, String joueur) {
         JOptionPane jop = new JOptionPane();
         return (String) jop.showInputDialog(null,
@@ -741,7 +857,11 @@ public class View extends JFrame {
                 bat, "Choisir");
     }
 
-
+    /**
+     * Demande de combien on veut déplacer le prévot
+     * @param joueur le joueur qui déplace
+     * @return le nombre de déplacement
+     */
     public int deplPrevot(Joueur joueur) {
         String[] cases = {"-3 case", "-2 cases", "-1 cases", "0 case", "+1 case", "+2 cases", "+3 cases"};
         JOptionPane jop = new JOptionPane();
@@ -756,8 +876,13 @@ public class View extends JFrame {
         return rang;
     }
 
-
-    public void problèmeConstruction(int index, String ouvrier, String proprio) {
+    /**
+     * Affiche un fenêtre d'erreur d'activation en fonction de l'index
+     * @param index index erreur
+     * @param ouvrier ouvrier concerné
+     * @param proprio propriétaire concerné
+     */
+    public void problèmeActivation(int index, String ouvrier, String proprio) {
         if (index == -1)
             JOptionPane.showMessageDialog(null, "Vous n'avez pas les ressource " + ouvrier);
         if (index == -2)
@@ -770,6 +895,10 @@ public class View extends JFrame {
             JOptionPane.showMessageDialog(null, "Vous n'avez pas  construit pénalité de 2 prestiges " + ouvrier);
     }
 
+    /**
+     * Affiche une fenêtre avec le vainqueur
+     * @param vainqueur le vainqueur
+     */
     public void finDuGame(String vainqueur) {
             JOptionPane.showMessageDialog(null, "Vous avez gagné " + vainqueur);
     }

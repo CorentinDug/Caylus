@@ -7,7 +7,7 @@ public class BFermeNourriture extends Batiment {
     private String recOuvrier;
 
     /**
-     * Constructeur initialisant le nom
+     * Constructeur initialisant le nom, les couts de construction et le nombre de prestiges reçue à la construction
      */
     public BFermeNourriture(){
         super("FermeNourriture");
@@ -19,6 +19,10 @@ public class BFermeNourriture extends Batiment {
         prestige=2;
     }
 
+    /**
+     * Donne les récompenses aux personnes concerné
+     * @return
+     */
     public int active(){
         recOuvrier = view.panneauRecompense(choix,mess);
         recompenseOuvrier(recOuvrier);
@@ -29,6 +33,8 @@ public class BFermeNourriture extends Batiment {
 
     /**
      *  Donne la récompense ouvrière dû au joueur
+     * @param choix
+     * @return
      */
     public void recompenseOuvrier(String choix) {
         if (choix.equals("2nourriture")) {
